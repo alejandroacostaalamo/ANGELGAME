@@ -1,0 +1,200 @@
+<!DOCTYPE HTML>
+<HTML>
+	<head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+        <title>A.N.G.E.L</title>
+		
+		<link rel="stylesheet" type="text/css" href="css/style.css" media="screen"/>
+
+		<!-- ----------- SCRIPTS JS ---------------->
+		<script src='js/jquery.js'></script>
+		<!-- ----------- SCRIPTS JS ---------------->
+		
+    </head>
+
+	<body>
+		
+		<canvas id="game">
+			Your navegator do not support canvas.
+		</canvas>
+		
+		<!----------------MENU PRINCIPAL------------------------>
+		<div id="main_menu">
+		
+			<div id="game_title">
+				<div class="logobg">
+					<img src="img/angel.png" width="90%" height="auto" />
+				</div>
+			</div>
+			
+			<div style="margin-top:80px;">
+				<div id="play_button" class="menu_button">PLAY</div>
+				<div id="config_button" class="menu_button">SETTINGS</div>
+				<div id="about_button" class="menu_button">ABOUT</div>
+			</div>
+		</div>
+		<!----------------MENU PRINCIPAL------------------------>
+		
+		<!----------------SELECCION DE JUEGO------------------------>
+		<div id="selection_menu">
+			<div style="margin-top:80px;">
+				<div class="row">
+					<div id="id_button" class="menu_button">BALLONS</div>
+				</div>
+				
+				<div class="row">
+					<div id="memory_button" class="menu_button">MEMORY</div>
+				</div>
+				
+				<div class="row">
+					<div id="drag_button" class="menu_button">DRAG</div>
+				</div>
+				
+				<div class="row">
+					<div id="cross_button" class="menu_button">CROSSWORD</div>
+				</div>
+			</div>
+		</div>
+		<!----------------SELECCION DE JUEGO------------------------>
+		
+		<!----------------JUEGOS DE GLOBOS------------------------>
+		<div id="ip_selection_menu">
+			<div style="margin-top:80px;">
+				<div id="ipv4_button2" class="menu_button">IPV4</div>
+				<div id="ipv6_button2" class="menu_button">IPV6</div>
+			</div>
+		</div>
+		<!----------------JUEGOS DE GLOBOS------------------------>
+		
+		<!----------------JUEGOS DE DRAG------------------------>
+		<div id="drag_selection_menu">
+			<div style="margin-top:80px;">
+				<div id="ipv4_button" class="menu_button">IPV4</div>
+				<div id="ipv6_button" class="menu_button">IPV6</div>
+				<div id="tcp_button" class="menu_button">TCP</div>
+				<div id="udp_button" class="menu_button">UDP</div>
+				<div id="dns_button" class="menu_button">DNS</div>
+			</div>
+		</div>
+		<!----------------JUEGOS DE DRAG------------------------>
+
+		<!----------------JUEGOS DE CRUCIGRAMA------------------------>
+		<div id="cross_selection_menu">
+			<div style="margin-top:80px;">
+				<div id="ipv4_button3" class="menu_button"><a href="crosswordip4.html" style="color:rgb(208, 221, 4);text-decoration:none;">IPV4</a></div>
+				<div id="ipv6_button3" class="menu_button"><a href="crosswordip6.html" style="color:rgb(208, 221, 4);text-decoration:none;">IPV6</a></div>
+			</div>
+		</div>
+		<!----------------JUEGOS DE CRUCIGRAMA------------------------>
+		
+		<!----------------DIFICULTAD------------------------>
+		<div id="difficulty_menu">
+			<div style="margin-top:80px;">
+				<div class="aboutTit">DIFFICULTY</div>
+				<div id="easy_button">EASY</div>
+				<div id="medium_button">MEDIUM</div>
+				<div id="hard_button">HARD</div>
+			</div>
+		</div>
+		<!----------------DIFICULTAD------------------------>
+		
+		<!----------------SETTINGS------------------------>
+		<div id="config_menu">
+			<div style="padding-top:60px;">
+				<!--
+				<div>
+					<div class="aboutTit">INSTRUCTIONS</div>
+					<div style="width: 180px; height: 60px; margin-left: auto; margin-right: auto; position: relative; overflow: hidden;" id="activate_instructions" onclick="game.activateinstructionscreen()">
+						<div class="on" id="insOn">ON</div>
+						<div class="off" id="insOff">OFF</div>
+					</div>
+				</div>
+				-->
+				<div>
+					<div class="aboutTit">SOUND EFFECTS</div>
+					
+					<div style="width: 180px; height: 60px; margin-left: auto; margin-right: auto; position: relative; overflow: hidden;" id="activate_sound" onclick="game.activatesound()">
+						<div class="on" id="sndOn">ON</div>
+						<div class="off" id="sndOff">OFF</div>
+					</div>
+				</div>
+				<div>
+					<div class="aboutTit">MUSIC</div>
+					<div style="width: 180px; height: 60px; margin-left: auto; margin-right: auto; position: relative; overflow: hidden;" id="activate_music" onclick="game.activatemusic()">
+						<div class="on" id="musOn">ON</div>
+						<div class="off" id="musOff">OFF</div>
+					</div>
+				</div>
+				<div>
+					<div class="aboutTit">LANGUAGE</div>
+					<div style="width: 180px; height: 60px; margin-left: auto; margin-right: auto; position: relative; overflow: hidden;">
+						<div class="on" onclick="window.location.href='index-es.html'">ENGLISH</div>
+						<div class="off">SPANISH</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!----------------SETTINGS------------------------>
+		
+		<!----------------CREDITOS------------------------>
+		<div id="about_menu">
+			<div style="margin-top:80px;">
+				<div class="aboutTit2">
+					PROJECT LEADER<br>
+					<span class="nameCredits">ALEJANDRO ACOSTA</span>
+				</div>
+				
+				<div class="aboutTit2">
+					DEVELOPERS<br>
+					<span class="nameCredits">ANDREAS BRANDT</span><br>
+					<span class="nameCredits">JESUS SUAREZ</span>
+				</div>
+				
+				<div class="aboutTit2">
+					DESIGN<br>
+					<span class="nameCredits">ANDREAS BRANDT</span>
+				</div>
+
+				<div class="aboutTit2">
+					SPONSOR<br>
+					<span class="nameCredits">LACNIC</span>
+				</div>
+				
+			</div>
+		</div>
+		<!----------------CREDITOS------------------------>
+		
+		<!----------------VOLVER------------------------>
+		<div id="back_button">
+			<img src="img/exit_button_ingame.png" width="40">
+		</div>
+		<!----------------VOLVER------------------------>
+
+        <!-- ----------- SCRIPTS JS ---------------->
+        <script type="text/javascript">
+        	var lang = "en";
+        </script>
+        
+		<script src="js/main.js"></script>
+		<script src="js/menu_manager.js"></script>
+		<script src="js/loading.js"></script>
+		<script src="js/instructions.js"></script>
+		<script src="js/idGame.js"></script>
+		<script src="js/memory.js"></script>
+		<script src="js/dragAndDrop.js"></script>
+		<script src="js/game_over_screen.js"></script>
+		<!-- ----------- SCRIPTS JS ---------------->
+
+		<audio id="explode" onloadeddata="game.refreshloadingscreen();" src="sounds/explode.mp3"></audio>
+		<audio id="world1" onloadeddata="game.refreshloadingscreen();" src="sounds/world1.mp3" loop></audio>
+		<audio id="world2" onloadeddata="game.refreshloadingscreen();" src="sounds/world2.mp3" loop></audio>
+		<audio id="world3" onloadeddata="game.refreshloadingscreen();" src="sounds/world3.mp3" loop></audio>
+		<audio id="intro" onloadeddata="game.refreshloadingscreen();" src="sounds/intro.mp3" loop></audio>
+		<audio id="explodeGood" onloadeddata="game.refreshloadingscreen();" src="sounds/explodeGood.mp3"></audio>
+		<audio id="explodeBad" onloadeddata="game.refreshloadingscreen();" src="sounds/explodeBad.mp3"></audio>
+
+	</BODY>
+</HTML>
