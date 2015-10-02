@@ -14,9 +14,10 @@ You will learn doing:
 - Crosswords
 - Drag & Drop
 - Playing memory
+- Balloons
 
 Languages supported:
 - Spanish and English
 
 Topics to cover in the future:
-- Internet Governance (on going phase)
+- Internet Governance (ongoing phase)
