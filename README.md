@@ -13,6 +13,7 @@ You can learn:
 You will learn doing:
 - Crosswords
 - Playing memory
+- Playing memory
 
 Languages supported:
 - Spanish and English
