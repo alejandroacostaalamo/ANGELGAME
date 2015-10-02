@@ -12,7 +12,7 @@ You can learn:
 
 You will learn doing:
 - Crosswords
-- Playing memory
+- Drag & Drop
 - Playing memory
 
 Languages supported:
