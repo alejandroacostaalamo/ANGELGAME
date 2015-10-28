@@ -4,6 +4,8 @@ ANGEL stands for: Analytical Network Game for Education and Learning.
 
 Join ANGEL's mailing list and group at: https://groups.google.com/forum/#!forum/angel---game-for-learning-computer-networks
 
+If you want to see the game up & running please visit:  http://squat.acostasite.com/ANGEL/ANGELGAME-master/AGO-2015/
+
 This is a simple and straightforward game, should work in any browser that supports HTML5, it means, should run in tablets, computers, cell phone and much more.
 
 You can learn:
