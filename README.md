@@ -23,11 +23,15 @@ You will learn doing:
 Languages supported:
 - Spanish and English
 
+Languages to be added soon:
+- Portugues 
+
+
 Topics to cover in the future:
 - Internet Governance (ongoing phase)
 
 
 HOW TO INSTALL IT
-  Just decompress the .zip file in a folder
-  Open index.html with a browser that supports HTML5 
+  1) Just decompress the .zip file in a folder
+  2) Open index.html with a browser that supports HTML5 
 
