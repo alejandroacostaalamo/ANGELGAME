@@ -30,3 +30,4 @@ Topics to cover in the future:
 HOW TO INSTALL IT
   Just decompress the .zip file in a folder
   Open index.html with a browser that supports HTML5 
+
