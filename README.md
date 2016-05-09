@@ -13,22 +13,25 @@ You can learn:
 - IPv6
 - DNS
 - Ethernet
+- Internet Governance (ongoing phase)
+
 
 You will learn doing:
 - Crosswords
 - Drag & Drop
 - Playing memory
-- Balloons
+- Balloons / Flying Discs
 
 Languages supported:
-- Spanish and English
-
-Languages to be added soon:
-- Portugues 
+- Spanish, English & Portuguese
 
 
-Topics to cover in the future:
-- Internet Governance (ongoing phase)
+Future games:
+- The user will interpret common outputs:
+-   * show ip bgp (quagga outout)
+-   * show ip route 
+-   * dig
+-   * nslookup
 
 
 HOW TO INSTALL IT
