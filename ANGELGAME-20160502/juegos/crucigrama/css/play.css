@@ -1,0 +1,146 @@
+/* interactive */
+
+#clues {
+	position:fixed;
+	bottom:0px;
+	left:0;
+	width:100%;	
+	background-color:#fff;
+	border:1px solid white;
+	margin-left:-1px;
+}
+
+#clues-inner {
+	width:840px;
+	margin:auto;
+	border-top:5px solid #38341c;
+	padding-top:5px;
+}
+.clase{
+	-webkit-transform : scale(1.2);
+	-o-transform : scale(1.2);
+	-mozt-transform : scale(1.2);
+}
+.clase { transition: all 0.5s cubic-bezier(0.680, -0.550, 0.265, 1.550); }
+
+#clues ol {
+	overflow:auto;
+	height:200px;
+}
+
+#clues ol li {
+    line-height:normal;
+    padding:2px;
+}
+
+.number{
+	font-family: arial;
+	font-size: 8px;
+	text-align: left;
+	position: absolute;
+	margin-top: -1px;
+}
+
+#crossword {
+	overflow: auto;
+}
+/*#crossword input {
+	text-transform: lowercase;
+}*/
+
+#clues li.active {
+	background-color:#006a97;
+    color:#fff;
+}
+
+#stage-2 {
+	border-bottom:none;
+}
+
+.crossword{
+	border-collapse: collapse;
+	margin-left: auto;
+	margin-right: auto;
+	clear: both;
+	margin-top: 50px;
+	margin-bottom: 10px;
+	background-color: transparent;
+	width:90%;
+}
+
+.crossword td{
+	border: 1px solid black;
+	text-align: center;
+	padding:0px;
+	margin:0px;
+}
+
+.crossword > tbody > tr > td{
+	background-color:#FFF;
+}
+
+.crossword .no-border {
+	border: none;
+	background-color:transparent;
+	visibility: hidden;
+}
+
+.crossword td.wrong input {
+    font-weight:bold;
+    color:#ab0d0d;
+}
+
+.crossword td.correct input {
+    font-weight:bold;
+    color:#009900;
+}
+.crossword td.highlighted  {
+	background-color: #9C9C9C;/*Gris Oscuro*/
+    color:#ffffff;
+}
+
+.crossword td.highlighted input {
+    color:#ffffff;
+	background-color:#006a97;
+    background-color:rgba(1,1,1,0.0);
+}
+
+
+.crossword td.active {
+	background-color: #D3D3D3;
+	font-weight:bold;
+    color:#fff;
+}
+
+.crossword td.active input {
+    color:#fff;
+	background-color:#009adb;
+    background-color:rgba(1,1,1,0.0);
+}
+
+.hidden-field {
+    border:none;
+    background-color: transparent;
+    text-align:center;
+    font-family:"Courier New", Courier, monospace;
+	width: 16px;
+	height: 14px;
+	font-size: 13px;
+}
+td,
+td div{
+	position: relative;
+}
+td input{
+	transition:.2s;
+}
+.td_input{
+	border: 1px solid;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    background-color: #fff!important;
+    width: 52px;
+    height: 26px;
+	z-index: 1;
+}

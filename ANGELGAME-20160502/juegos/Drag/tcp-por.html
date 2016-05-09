@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+
+    <title>tcp</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name=" description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">    
+    <link rel="stylesheet" type="text/css" href="../../css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../../css/media.css">
+
+    <script src='../../js/jquery.js'></script>
+    <script src='../../js/jquery.min.js'></script>
+    <script src="../../js/bootstrap.min.js"></script> 
+    <script src='../../js/jquery-ui.min.js'></script>
+    <script src='../../js/jquery.ui.touch-punch.min.js'></script>
+    <script src='../../js/drag.js'></script>
+    <!-- <script src='../../js/testing.js'></script> -->
+    <script src='../../js/dragTcp.js'></script>
+    <script src='../../js/visibility.js'></script>
+  </head>
+  <body>
+    <div class="drag">
+      <div class="modal fade" id="levelModal" tabindex="-1" role="dialog" aria-labelledby="levelModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2 class="modal-title" id="levelModalLabel">TCP</h2>
+              </div>
+              <div class="modal-body">
+                <div class="game-info">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore culpa, consequatur ab reprehenderit reiciendis laudantium atque. Provident blanditiis voluptatem, corporis! Esse laboriosam voluptatem neque. Praesentium rem illum, molestias voluptatibus facilis.</p>
+                  <div class="level-difficulty">
+                    <h4>Escolha um nível de dificuldade</h4>                    
+                      <button id="level1" type="submit" class="btn btn-default">Fácil</button>
+                      <p>Haverá nove (9) caixas cheias</p>
+                      <hr>
+                      <button id="level2" type="submit" class="btn btn-default">Meio</button>
+                      <p>Haverá seis (6) caixas cheias</p>
+                      <hr>
+                      <button id="level3" type="submit" class="btn btn-default">Difícil</button>
+                      <p>Não haverá caixa cheia.</p>
+                  </div>
+                </div>  
+              </div>
+              <div class="modal-footer">
+                <a href="#" onclick="history.back()">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Atrás</button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="WinModal" tabindex="-1" role="dialog" aria-labelledby="WinModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        </div>
+                        <div class="modal-body text-center">
+                            <div class="box">
+                                <img src="../../img/congratulations.png" alt="" class="img-responsive">
+                                <h2>Parabéns</h2>
+                                <h4>Nivel Máximo</h4>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="" onclick="location.reload()">
+                                <button>Atrás</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="LooseModal" tabindex="-1" role="dialog" aria-labelledby="LooseModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        </div>
+                        <div class="modal-body text-center">
+                            <div class="box">
+                                <img src="../../img/game_over.png" alt="" class="img-responsive">
+                                <h2>Fim de Jogo</h2>
+                                <h4>Tenta Novo</h4>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="" onclick="location.reload()">
+                                <button>Atrás</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      <div class="head">
+        <div class="score">
+            Ponto: 
+            <div id="score">0</div>
+        </div>
+        <div class="time" >
+            Tempo: 
+            <div id="contratiempo">00</div>
+        </div>
+      </div>
+      <div id="boxtcp" class="text-center">
+        <input id="tcp-0"  class="col-xs-6 col-sm-6 col-md-6 col-lg-6 input" disabled=" disabled"> 
+        <input id="tcp-1"  class="col-xs-6 col-sm-6 col-md-6 col-lg-6 input" disabled=" disabled"> 
+        <input id="tcp-2"  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 input" disabled=" disabled"> 
+        <input id="tcp-3"  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 input" disabled=" disabled"> 
+        <input id="tcp-4"  class="col-xs-1 col-sm-1 col-md-1 col-lg-1 input" disabled=" disabled">
+        <input id="tcp-5"  class="col-xs-1 col-sm-1 col-md-1 col-lg-1 input" disabled=" disabled"> 
+        <input id="tcp-6"  class="col-xs-4 col-sm-4 col-md-4 col-lg-4 input" disabled=" disabled"> 
+        <input id="tcp-7"  class="col-xs-6 col-sm-6 col-md-6 col-lg-6 input" disabled=" disabled"> 
+        <input id="tcp-8"  class="col-xs-6 col-sm-6 col-md-6 col-lg-6 input" disabled=" disabled"> 
+        <input id="tcp-9"  class="col-xs-6 col-sm-6 col-md-6 col-lg-6 input" disabled=" disabled"> 
+        <input  id="tcp-10" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 input" disabled=" disabled"> 
+      </div>
+      <div id="pregunta">
+        <div class="title">Arraste a caixa abaixo <i class="fa fa-angle-down"></i></div>
+      </div>
+      <div class="retry">
+          <a href="" onclick="location.reload()">
+              <button>Atrás</button>
+          </a>
+      </div>
+    </div>
+  </body>
+</html>
