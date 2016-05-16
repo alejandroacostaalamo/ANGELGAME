@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Memoria</title>
+
+
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">    
+    <link rel="stylesheet" type="text/css" href="../../css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../../css/media.css">
+<!--<link rel="stylesheet" type="text/css" href="../../css/jquery.ui.all.css">
+    <link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css"> -->
+
+    <script src='../../js/jquery.js'></script>
+    <script src='../../js/jquery.min.js'></script>
+    <script src="../../js/bootstrap.min.js"></script> 
+    <script src='../../js/jquery-ui.min.js'></script>
+    <script src='../../js/jquery.ui.touch-punch.min.js'></script>
+    <script src='../../js/Memory.js'></script>
+    <!-- // <script src='../../js/SocialSharing.js'></script> -->
+    <script src='js/visibility.js'></script>
+
+</head>
+    <body>
+
+        <div class="memoria">
+
+            <div class="modal fade" id="levelModal" tabindex="-1" role="dialog" aria-labelledby="levelModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="levelModalLabel">Memoria</h2>
+                        </div>
+                        <div class="modal-body">
+                            <div class="game-info">
+                               <!--  <h5>BASADO EN EL TRADICIONAL JUEGO DE MEMORIA.</h5>
+                                <p>
+                                Debes voltear una carta y luego conseguir su pareja. La pareja corresponde a: Puerto Nombre protocolo
+                                </p> -->
+                                <div class="level-difficulty">
+                                    <h4>¡Elige un nivel de dificultad!</h4>
+                                    <button id="level1" type="submit" class="btn btn-default">Fácil</button>
+                                    <p>Habrán doce (12) tarjetas para elegir .</p>
+                                    <hr>
+                                    <button id="level2" type="submit" class="btn btn-default">Medio</button>
+                                    <p>Habrán dieciséis (16) de tarjetas para elegir .</p>
+                                    <hr>
+                                    <button id="level3" type="submit" class="btn btn-default">Difícil</button>
+                                    <p>Habrán veinticuatro (24) tarjetas para elegir .</p>
+                                    <hr>
+                                </div>
+                            </div>  
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#" onclick="history.back()">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Atrás</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="modal fade" id="WinModal" tabindex="-1" role="dialog" aria-labelledby="WinModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        </div>
+                        <div class="modal-body text-center">
+                            <div class="box">
+                                <img src="../../img/congratulations.png" alt="" class="img-responsive">
+                                <h2>Felicidades!</h2>
+                                <h4>Nivel Completado</h4>
+                                <div class="score">
+                                    Puntos: <div class="punto"> 0</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="" onclick="location.reload()">
+                                <button>Atrás</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="LooseModal" tabindex="-1" role="dialog" aria-labelledby="LooseModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        </div>
+                        <div class="modal-body text-center">
+                            <div class="box">
+                                <img src="../../img/game_over.png" alt="" class="img-responsive">
+                                <h2>Has perdido</h2>
+                                <h4>Intentalo de nuevo!</h4>
+                                <div class="score">
+                                    Puntos: <div class="punto"> 0</div>
+                                </div>
+                                <!-- <button onclick="window.plugins.socialsharing.shareViaTwitter('Message and link via Twitter', null /* img */, 'http://www.x-services.nl')">msg and link via Twitter</button> -->
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="" onclick="location.reload()">
+                                <button>Atrás</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="head">
+                <div class="score">
+                    Puntos: 
+                    <div id="punto">0</div>
+                </div>
+                <div class="time" >
+                    Tiempo: 
+                    <div id="contratiempo">00</div>
+                </div>
+            </div>
+
+
+            <section id="imagenes"></section>
+
+            <div class="retry">
+                <a href="" onclick="location.reload()">
+                    <button>Atrás</button>
+                </a>
+            </div>
+        </div>
+
+    </body>
+</html>

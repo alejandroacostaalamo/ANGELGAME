@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>A.N.G.E.L</title>    
+    <link rel="stylesheet" href="css/bootstrap.min.css">  
+    <link rel="stylesheet" href="css/styles.css">   
+    <link rel="stylesheet" href="css/media.css">   
+    <link rel="stylesheet" href="css/font-awesome.min.css">   
+  </head>
+
+  <body>
+    <div class="index">
+          
+      <!-- Modal -->
+      <div class="modal fade" id="playModal" tabindex="-1" role="dialog" aria-labelledby="playModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+              <h2 class="modal-title" id="playModalLabel">choose a game!</h2>
+            </div>
+            <div class="modal-body">
+              <div class="game-info">
+                <ul id="accordion">
+                  <li class="but">
+                    <div class="title">
+                      <h3>Memory <i class="fa fa-angle-down"></i></h3>
+                      <a href="juegos/Memoria/index.html">
+                        <p class="animate">
+                          <span>Play it</span>
+                          
+                        </p>
+                        <i class="fa fa-play-circle"></i>
+                      </a href="">
+                    </div>
+                    <ul class="detail" >                    
+                      <li>          
+                        <div class="col-img">
+                          <img class="img-responsive" src="img/memory_img.png">
+                        </div>
+                        <div class="col-text">
+                          <h5>THIS IS BASED ON A TRADITIONAL MEMORY GAME</h5>
+                          <p>
+                            You have to turn a card over and then find its pair. This pair corresponds to: Door <---->Protocol Name
+                          </p>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li class="but">
+                    <div class="title">
+                      <h3>Drag <i class="fa fa-angle-down"></i></h3>
+                      <a href="juegos/Drag/index.html">
+                        <p class="animate">
+                          <span>Play it</span>                      
+                        </p>
+                        <i class="fa fa-play-circle"></i>
+                      </a href="">
+                    </div>
+                    <ul class="detail" >                    
+                      <li>          
+                        <div class="col-img">
+                          <img class="img-responsive" src="img/drag_img.png">
+                        </div>
+                        <div class="col-text">
+                          <!--<h5>LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT</h5>-->
+                          <p>
+                            You have to make the corresponding datagram by dragging the name of the field to its corresponding place.
+                          </p>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>  
+                  <li class="but">
+                    <div class="title">
+                      <h3>Crossword <i class="fa fa-angle-down"></i></h3>
+                      <a href="juegos/crucigrama/index.html">
+                        <p class="animate">
+                          <span>Play it</span>                      
+                        </p>
+                        <i class="fa fa-play-circle"></i>
+                      </a href="">
+                    </div>
+                    <ul class="detail" >                    
+                      <li>          
+                        <div class="col-img">
+                          <img class="img-responsive" src="img/crucigrama_img.PNG">
+                        </div>
+                        <div class="col-text">
+                         <!-- <h5>LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT</h5> -->
+                          <p>
+                            You can test your skills in different aspects of the internet world with this fun crossword puzzle.
+                          </p>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="but">
+                    <div class="title">
+                      <h3>Flying Discs <i class="fa fa-angle-down"></i></h3>
+                      <a href="juegos/discos/index.html">
+                        <p class="animate">
+                          <span>Play it</span>                      
+                        </p>
+                        <i class="fa fa-play-circle"></i>
+                      </a href="">
+                    </div>
+                    <ul class="detail" >                    
+                      <li>          
+                        <div class="col-img">
+                          <img class="img-responsive" src="img/disco.png">
+                        </div>
+                        <div class="col-text">
+                          <!-- <h5>LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT</h5> -->
+                          <p>
+                            The aim of this game is to select the corresponding disc according to the instructions given on the screen.  Another way to test your skills.
+                          </p>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>      
+                </ul>
+
+              </div>  
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="settingModal" tabindex="-1" role="dialog" aria-labelledby="settingModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+              <h4 class="modal-title" id="settingModalLabel">settings</h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                <div class="col-xs-12">
+                  
+                </div>
+                  <h3>Music</h3>
+                  <div class="setting music">
+                    <span class="play" onclick="PlayMusic(1)">On </span>  <span class="stop" onclick="PlayMusic(0)"> Off</span>
+                  </div>
+                </div>
+
+                <div>
+                  <h3>Sound effects</h3>
+                  <div class="setting sound">
+                    <span class="on " onclick="EffectMusic(1)">On </span>  <span class="off" onclick="EffectMusic(0)"> Off</span>
+                  </div>
+                </div>
+
+               <div>
+                  <h3>Language</h3>
+                <div class="setting language">
+                  <a href="index-es.html"><span class="spanish "  onclick="Index(1)">Spanish </span></a> 
+                  <a href="index.html"><span class="english active" onclick="Index(0)"> English</span></a>
+                  <a href="index-por.html"><span class="english " onclick="Index(2)"> Portuguese</span></a>
+                </div>
+               </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+              <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+              <h4 class="modal-title" id="aboutModalLabel">ABOUT</h4>
+            </div>
+            <div class="modal-body">
+              <div class="credit text-center">
+                <h2>PROJECT LEADER</h2>
+                  <h4>ALEJANDRO ACOSTA</h4>
+                <hr>
+                <h2>DEVELOPERS</h2>
+                  <h4>JAUREGUI CRESPO</h4>
+                  <h4>DANIEL GARZÓN</h4>
+                  <h4>SANTIAGO OCHOA</h4>
+                  <h4>ANDREAS BRANDT</h4>
+                  <h4>JESÚS SUÁREZ</h4>
+                  
+                <hr>
+                <h2>DESIGN</h2>
+                  <h4>LESTER ROMERO</h4>
+                <hr>
+                <h2>SPONSOR</h2>
+                  <a href="http://www.internetsociety.org/" target="_blank"><h4>ISOC</h4></a>
+                  <a href="http://www.lacnic.net/web/lacnic/ipv6" target="_blank"><h4>LACNIC</h4></a>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+        <!-- <div class="index"> -->
+          <div class="logo">
+            <img src="img/logo.png" alt="">
+          </div>
+          <div class="menu">
+            <div class="opciones">
+              <div class="">
+                <h2 id="play" data-toggle="modal" data-target="#playModal">Play</h2>
+              </div>
+              <div class="">
+                <h2 id="settings" data-toggle="modal" data-target="#settingModal">Settings</h2>
+              </div>
+              <div class="">
+                <h2 id="about" data-toggle="modal" data-target="#aboutModal">About</h2>
+              </div>
+              
+            </div>
+            <div class="circulo">
+              <img src="img/circulo.png" alt="">
+            </div>
+          </div>
+        <!-- </div> -->
+        <footer>
+          <script src="js/jquery.min.js"></script>
+          <script src="js/bootstrap.min.js"></script>
+          <script src="js/jquery-ui.min.js"></script>
+          <script src="js/MainMenu.js"></script>
+          <!-- <script src="js/Memory.js"></script> -->
+          <script src='js/jquery.playSound.js'></script>
+          <script src='js/visibility.js'></script>
+          <!-- // <script src='js/SocialSharing.js'></script> -->
+          <!-- // <script src="sounds/sound.js"></script> -->
+        </footer>
+    </div>
+  </body>
+</html>
