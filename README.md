@@ -33,6 +33,8 @@ Future games:
 -   * dig
 -   * nslookup
 
+Link in Play Store:
+Search for it in google play store: ANGEL COMPUTER NETWORK GAME
 
 HOW TO INSTALL IT
   1) Just decompress the .zip file in a folder
