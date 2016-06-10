@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>A.N.G.E.L</title>    
+    <link rel="stylesheet" href="css/bootstrap.min.css">  
+    <link rel="stylesheet" href="css/styles.css">   
+    <link rel="stylesheet" href="css/media.css">   
+    <link rel="stylesheet" href="css/font-awesome.min.css">   
+    <link rel="icon" href="favicon.ico" type="img/fv-icon.png"/>  
+  </head>
+
+  <body>
+    <div class="index por">
+          
+      <!-- Modal -->
+      <div class="modal fade" id="playModal" tabindex="-1" role="dialog" aria-labelledby="playModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+              <h2 class="modal-title" id="playModalLabel">Selecione um Jogo</h2>
+            </div>
+            <div class="modal-body">
+              <div class="game-info">
+                <ul id="accordion">
+                  <li class="but">
+                    <div class="title">
+                      <h3>Memória <i class="fa fa-angle-down"></i></h3>
+                      <a href="juegos/Memoria/index-por.html">
+                        <p class="animate">
+                          <span>Jogar</span>
+                          
+                        </p>
+                        <i class="fa fa-play-circle"></i>
+                      </a href="">
+                    </div>
+                    <ul class="detail" >                    
+                      <li>          
+                        <div class="col-img">
+                          <img class="img-responsive" src="img/memory_img.png">
+                        </div>
+                        <div class="col-text">
+                          <h5>FUNDADA EM O JOGO TRADICIONAL DE MEMORIA</h5>
+                          <p>
+                            Precisa voltar uma carta e depois conseguir a seu par. A carta par corresponde a: Porto <---> Nome protocolo
+                          </p>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li class="but">
+                    <div class="title">
+                      <h3>Drag <i class="fa fa-angle-down"></i></h3>
+                      <a href="juegos/Drag/index-por.html">
+                        <p class="animate">
+                          <span>Jogar</span>                      
+                        </p>
+                        <i class="fa fa-play-circle"></i>
+                      </a href="">
+                    </div>
+                    <ul class="detail" >                    
+                      <li>          
+                        <div class="col-img">
+                          <img class="img-responsive" src="img/drag_img.png">
+                        </div>
+                        <div class="col-text">
+                          <!--<h5>LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT</h5>-->
+                          <p>
+                            Precisa armar o datagrama correspondente, arrastando o nome do campo ao seu lugar correspondente.
+                          </p>
+                        </div>
+                      </li>
+                    </ul>
+                  </li> 
+                  </li>  
+                  <li class="but">
+                    <div class="title">
+                      <h3>Palavras cruzadas<i class="fa fa-angle-down"></i></h3>
+                      <a href="juegos/crucigrama/index-por.html">
+                        <p class="animate">
+                          <span>Jogar</span>                      
+                        </p>
+                        <i class="fa fa-play-circle"></i>
+                      </a href="">
+                    </div>
+                    <ul class="detail" >                    
+                      <li>          
+                        <div class="col-img">
+                          <img class="img-responsive" src="img/crucigrama_img.PNG">
+                        </div>
+                        <div class="col-text">
+                          <!-- <h5>LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT</h5> -->
+                          <p>
+                            Neste divertido jogo do palabras cruzadas voce pode provar o seu conhecimento em diferentes aspectos do mundo do internet..
+                          </p>
+                        </div>
+                      </li>
+                    </ul>
+                  </li> 
+                  <li class="but">
+                    <div class="title">
+                      <h3>Discos <i class="fa fa-angle-down"></i></h3>
+                      <a href="juegos/discos/index-por.html">
+                        <p class="animate">
+                          <span>Jogar</span>                      
+                        </p>
+                        <i class="fa fa-play-circle"></i>
+                      </a href="">
+                    </div>
+                    <ul class="detail" >                    
+                      <li>          
+                        <div class="col-img">
+                          <img class="img-responsive" src="img/disco.png">
+                        </div>
+                        <div class="col-text">
+                          <!-- <h5>LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT</h5> -->
+                          <p>
+                           O ojectivo e escolher o disco apropiado conforme a indicacão no ecrã do computador.  Outra manera de provar o seu conhecimento..
+                          </p>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>         
+                </ul>
+
+              </div>  
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Atrás</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="settingModal" tabindex="-1" role="dialog" aria-labelledby="settingModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+              <h4 class="modal-title portugues" id="settingModalLabel">Configuração</h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                  <h3>Música</h3>
+                  <div class="setting music">
+                    <span class="play" onclick="PlayMusic(1)">Ignição </span>  <span class="stop" onclick="PlayMusic(0)"> Fora</span>
+                  </div>
+                </div>
+
+                <div>
+                  <h3>Efeitos Sonoros</h3>
+                  <div class="setting sound">
+                    <span class="on " onclick="EffectMusic(1)">Ignição </span>  <span class="off " onclick="EffectMusic(0)"> Fora</span>
+                  </div>
+                </div>
+
+               <div>
+                  <h3>Idioma</h3>
+                <div class="setting language">
+                <a href="index-es.html"><span class="spanish " onclick="Index(1)">Espanhol </span></a>  
+                <a href="index.html"><span class="english " onclick="Index(0)"> Inglês</span></a>
+                <a href="index-por.html"><span class="portugues active" onclick="Index(2)"> Portugues</span></a>
+                </div>
+               </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Atrás</button>
+              <!-- <button type="button" class="btn btn-primary">Guardar cambios</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+              <h4 class="modal-title" id="aboutModalLabel">Creditos</h4>
+            </div>
+            <div class="modal-body">
+              <div class="credit text-center">
+                <h2>O LÍDER DO PROJETO</h2>
+                  <h4>ALEJANDRO ACOSTA</h4>
+                <hr>
+                <h2>COLABORADORES</h2>
+                  <h4>JAUREGUI CRESPO</h4>
+                  <h4>DANIEL GARZÓN</h4>
+                  <h4>SANTIAGO OCHOA</h4>
+                  <h4>ANDREAS BRANDT</h4>
+                  <h4>JESÚS SUÁREZ</h4>
+                  
+                <hr>
+                <h2>DESENHO</h2>
+                  <h4>LESTER ROMERO</h4>
+                <hr>
+                <h2>PATROCINADORES</h2>
+                  <a href="http://www.internetsociety.org/" target="_blank"><h4>ISOC</h4></a>
+                  <a href="http://www.lacnic.net/web/lacnic/ipv6" target="_blank"><h4>LACNIC</h4></a>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Atrás</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+        <!-- <div class="index"> -->
+          <div class="logo">
+            <img src="img/logo.png" alt="">
+          </div>
+          <div class="menu">
+            <div class="opciones">
+              <div class="">
+                <h2 id="play" data-toggle="modal" data-target="#playModal">Jogar</h2>
+              </div>
+              <div class="">
+                <h2 id="settings" data-toggle="modal" data-target="#settingModal">Configuração</h2>
+              </div>
+              <div class="">
+                <h2 id="about" data-toggle="modal" data-target="#aboutModal">Sobre</h2>
+              </div>
+              
+            </div>
+            <div class="circulo">
+              <img src="img/circulo.png" alt="">
+            </div>
+          </div>
+        <!-- </div> -->
+        <footer>
+          <script src="js/jquery.min.js"></script>
+          <script src="js/bootstrap.min.js"></script>
+          <script src="js/jquery-ui.min.js"></script>
+          <script src="js/MainMenu.js"></script>
+          <script src='js/jquery.playSound.js'></script>
+          <script src='js/visibility.js'></script>
+          <!-- // <script src='js/SocialSharing.js'></script> -->
+
+          <!-- // <script src="sounds/sound.js"></script> -->
+        </footer>
+    </div>
+  </body>
+</html>
