@@ -188,32 +188,125 @@ function Level(){
 
 //Finaliza el juego al completar los puntos por nivel
 function EndGame(){
+  // Timer();
 	//Si el nivel seleccionado es uno la cantidad de puntos para ganar sera de 30
 	if (nivel== 6){
-		if(punto== 5){
-      if (timeLevel=>30) {
-        punto = punto + 20;
+		if(punto== 30){
+      $('#WinModal').modal('show');
+      // clearInterval(interval);
+
+      // se suman puntos segun el tiempo que tarde para ganar
+      if ($('#contratiempo').text()>30) {
+          punto = punto + 100;
         	$('.punto').text(punto);// Imprimer en la cantidad de puntos
+          console.log('suman 100 puntos');
+
+      } else if ($('#contratiempo').text()>20 && $('#contratiempo').text()<=30) {
+          punto = punto + 60;
+        	$('.punto').text(punto);
+          console.log('suman 60 puntos');
+
+      } else if ($('#contratiempo').text()>10 && $('#contratiempo').text()<=20) {
+          punto = punto + 40;
+        	$('.punto').text(punto);
+          console.log('suman 40 puntos');
+
+        } else if ($('#contratiempo').text()>=0 && $('#contratiempo').text()<=10) {
+          punto = punto + 20;
+        	$('.punto').text(punto);
+          console.log('suman 20 puntos');
       }
-			$('#WinModal').modal('show');
 			fin=true;
-			Timer();
+			// Timer();
 		}
 	}
 	//Si el nivel seleccionado es dos la cantidad de puntos para ganar sera de 40
 	if(nivel== 8){
 		if(punto== 40){
 			$('#WinModal').modal('show');
+      // se suman puntos segun el tiempo que tarde para ganar
+      if ($('#contratiempo').text()>60) {
+          punto = punto + 200;
+          $('.punto').text(punto);// Imprimer en la cantidad de puntos
+          console.log('suman 100 puntos');
+
+      } else if ($('#contratiempo').text()>50 && $('#contratiempo').text()<=60) {
+          punto = punto + 100;
+          $('.punto').text(punto);
+          console.log('suman 60 puntos');
+
+      } else if ($('#contratiempo').text()>30 && $('#contratiempo').text()<=40) {
+          punto = punto + 80;
+          $('.punto').text(punto);
+          console.log('suman 60 puntos');
+
+      } else if ($('#contratiempo').text()>20 && $('#contratiempo').text()<=30) {
+          punto = punto + 60;
+          $('.punto').text(punto);
+          console.log('suman 60 puntos');
+
+      } else if ($('#contratiempo').text()>10 && $('#contratiempo').text()<=20) {
+          punto = punto + 40;
+          $('.punto').text(punto);
+          console.log('suman 40 puntos');
+
+        } else if ($('#contratiempo').text()>=0 && $('#contratiempo').text()<=10) {
+          punto = punto + 20;
+          $('.punto').text(punto);
+          console.log('suman 20 puntos');
+      }
 			fin=true;
-			Timer();
+			// Timer();
 		}
 	}
 	//Si el nivel seleccionado es tres la cantidad de puntos para ganar sera de 60
 	if(nivel== 12){
 		if(punto==60){
 			$('#WinModal').modal('show');
+      // se suman puntos segun el tiempo que tarde para ganar
+      if ($('#contratiempo').text()>60) {
+          punto = punto + 200;
+          $('.punto').text(punto);// Imprimer en la cantidad de puntos
+          console.log('suman 100 puntos');
+
+
+      } else if ($('#contratiempo').text()>70 && $('#contratiempo').text()<=80) {
+          punto = punto + 150;
+          $('.punto').text(punto);
+          console.log('suman 60 puntos');
+
+      } else if ($('#contratiempo').text()>60 && $('#contratiempo').text()<=70) {
+          punto = punto + 120;
+          $('.punto').text(punto);
+          console.log('suman 60 puntos');
+
+      } else if ($('#contratiempo').text()>50 && $('#contratiempo').text()<=60) {
+          punto = punto + 100;
+          $('.punto').text(punto);
+          console.log('suman 60 puntos');
+
+      } else if ($('#contratiempo').text()>30 && $('#contratiempo').text()<=40) {
+          punto = punto + 80;
+          $('.punto').text(punto);
+          console.log('suman 60 puntos');
+
+      } else if ($('#contratiempo').text()>20 && $('#contratiempo').text()<=30) {
+          punto = punto + 60;
+          $('.punto').text(punto);
+          console.log('suman 60 puntos');
+
+      } else if ($('#contratiempo').text()>10 && $('#contratiempo').text()<=20) {
+          punto = punto + 40;
+          $('.punto').text(punto);
+          console.log('suman 40 puntos');
+
+        } else if ($('#contratiempo').text()>=0 && $('#contratiempo').text()<=10) {
+          punto = punto + 20;
+          $('.punto').text(punto);
+          console.log('suman 20 puntos');
+      }
 			fin=true;
-			Timer();
+			// Timer();
 		}
 	}
 }
@@ -255,7 +348,7 @@ function Timer(){
 	   //location.reload();
 	  }
 	}
-
+  // return interval;
   }, 1000);
 
 }
