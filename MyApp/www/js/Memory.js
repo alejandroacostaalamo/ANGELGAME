@@ -199,7 +199,7 @@ function EndGame(){
       if ($('#contratiempo').text()>30) {
           punto = punto + 100;
         	$('.punto').text(punto);// Imprimer en la cantidad de puntos
-          console.log('suman 100 puntos');
+
 
       } else if ($('#contratiempo').text()>20 && $('#contratiempo').text()<=30) {
           punto = punto + 60;
@@ -214,7 +214,7 @@ function EndGame(){
         } else if ($('#contratiempo').text()>=0 && $('#contratiempo').text()<=10) {
           punto = punto + 20;
         	$('.punto').text(punto);
-          console.log('suman 20 puntos');
+
       }
 			fin=true;
 			// Timer();
@@ -228,32 +228,26 @@ function EndGame(){
       if ($('#contratiempo').text()>60) {
           punto = punto + 200;
           $('.punto').text(punto);// Imprimer en la cantidad de puntos
-          console.log('suman 100 puntos');
 
       } else if ($('#contratiempo').text()>50 && $('#contratiempo').text()<=60) {
           punto = punto + 100;
           $('.punto').text(punto);
-          console.log('suman 60 puntos');
 
       } else if ($('#contratiempo').text()>30 && $('#contratiempo').text()<=40) {
           punto = punto + 80;
           $('.punto').text(punto);
-          console.log('suman 60 puntos');
 
       } else if ($('#contratiempo').text()>20 && $('#contratiempo').text()<=30) {
           punto = punto + 60;
           $('.punto').text(punto);
-          console.log('suman 60 puntos');
 
       } else if ($('#contratiempo').text()>10 && $('#contratiempo').text()<=20) {
           punto = punto + 40;
           $('.punto').text(punto);
-          console.log('suman 40 puntos');
 
         } else if ($('#contratiempo').text()>=0 && $('#contratiempo').text()<=10) {
           punto = punto + 20;
           $('.punto').text(punto);
-          console.log('suman 20 puntos');
       }
 			fin=true;
 			// Timer();
@@ -267,43 +261,35 @@ function EndGame(){
       if ($('#contratiempo').text()>60) {
           punto = punto + 200;
           $('.punto').text(punto);// Imprimer en la cantidad de puntos
-          console.log('suman 100 puntos');
 
 
       } else if ($('#contratiempo').text()>70 && $('#contratiempo').text()<=80) {
           punto = punto + 150;
           $('.punto').text(punto);
-          console.log('suman 60 puntos');
 
       } else if ($('#contratiempo').text()>60 && $('#contratiempo').text()<=70) {
           punto = punto + 120;
           $('.punto').text(punto);
-          console.log('suman 60 puntos');
 
       } else if ($('#contratiempo').text()>50 && $('#contratiempo').text()<=60) {
           punto = punto + 100;
           $('.punto').text(punto);
-          console.log('suman 60 puntos');
 
       } else if ($('#contratiempo').text()>30 && $('#contratiempo').text()<=40) {
           punto = punto + 80;
           $('.punto').text(punto);
-          console.log('suman 60 puntos');
 
       } else if ($('#contratiempo').text()>20 && $('#contratiempo').text()<=30) {
           punto = punto + 60;
           $('.punto').text(punto);
-          console.log('suman 60 puntos');
 
       } else if ($('#contratiempo').text()>10 && $('#contratiempo').text()<=20) {
           punto = punto + 40;
           $('.punto').text(punto);
-          console.log('suman 40 puntos');
 
         } else if ($('#contratiempo').text()>=0 && $('#contratiempo').text()<=10) {
           punto = punto + 20;
           $('.punto').text(punto);
-          console.log('suman 20 puntos');
       }
 			fin=true;
 			// Timer();

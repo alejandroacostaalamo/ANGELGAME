@@ -5,15 +5,15 @@ $(document).ready(function(){
 		$(this).addClass('td_input');
 		})
 		$('input').focusout(function(){
-			
+
     		$(this).removeClass('td_input');
-    		
+
     	});
     	// if (StatusBar.isVisible) {
-    		//StatusBar.hide();	
+    		//StatusBar.hide();
     	// 	new kendo.mobile.Application($(document.body), { statusBarStyle: "hidden" });
     	// }
-	
+
 })
 
 var word1v = 'dhcp';
@@ -63,8 +63,24 @@ var timeLevel = 200;
 function EndGame(){
   if(punto==36){
       $('#WinModal').modal('show');
+			// se suman puntos segun el tiempo que tarde para ganar
+			if ($('#contratiempo').text()>150) {
+					punto = punto + 200;
+					$('.punto').text(punto);// Imprimer en la cantidad de punto
+
+			} else if ($('#contratiempo').text()>100&& $('#contratiempo').text()<=150) {
+					punto = punto + 150;
+					$('.punto').text(punto);
+					console.log('suman 60 puntos');
+
+			} else if ($('#contratiempo').text()>50&& $('#contratiempo').text()<=100) {
+					punto = punto + 150;
+					$('.punto').text(punto);
+					console.log('suman 60 puntos');
+
+			}
         fin=true;
-        Timer();
+        // Timer();
   }
 }
 
@@ -87,17 +103,17 @@ function Timer(){
 	   // alert("Game Over!");
 	   $('#LooseModal').modal('show')
 	   //location.reload();
-	  }  	
+	  }
 	}
 
-  }, 1000);	
-  
+  }, 1000);
+
 }
 
 function validWord1(){
 	//Validar palabra 1 vertical
 	var answer1v = $("#input-0-10").val().toLowerCase() + $("#input-1-10").val().toLowerCase() + $("#input-2-10").val().toLowerCase() + $("#input-3-10").val().toLowerCase();
-	
+
 	if (answer1v == word1v){
 		$("#cell-0-10").css("background-color","#17DB00");
 		$("#cell-1-10").css("background-color","#17DB00");
@@ -114,7 +130,7 @@ function validWord1(){
 
 	}
 	else if (answer1v == ""){
-		
+
 	}
 	else if (answer1v != word1v){
 		$("#cell-0-10").css("background-color","#f00");
@@ -141,7 +157,7 @@ function validWord2(){
 		EndGame();
 	}
 	else if (answer2h == ""){
-		
+
 	}
 	else if (answer2h != word2h){
 		$("#cell-3-7").css("background-color","#f00");
@@ -176,7 +192,7 @@ function validWord3(){
 		EndGame();
 	}
 	else if (answer3v == ""){
-		
+
 	}
 	else if (answer3v != word3v){
 		$("#cell-3-8").css("background-color","#f00");
@@ -207,7 +223,7 @@ function validWord4(){
 		EndGame();
 	}
 	else if (answer4h == ""){
-		
+
 	}
 	else if (answer4h != word4h){
 		$("#cell-7-5").css("background-color","#f00");
@@ -238,7 +254,7 @@ function validWord5(){
 		EndGame();
 	}
 	else if (answer5v == ""){
-		
+
 	}
 	else if (answer5v != word5v){
 		$("#cell-7-16").css("background-color","#f00");
@@ -265,7 +281,7 @@ function validWord6(){
 		EndGame();
 	}
 	else if (answer6h == ""){
-		
+
 	}
 	else if (answer6h != word6h){
 		$("#cell-8-16").css("background-color","#f00");
@@ -301,7 +317,7 @@ function validWord7(){
 		EndGame();
 	}
 	else if (answer7v == ""){
-		
+
 	}
 	else if (answer7v != word7v){
 		$("#cell-9-5").css("background-color","#f00");
@@ -333,7 +349,7 @@ function validWord8(){
 		EndGame();
 	}
 	else if (answer8v == ""){
-		
+
 	}
 	else if (answer8v != word8v){
 		$("#cell-9-12").css("background-color","#f00");
@@ -360,7 +376,7 @@ function validWord9(){
 		EndGame();
 	}
 	else if (answer9v == ""){
-		
+
 	}
 	else if (answer9v != word9v){
 		$("#cell-9-14").css("background-color","#f00");
@@ -405,7 +421,7 @@ function validWord10(){
 		EndGame();
 	}
 	else if (answer10h == ""){
-		
+
 	}
 	else if (answer10h != word10h){
 		$("#cell-10-4").css("background-color","#f00");
@@ -441,7 +457,7 @@ function validWord11(){
 		EndGame();
 	}
 	else if (answer11h == ""){
-		
+
 	}
 	else if (answer11h != word11h){
 		$("#cell-11-16").css("background-color","#f00");
@@ -464,7 +480,7 @@ function validWord12(){
 		EndGame();
 	}
 	else if (answer12v == ""){
-		
+
 	}
 	else if (answer12v != word12v){
 		$("#cell-11-19").css("background-color","#f00");
@@ -489,7 +505,7 @@ function validWord13(){
 		EndGame();
 	}
 	else if (answer13h == ""){
-		
+
 	}
 	else if (answer13h != word13h){
 		$("#cell-13-3").css("background-color","#f00");
@@ -516,7 +532,7 @@ function validWord14(){
 		EndGame();
 	}
 	else if (answer14v == ""){
-		
+
 	}
 	else if (answer14v != word14v){
 		$("#cell-14-0").css("background-color","#f00");
@@ -551,7 +567,7 @@ function validWord15(){
 		EndGame();
 	}
 	else if (answer15h == ""){
-		
+
 	}
 	else if (answer15h != word15h){
 		$("#cell-15-0").css("background-color","#f00");
@@ -582,7 +598,7 @@ function validWord16(){
 		EndGame();
 	}
 	else if (answer16h == ""){
-		
+
 	}
 	else if (answer16h != word16h){
 		$("#cell-17-4").css("background-color","#f00");
@@ -607,7 +623,7 @@ function validWord17(){
 		EndGame();
 	}
 	else if (answer17v == ""){
-		
+
 	}
 	else if (answer17v != word17v){
 		$("#cell-17-6").css("background-color","#f00");
@@ -631,7 +647,7 @@ function validWord18(){
 		EndGame();
 	}
 	else if (answer18h == ""){
-		
+
 	}
 	else if (answer18h != word18h){
 		$("#cell-19-4").css("background-color","#f00");
