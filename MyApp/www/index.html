@@ -14,9 +14,15 @@
   <body>
     <div class="index">
       <button id="BtProfile">Profile</button>
-      <div id="fb-root"></div>
-      <fb:login-button class="fb-login-button" scope="public_profile,email" onlogin="checkLoginState();">
-      </fb:login-button>
+      <button id="BtRegister">Register</button>
+      <button id="Login">login</button>
+      <button id="GetInfo">GetInfo</button>
+      <p>Name: <span id="userName"></span></p>
+      <img id="userPic"/>
+      <hr/>
+      <!-- <div id="fb-root"></div> -->
+      <!-- <fb:login-button class="fb-login-button" scope="public_profile,email" onlogin="checkLoginState();">
+      </fb:login-button> -->
   <!--
       <Script>
         window.fbAsyncInit = function () {
@@ -26,6 +32,10 @@
             }
         }
       </Script> -->
+      <!-- <script>
+        window.opener.openFB.oauthCallback(window.location.href);
+        window.close();
+      </script> -->
       <!-- Modal -->
       <div class="modal fade" id="playModal" tabindex="-1" role="dialog" aria-labelledby="playModalLabel">
         <div class="modal-dialog" role="document">
@@ -257,8 +267,11 @@
           <!-- <script src="js/Memory.js"></script> -->
           <script src='js/jquery.playSound.js'></script>
           <script src='js/visibility.js'></script>
-          <!-- <script src='js/cordova.js'></script> -->
-          <script src='js/loginFb.js'></script>
+          <!-- <script src='js/ajax.js'></script> -->
+          <script src="cordova.js"></script>
+          <script src='js/openfb.js'></script>
+          <script src='js/FbControllers.js'></script>
+          <!-- <script src='js/loginFb.js'></script> -->
           <script src='js/controllers.js'></script>
           <!-- <script src='js/facebookConnectPlugin.js'></script> -->
           <!-- // <script src='js/SocialSharing.js'></script> -->

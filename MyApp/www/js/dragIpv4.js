@@ -3,7 +3,7 @@
   var arregloFinal = [];
   fin= false;
   var answersIpv4 = [
-    "Version", 
+    "Version",
     "Internet Header LLength",
     "Type of Service",
     "Total Length",
@@ -18,7 +18,7 @@
     "Options",
     "Padding",
   ];
-  
+
   var newArreglo = [];
   var resAnswersIpv4 = [];
   var level=0;
@@ -27,7 +27,7 @@
 
 $(document).ready(function(){
 
-  Level(); 
+  Level();
 });//Fin de ready
 
 
@@ -70,7 +70,7 @@ function EndGame(){
   if(arregloFinal[j]=""){
    $('#WinModal').modal('show')
    fin=true;
-   Timer();
+  //  Timer();
   }
 }
 
@@ -101,7 +101,7 @@ function Timer(){
 }
 
 
-// Funcion que inicia el juego en el nivel avanzado 
+// Funcion que inicia el juego en el nivel avanzado
 function LevelHard(){
    arregloFinal = boxPositionIpv4;
 
@@ -113,9 +113,9 @@ function LevelHard(){
     if (boxPositionIpv4.length != 1){
       for (var i = 0; i <= boxPositionIpv4.length - 1; i++){
         if (i == numRandom){
-          
+
           $('#pregunta').append('<div id="pregunta'+ boxPositionIpv4[numRandom] +'" class="caja"> '+ answersIpv4[boxPositionIpv4[numRandom]] + '</div>')
-        
+
           //*****Elimina un objeto de un array
           boxPositionIpv4 = jQuery.grep(boxPositionIpv4, function(b) {
             return b != boxPositionIpv4[numRandom];
@@ -126,16 +126,16 @@ function LevelHard(){
       }
     }
     else {
-      
+
       $('#pregunta').append('<div id="pregunta'+ boxPositionIpv4[numRandom] +'" class="caja"> '+ answersIpv4[boxPositionIpv4[numRandom]] + '</div>')
-    
+
       //******* Elimina un objeto de un array
       boxPositionIpv4 = jQuery.grep(boxPositionIpv4, function(b) {
         return b != boxPositionIpv4[0];
       });
 
     }
-    
+
 
     if (boxPositionIpv4.length != 0){
       j++;
@@ -146,15 +146,15 @@ function LevelHard(){
 
   restAnswersIpv4(0);
 
-//**********Valida Cajas Respuesta 
+//**********Valida Cajas Respuesta
   for (var j = 0; j < arregloFinal.length; j++){
     $( "#pregunta" + arregloFinal[j]).draggable({ revert: true,revertDuration: 0 });
-    
+
     $( "#ipv4-" + arregloFinal[j] ).droppable({
-      accept: "#pregunta" + arregloFinal[j],    
+      accept: "#pregunta" + arregloFinal[j],
       activeClass: "",
       hoverClass: "",
-        
+
       drop: function( event, ui ) {
         $( this )
           .addClass( "ui-state-highlight" )//*** Color que se le asigna al Input donde se introduce la caja correcta
@@ -163,23 +163,23 @@ function LevelHard(){
               $('#score').html(function(i, val) { return val*1+5 });//Contador para el puntaje
               $('#' + ui['draggable'][0].id).remove();
               cont= cont + 1;
-              console.log(cont); 
+              console.log(cont);
               if(cont==14){
                 $('#WinModal').modal('show');
                 fin=true;
                 Timer();
                 //location.reload();
-              }             
+              }
       }
 
     });
   }
-  //**********  /Valida Cajas Respuesta 
+  //**********  /Valida Cajas Respuesta
 }
 
 
 
-//inicia el juego segun el nivel 
+//inicia el juego segun el nivel
 function PlayGame(){
       ///***** Crea de forma aleatoria las palabras en la caja contenedora
 
@@ -190,11 +190,11 @@ function PlayGame(){
     $('#ipv4-' + value).addClass('help-input');
     //*** crea el resto del arreglo (las que no salen en la caja contentenedora)
     boxPositionIpv4 = jQuery.grep(boxPositionIpv4, function(a) {
-     return a != value;  
-     answersIpv4[a]; 
+     return a != value;
+     answersIpv4[a];
     });
-    
-   
+
+
   }//Fin de For i
 
   arregloFinal = boxPositionIpv4;
@@ -207,22 +207,22 @@ function PlayGame(){
     if (boxPositionIpv4.length != 1){
       for (var i = 0; i <= boxPositionIpv4.length - 1; i++){
         if (i == numRandom){
-          
+
           $('#pregunta').append('<div id="pregunta'+ boxPositionIpv4[numRandom] +'" class="caja"> '+ answersIpv4[boxPositionIpv4[numRandom]] + '</div>')
-        
+
           //*****Elimina un objeto de un array
           boxPositionIpv4 = jQuery.grep(boxPositionIpv4, function(b) {
             return b != boxPositionIpv4[numRandom];
           });
           cont= cont + 1;
         }
-      
+
       }
     }
     else {
-      
+
       $('#pregunta').append('<div id="pregunta'+ boxPositionIpv4[numRandom] +'" class="caja"> '+ answersIpv4[boxPositionIpv4[numRandom]] + '</div>')
-    
+
       //******* Elimina un objeto de un array
       boxPositionIpv4 = jQuery.grep(boxPositionIpv4, function(b) {
         return b != boxPositionIpv4[0];
@@ -240,15 +240,15 @@ function PlayGame(){
 }
   restAnswersIpv4(0);
 
-  //**********Valida Cajas Respuesta 
+  //**********Valida Cajas Respuesta
     for (var j = 0; j < arregloFinal.length; j++){
       $( "#pregunta" + arregloFinal[j]).draggable({ revert: true,revertDuration: 0 });
-      
+
       $( "#ipv4-" + arregloFinal[j] ).droppable({
-        accept: "#pregunta" + arregloFinal[j],    
+        accept: "#pregunta" + arregloFinal[j],
         activeClass: "",
         hoverClass: "",
-          
+
         drop: function( event, ui ) {
           $( this )
             .addClass( "ui-state-highlight" )//*** Color que se le asigna al Input donde se introduce la caja correcta
@@ -267,7 +267,5 @@ function PlayGame(){
 
       });
     }
-  //**********   /Valida Cajas Respuesta 
+  //**********   /Valida Cajas Respuesta
 }
-
-
