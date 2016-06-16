@@ -4,23 +4,31 @@ $('#Login').click(function(){
 $('#GetInfo').click(function(){
   getInfo();
 })
+$('#Logout').click(function(){
+  logout();
+})
 
-
+var info="";
+var info2="";
+var info3="";
 // Defaults to sessionStorage for storing the Facebook token
-openFB.init({appId: '{MY-appId}'});
+// openFB.init({appId: '{MY-appId}'});
 
 //  Uncomment the line below to store the Facebook token in localStorage instead of sessionStorage
+// openFB.init({appId: '{MY-appId}', tokenStore: window.localStorage});
 openFB.init({appId: '{MY-appId}', tokenStore: window.localStorage});
 
 function login() {
    openFB.login(
            function(response) {
                if(response.status === 'connected') {
-                   alert('Facebook login succeeded, got access token: ' + response.authResponse.accessToken);
+                   console.log('Facebook login succeeded, got access token: ' + response.authResponse.accessToken);
+
                } else {
                    alert('Facebook login failed: ' + response.error);
                }
-             }, {scope: 'user_games_activity,email,public_profile,publish_actions'});
+             }, {scope: 'user_games_activity,email,public_profile,user_about_me,publish_actions'});
+            //  console.log('Esto contiene SCOPE: ' +scope);
 }
 
 function getInfo() {
@@ -28,10 +36,21 @@ function getInfo() {
        path: '/me',
        success: function(data) {
            console.log(JSON.stringify(data));
+           console.log(data);
+           info= JSON.stringify(data);
+           info2= JSON.stringify(info);
+           info3= data;
+          //  var arreglo= [pos1 : info1, pos2 : info2, pos3 : info3];
            document.getElementById("userName").innerHTML = data.name;
            // document.getElementById("userEmail").innerHTML = data.email;
-           document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
-           return data;
+           document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=normal';
+          //  return {
+          //    info1: info1,
+          //    info2: info2,
+          //    info3: info3
+          //  }
+          return info3;
+           console.log(info.name);
        },
        error: errorHandler});
 
@@ -72,7 +91,10 @@ function revoke() {
 function logout() {
    openFB.logout(
            function() {
-               alert('Logout successful');
+              $('#userName').text("");
+              $('#userPic').removeAttr("src");
+              localStorage.clear();// Limpia el localStorage
+              alert('Logout successful');
            },
            errorHandler);
 }
@@ -80,3 +102,12 @@ function logout() {
 function errorHandler(error) {
    alert(error.message);
 }
+
+// function testAPI() {
+//   console.log('Welcome!  Fetching your information.... ');
+//   FB.api('/me', function(response) {
+//     console.log('Successful login for: ' + response.name);
+//     console.log(response);
+//     document.getElementById('status').innerHTML =
+//       'Thanks for logging in, ' + response.name + '!';
+//   });
