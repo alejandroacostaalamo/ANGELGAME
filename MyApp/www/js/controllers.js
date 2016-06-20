@@ -1,5 +1,6 @@
 function configuracion(){
   var ruta = "http://angelgame.acostasite.com/ApiAngel/Api";
+  //var ruta = "http://angelgame.acostasite.com/ApiAngel/Api";
 
   return ruta;
 }
@@ -13,14 +14,16 @@ function Register(info3){
      // para la imagen se puede utilizar "small, normal, album, large, square", segun el tamaño deseado
     //  url: "http://angelgame.acostasite.com/ApiAngel/Api/register/" +data.name+ "/  " +data.id + "/  " + "/  " +'http://graph.facebook.com/' + data.id + '/picture?type=normal',
                                                                     //Nombre-         Apellido-      Token-        Email-     UserNamre-     Image-     MethodId
-     url: "http://angelgame.acostasite.com/ApiAngel/Api/register/" +info3.name+ "/" + null + "/" +info3.id + "/" + null + "/" +null+ "/" +null+ "/" + "1.json",
-     cache: false,
+     url: configuracion()+"/register/" +info3.name+ "/" + null + "/" +info3.id + "/" + info3.id + "/" +null+ "/" +null+ "/" + "1.json",
+     cache: false,                                                                                            //**** Para traer el email hace falta la aprobacion de facebook
      contentType: "application/json; charset=utf-8",
      dataType: "json",
      data: "",
      success: function (data) {
           console.log(data);
+          console.log('Registro Exitoso');
      }
+
   });
 }
 
@@ -39,7 +42,7 @@ function Profile(){
    console.log(ruta);
   $.ajax({
      type: "POST",
-     url:  "http://angelgame.acostasite.com/ApiAngel/Api/profile/2.json",
+     url:  configuracion()+"/profile/"+info3.id+".json",
      cache: false,
      contentType: "application/json; charset=utf-8",
      dataType: "json",
@@ -49,3 +52,7 @@ function Profile(){
      }
   });
 }
+
+$(document).ready(function(){
+
+})

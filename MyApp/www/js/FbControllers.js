@@ -23,7 +23,8 @@ function login() {
            function(response) {
                if(response.status === 'connected') {
                    console.log('Facebook login succeeded, got access token: ' + response.authResponse.accessToken);
-
+                   getInfo();
+                   Register();
                } else {
                    alert('Facebook login failed: ' + response.error);
                }
@@ -103,11 +104,6 @@ function errorHandler(error) {
    alert(error.message);
 }
 
-// function testAPI() {
-//   console.log('Welcome!  Fetching your information.... ');
-//   FB.api('/me', function(response) {
-//     console.log('Successful login for: ' + response.name);
-//     console.log(response);
-//     document.getElementById('status').innerHTML =
-//       'Thanks for logging in, ' + response.name + '!';
-//   });
+$(document).ready(function(){
+  getInfo();
+})
