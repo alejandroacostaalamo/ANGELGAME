@@ -24,7 +24,7 @@
   var level=0;
   var timeLevel= 0;
   var cont=0;
-
+  var punto = 0;
 $(document).ready(function(){
 
   Level();
@@ -37,7 +37,7 @@ function Level(){
     //Nivel uno aparecen 12 cartas
   $('#level1').click(function(){
      nivel= 1;
-     timeLevel = 30;
+     timeLevel = 60;
      $('#level1').remove();
      $('#level2').remove();
      $('#level3').remove();
@@ -67,11 +67,27 @@ function Level(){
 }
 
 function EndGame(){
-  if(arregloFinal[j]=""){
-   $('#WinModal').modal('show')
-   fin=true;
-  //  Timer();
-  }
+   // se suman puntos segun el tiempo que tarde para ganar
+   if ($('#contratiempo').text()>30) {
+       punto = punto * 1 + 100;
+      $('.punto').text(punto);// Imprimer en la cantidad de puntos
+
+
+   } else if ($('#contratiempo').text()>20 && $('#contratiempo').text()<=30) {
+       punto = punto * 1 + 60;
+      $('.punto').text(punto);
+       console.log('suman 60 puntos');
+
+   } else if ($('#contratiempo').text()>10 && $('#contratiempo').text()<=20) {
+       punto = punto * 1 + 40;
+      $('.punto').text(punto);
+       console.log('suman 40 puntos');
+
+     } else if ($('#contratiempo').text()>=0 && $('#contratiempo').text()<=10) {
+       punto = punto * 1 + 20;
+      $('.punto').text(punto);
+
+   }
 }
 
 //Conteo regresivo
@@ -161,11 +177,13 @@ function LevelHard(){
           //***** Operador ternario
           .attr( "placeholder", ui['draggable'][0].outerText == "Internet Header LLength" ? "IHT" : ui['draggable'][0].outerText)
               $('#score').html(function(i, val) { return val*1+5 });//Contador para el puntaje
+              punto = $('#score').text();// Se iguala la variable 'punto' con el contenido del Score
               $('#' + ui['draggable'][0].id).remove();
               cont= cont + 1;
               console.log(cont);
               if(cont==14){
                 $('#WinModal').modal('show');
+                EndGame();// llamado a la funcion del puntaje
                 fin=true;
                 Timer();
                 //location.reload();
@@ -255,10 +273,12 @@ function PlayGame(){
             //***** Operador ternario
             .attr( "placeholder", ui['draggable'][0].outerText == "Internet Header LLength" ? "IHT" : ui['draggable'][0].outerText)
                 $('#score').html(function(i, val) { return val*1+5 });//Contador para el puntaje
+                punto = $('#score').text();// Se iguala la variable 'punto' con el contenido del Score
                 cont= cont - 1;
                 $('#' + ui['draggable'][0].id).remove();
                 if(cont==0){
                   $('#WinModal').modal('show');
+                  EndGame();// llamado a la funcion del puntaje
                   fin=true;
                   Timer();
                   //location.reload();
