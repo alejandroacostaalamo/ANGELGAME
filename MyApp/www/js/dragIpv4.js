@@ -25,6 +25,9 @@
   var timeLevel= 0;
   var cont=0;
   var punto = 0;
+  var selecLevel1= false;
+  var selecLevel2= false;
+  var selecLevel3= false;
 $(document).ready(function(){
 
   Level();
@@ -37,12 +40,13 @@ function Level(){
     //Nivel uno aparecen 12 cartas
   $('#level1').click(function(){
      nivel= 1;
-     timeLevel = 60;
+     timeLevel = 70;
      $('#level1').remove();
      $('#level2').remove();
      $('#level3').remove();
      PlayGame();
      Timer();
+     selecLevel1 = true;
   });
     //Nivel dos aparecen 16 cartas
   $('#level2').click(function(){
@@ -53,6 +57,7 @@ function Level(){
      $('#level3').remove();
      PlayGame();
      Timer();
+     selecLevel2 = true;
   });
     //Nivel tres aparecen 24 cartas
   $('#level3').click(function(){
@@ -62,26 +67,44 @@ function Level(){
      $('#level3').remove();
      LevelHard();
      Timer();
+     selecLevel3 = true;
   });
 
 }
 
 function EndGame(){
    // se suman puntos segun el tiempo que tarde para ganar
-   if ($('#contratiempo').text()>30) {
-       punto = punto * 1 + 100;
-      $('.punto').text(punto);// Imprimer en la cantidad de puntos
+   if ($('#contratiempo').text()>90) {
+       punto = punto * 1 + 160;//***********Determinar****************
+      $('.punto').text(punto);
+          //********************************************************************
+    } else if ($('#contratiempo').text()>60 && $('#contratiempo').text()<=70) {
+       punto = punto * 1 + 140;
+    $('.punto').text(punto);
 
+    } else if ($('#contratiempo').text()>50 && $('#contratiempo').text()<=60) {
+       punto = punto * 1 + 120;
+    $('.punto').text(punto);
+
+    } else if ($('#contratiempo').text()>40 && $('#contratiempo').text()<=50) {
+       punto = punto * 1 + 100;
+    $('.punto').text(punto);
+
+    } else if ($('#contratiempo').text()>30 && $('#contratiempo').text()<=40) {
+       punto = punto * 1 + 80;
+    $('.punto').text(punto);
+          //********************************************************************
+   } else if ($('#contratiempo').text()>30 && selecLevel1== true) {//Aumenta el puntaje a 100 si el nivel seleccionado es el 1
+       punto = punto * 1 + 100;// Imprimer en la cantidad de puntos
+      $('.punto').text(punto);
 
    } else if ($('#contratiempo').text()>20 && $('#contratiempo').text()<=30) {
        punto = punto * 1 + 60;
       $('.punto').text(punto);
-       console.log('suman 60 puntos');
 
    } else if ($('#contratiempo').text()>10 && $('#contratiempo').text()<=20) {
        punto = punto * 1 + 40;
       $('.punto').text(punto);
-       console.log('suman 40 puntos');
 
      } else if ($('#contratiempo').text()>=0 && $('#contratiempo').text()<=10) {
        punto = punto * 1 + 20;
