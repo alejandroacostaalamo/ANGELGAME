@@ -4,7 +4,7 @@ function configuracion(){
 
   return ruta;
 }
-
+var Registrado = false;
 function Register(info3){
   // console.log(ruta);
   console.log('Info 3 me trae esto');
@@ -22,16 +22,17 @@ function Register(info3){
      success: function (data) {
           console.log(data);
           console.log('Registro Exitoso');
+          Registrado= true;
+          return Registrado;
      }
-
   });
 }
 
-$('#BtProfile').click(function(){
+$('.BtProfile').click(function(){
   Profile();
   console.log('consulta de perfil API');
 })
-$('#BtRegister').click(function(){
+$('.BtRegister').click(function(){
   Register(info3);
   console.log('registro de perfil API');
 

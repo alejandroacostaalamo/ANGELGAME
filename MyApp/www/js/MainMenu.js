@@ -1,10 +1,16 @@
 var audioElement = document.createElement('audio');
 $(document).ready(function(){
+
+
+
 	var WindowW = $(window).innerWidth();
 	var WindowH = $(window).innerHeight();
 
 	var IndexH = $('.index').innerHeight();
 	var IndexW = $('.index').innerWidth();
+
+
+	sesion();
 
 
 	$('.index').css({
@@ -21,8 +27,8 @@ $(document).ready(function(){
 			'top': 'auto'
 		})
 	}
-	
-	
+
+
 	if(WindowW > 480){
 		$('.logo').show({ effect: "explode", duration: 2000, pieces:90 });
 	}
@@ -47,7 +53,7 @@ $(document).ready(function(){
 		    $('#accordion ul').slideUp(0);
 		    $('.head-title p').hide(0)
 		}
-		$(this).parent().next().slideToggle(0);		
+		$(this).parent().next().slideToggle(0);
 	});
 
 	$('.sound span').click(function(){
@@ -67,10 +73,10 @@ $(document).ready(function(){
 
 	PlayMusic(window.localStorage.getItem('audio'));
 	EffectMusic(window.localStorage.getItem('audio'));
-	
+
 	// $.winFocus(function(event, play, audio) {
 
-	// 	if (play) 
+	// 	if (play)
 	// 		$(".play").stop().delay('fast', function(e) {
 	// 			audioElement.play();
 	// 		});
@@ -138,12 +144,12 @@ function PlayMusic(active){
 	$.winFocus(function(event, play, audio) {
 		if (active=="1"){
 			//console.log(active);
-			if (play){ 
+			if (play){
 				$(".play").stop().delay('fast', function(e) {
 					audioElement.play();
 					//active="1";
 				});
-			
+
 		}else if (active=="1"){
 				audioElement.pause();
 				//active=0;
@@ -153,12 +159,12 @@ function PlayMusic(active){
 
 		if (active=="0"){
 			//console.log(active);
-			if (play){ 
+			if (play){
 				$(".play").stop().delay('fast', function(e) {
 					audioElement.play();
 					//active="0";
 				});
-			
+
 		}else if (active=="0"){
 				audioElement.pause();
 				//active=0;
@@ -190,6 +196,24 @@ function EffectMusic(active){
 		});
 	}else{
 		active=0;
-	} 
+	}
 
+}
+
+function sesion(){
+	if(localStorage.getItem("fbAccessToken") != null){
+		$('#InfoModal').modal('hide');
+		if (Registrado== false) {
+			$('#UserModal').modal('show', getInfo());
+		}
+		$('.GetInfo, .Logout').show();
+		$('.Login').hide();
+		// $('.BtRegister, .Login').hide();
+	}
+	else{
+		// $('.BtRegister, .Login').show();
+		$('.Login').show();
+		$('.GetInfo, .Logout').hide();
+		$('#InfoModal').modal('show');
+	}
 }

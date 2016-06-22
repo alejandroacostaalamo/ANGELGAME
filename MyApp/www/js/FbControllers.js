@@ -1,12 +1,19 @@
-$('#Login').click(function(){
+$('.Login').click(function(){
   login();
 })
-$('#GetInfo').click(function(){
+$('.GetInfo').click(function(){
+  $('#UserModal').modal('show');
   getInfo();
+  // Register(info3);
 })
-$('#Logout').click(function(){
+$('.Logout').click(function(){
   logout();
+  Registrado = false;
 })
+$('#BtRegisterBack').click(function(){
+  Register(info3);
+})
+
 
 var info="";
 var info2="";
@@ -23,8 +30,10 @@ function login() {
            function(response) {
                if(response.status === 'connected') {
                    console.log('Facebook login succeeded, got access token: ' + response.authResponse.accessToken);
+                   sesion();
                    getInfo();
-                   Register();
+                  //  console.log('Esto es info del login: '+info3);
+                  //  Register(info3);
                } else {
                    alert('Facebook login failed: ' + response.error);
                }
@@ -96,6 +105,7 @@ function logout() {
               $('#userPic').removeAttr("src");
               localStorage.clear();// Limpia el localStorage
               alert('Logout successful');
+              sesion();
            },
            errorHandler);
 }
@@ -105,5 +115,5 @@ function errorHandler(error) {
 }
 
 $(document).ready(function(){
-  getInfo();
+  // getInfo();
 })
