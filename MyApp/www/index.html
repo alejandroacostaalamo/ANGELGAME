@@ -13,30 +13,61 @@
 
   <body>
     <div class="index">
-      <button id="BtProfile">Profile</button>
-      <button id="BtRegister">Register</button>
-      <button id="Login">login</button>
-      <button id="GetInfo">GetInfo</button>
-      <button id="Logout">Logout</button>
-      <p style="color: #fff">Name: <span style="color: #fff" id="userName"></span></p>
-      <img id="userPic"/>
-      <hr/>
-      <!-- <div id="fb-root"></div> -->
-      <!-- <fb:login-button class="fb-login-button" scope="public_profile,email" onlogin="checkLoginState();">
-      </fb:login-button> -->
-  <!--
-      <Script>
-        window.fbAsyncInit = function () {
-            if (!window.cordova) {
-              // Inicializar - sólo se ejecuta cuando se prueba en el navegador.
-              //facebookConnectPlugin.browserInit(308939305080);
-            }
-        }
-      </Script> -->
-      <!-- <script>
-        window.opener.openFB.oauthCallback(window.location.href);
-        window.close();
-      </script> -->
+      <!-- <button class="BtProfile">Profile</button> -->
+      <div class="UserPanel">
+        <!-- <button class="BtRegister">Register</button> -->
+        <button class="Login">login</button>
+        <button class="GetInfo">GetInfo</button>
+        <button class="Logout">Logout</button>
+      </div>
+
+      <div class="modal fade" id="InfoModal" tabindex="-1" role="dialog" aria-labelledby="InfoModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="aboutModalLabel">IMPORTANT:</h4>
+            </div>
+            <div class="modal-body">
+              <div class="text-center">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam non modi fugit obcaecati incidunt natus excepturi eaque quisquam, quia minima reprehenderit delectus quo nulla ea facere dignissimos earum? Earum, unde!</p>
+                <hr>
+                <!-- <button class="BtRegister">Register</button> -->
+                <button class="Login">login</button>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="UserModal" tabindex="-1" role="dialog" aria-labelledby="UserModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">User Info:</h4>
+            </div>
+            <div class="modal-body">
+              <div class="userData">
+                <!---->
+                <!-- <img src="http://lorempixel.com/400/200/" alt="">
+                <p>Name: <br><span>sdsdsd</span></p> -->
+                <!---->
+                <img id="userPic"/>
+                <p style="color: #fff">Name: <span style="color: #fff" id="userName"></span></p>
+
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button id="BtRegisterBack" type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Modal -->
       <div class="modal fade" id="playModal" tabindex="-1" role="dialog" aria-labelledby="playModalLabel">
         <div class="modal-dialog" role="document">

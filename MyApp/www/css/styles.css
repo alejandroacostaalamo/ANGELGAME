@@ -178,6 +178,39 @@ body{
   color: #FF0102;
   margin: 0;
 }
+.UserPanel{
+  background: #09283c;
+  height: 32px;
+  border-bottom: 2px solid #0e3e5d;
+}
+#InfoModal .modal-body button{
+  background: #1f7a96;
+  border: 0px;
+  padding: 10px 35px;
+  border-radius: 5px;
+  margin: 0px 2px;
+  display: inline-block;
+  float: inherit;
+}
+.BtRegister,
+.Login,
+.GetInfo,
+.Logout{
+  display: none;
+  background: #09283c;
+  border: 0px;
+  float: right;
+  padding: 5px 20px;
+  color: #fff900;
+  border-left: 1px solid #0e3e5d;
+}
+.userData img{
+  float: left;
+  max-width: 100px;
+  padding: 5px;
+  border: 1px solid #1e4856;
+  margin-right: 10px;
+}
 /*==================================================================================================================*/
 /*                                             SYLESHEET'S MAIN MENU                                                */
 /*==================================================================================================================*/
