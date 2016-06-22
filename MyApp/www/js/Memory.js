@@ -200,16 +200,13 @@ function EndGame(){
           punto = punto + 100;
         	$('.punto').text(punto);// Imprimer en la cantidad de puntos
 
-
       } else if ($('#contratiempo').text()>20 && $('#contratiempo').text()<=30) {
           punto = punto + 60;
         	$('.punto').text(punto);
-          console.log('suman 60 puntos');
 
       } else if ($('#contratiempo').text()>10 && $('#contratiempo').text()<=20) {
           punto = punto + 40;
         	$('.punto').text(punto);
-          console.log('suman 40 puntos');
 
         } else if ($('#contratiempo').text()>=0 && $('#contratiempo').text()<=10) {
           punto = punto + 20;
