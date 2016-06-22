@@ -4,7 +4,7 @@
   var cont=0;
   fin= false;
   var answers = [
-    "Source Port", 
+    "Source Port",
     "Destination Port",
     "Secuence Number",
     "Acknowledgement Num",
@@ -16,14 +16,18 @@
     "Urgent Pointer",
     "TCP Options",
     ];
-  
+
   var newArreglo = [];
   var resanswers = [];
   var level=0;
   var timeLevel= 0;
+  var punto = 0;
+  var selecLevel1= false;
+  var selecLevel2= false;
+  var selecLevel3= false;
 
 $(document).ready(function(){
-  Level(); 
+  Level();
 });//Fin de ready
 
 
@@ -39,6 +43,7 @@ function Level(){
      $('#level3').remove();
      PlayGame();
      Timer();
+     selecLevel1 = true;
   });
     //Nivel dos aparecen 16 cartas
   $('#level2').click(function(){
@@ -49,6 +54,7 @@ function Level(){
      $('#level3').remove();
      PlayGame();
      Timer();
+     selecLevel2 = true;
   });
     //Nivel tres aparecen 24 cartas
   $('#level3').click(function(){
@@ -58,15 +64,46 @@ function Level(){
      $('#level3').remove();
      LevelHard();
      Timer();
+     selecLevel3 = true;
   });
 
 }
 
 function EndGame(){
-  if(arregloFinal[j]=""){
-    $('#WinModal').modal('show');
-    fin=true;
-    Timer();
+  // se suman puntos segun el tiempo que tarde para ganar
+  if ($('#contratiempo').text()>50) {
+      punto = punto * 1 + 160;
+     $('.punto').text(punto);
+         //********************************************************************
+   } else if ($('#contratiempo').text()>40 && $('#contratiempo').text()<=50) {
+      punto = punto * 1 + 140;
+   $('.punto').text(punto);
+
+ } else if ($('#contratiempo').text()>30 && $('#contratiempo').text()<=35) {
+      punto = punto * 1 + 120;
+   $('.punto').text(punto);
+
+ } else if ($('#contratiempo').text()>25 && $('#contratiempo').text()<=30) {
+      punto = punto * 1 + 100;
+   $('.punto').text(punto);
+
+ } else if ($('#contratiempo').text()>20 && $('#contratiempo').text()<=25) {
+      punto = punto * 1 + 80;
+   $('.punto').text(punto);
+         //********************************************************************
+
+  } else if ($('#contratiempo').text()>10 && $('#contratiempo').text()<=15) {
+      punto = punto * 1 + 60;
+     $('.punto').text(punto);
+
+  } else if ($('#contratiempo').text()>5 && $('#contratiempo').text()<=10) {
+      punto = punto * 1 + 40;
+     $('.punto').text(punto);
+
+   } else if ($('#contratiempo').text()>=0 && $('#contratiempo').text()<=5) {
+      punto = punto * 1 + 20;
+     $('.punto').text(punto);
+
   }
 }
 
@@ -94,7 +131,7 @@ function Timer(){
 }
 
 
-// Funcion que inicia el juego en el nivel avanzado 
+// Funcion que inicia el juego en el nivel avanzado
 function LevelHard(){
    arregloFinal = boxPosition;
 
@@ -106,9 +143,9 @@ function LevelHard(){
     if (boxPosition.length != 1){
       for (var i = 0; i <= boxPosition.length - 1; i++){
         if (i == numRandom){
-          
+
           $('#pregunta').append('<div id="pregunta'+ boxPosition[numRandom] +'" class="caja"> '+ answers[boxPosition[numRandom]] + '</div>')
-        
+
           //*****Elimina un objeto de un array
           boxPosition = jQuery.grep(boxPosition, function(b) {
             return b != boxPosition[numRandom];
@@ -119,16 +156,16 @@ function LevelHard(){
       }
     }
     else {
-      
+
       $('#pregunta').append('<div id="pregunta'+ boxPosition[numRandom] +'" class="caja"> '+ answers[boxPosition[numRandom]] + '</div>')
-    
+
       //******* Elimina un objeto de un array
       boxPosition = jQuery.grep(boxPosition, function(b) {
         return b != boxPosition[0];
       });
 
     }
-    
+
 
     if (boxPosition.length != 0){
       j++;
@@ -139,24 +176,26 @@ function LevelHard(){
 
   restanswers(0);
 
-//**********Valida Cajas Respuesta 
+//**********Valida Cajas Respuesta
   for (var j = 0; j < arregloFinal.length; j++){
     $( "#pregunta" + arregloFinal[j]).draggable({ revert: true,revertDuration: 0 });
     $( "#tcp-" + arregloFinal[j] ).droppable({
-      accept: "#pregunta" + arregloFinal[j],    
+      accept: "#pregunta" + arregloFinal[j],
       activeClass: "",
       hoverClass: "",
-        
+
       drop: function( event, ui ) {
         $( this )
           .addClass( "ui-state-highlight" )//*** Color que se le asigna al Input donde se introduce la caja correcta
           //***** Operador ternario
           .attr( "placeholder", ui['draggable'][0].outerText == "Internet Header LLength" ? "IHT" : ui['draggable'][0].outerText)
               $('#score').html(function(i, val) { return val*1+5 });//Contador para el puntaje
+              punto = $('#score').text();// Se iguala la variable 'punto' con el contenido del Score
               $('#' + ui['draggable'][0].id).remove();
                 cont= cont + 1;
                 if(cont==11){
                   $('#WinModal').modal('show');
+                  EndGame();// llamado a la funcion del puntaje
                   fin=true;
                   Timer();
 
@@ -165,12 +204,12 @@ function LevelHard(){
 
     });
   }
-  //**********  /Valida Cajas Respuesta 
+  //**********  /Valida Cajas Respuesta
 }
 
 
 
-//inicia el juego segun el nivel 
+//inicia el juego segun el nivel
 function PlayGame(){
       ///***** Crea de forma aleatoria las palabras en la caja contenedora
 
@@ -181,11 +220,11 @@ function PlayGame(){
     $('#tcp-' + value).addClass('help-input');
     //*** crea el resto del arreglo (las que no salen en la caja contentenedora)
     boxPosition = jQuery.grep(boxPosition, function(a) {
-     return a != value;  
-     answers[a]; 
+     return a != value;
+     answers[a];
     });
-    
-   
+
+
   }//Fin de For i
 
   arregloFinal = boxPosition;
@@ -198,9 +237,9 @@ function PlayGame(){
     if (boxPosition.length != 1){
       for (var i = 0; i <= boxPosition.length - 1; i++){
         if (i == numRandom){
-          
+
           $('#pregunta').append('<div id="pregunta'+ boxPosition[numRandom] +'" class="caja"> '+ answers[boxPosition[numRandom]] + '</div>')
-        
+
           //*****Elimina un objeto de un array
           boxPosition = jQuery.grep(boxPosition, function(b) {
             return b != boxPosition[numRandom];
@@ -211,16 +250,16 @@ function PlayGame(){
       }
     }
     else {
-      
+
       $('#pregunta').append('<div id="pregunta'+ boxPosition[numRandom] +'" class="caja"> '+ answers[boxPosition[numRandom]] + '</div>')
-    
+
       //******* Elimina un objeto de un array
       boxPosition = jQuery.grep(boxPosition, function(b) {
         return b != boxPosition[0];
       });
       cont= cont + 1;
     }
-    
+
 
     if (boxPosition.length != 0){
       j++;
@@ -230,24 +269,26 @@ function PlayGame(){
 }
   restanswers(0);
 
-  //**********Valida Cajas Respuesta 
+  //**********Valida Cajas Respuesta
     for (var j = 0; j < arregloFinal.length; j++){
       $( "#pregunta" + arregloFinal[j]).draggable({ revert: true,revertDuration: 0 });
       $( "#tcp-" + arregloFinal[j] ).droppable({
-        accept: "#pregunta" + arregloFinal[j],    
+        accept: "#pregunta" + arregloFinal[j],
         activeClass: "",
         hoverClass: "",
-          
+
         drop: function( event, ui ) {
           $( this )
             .addClass( "ui-state-highlight" )//*** Color que se le asigna al Input donde se introduce la caja correcta
             //***** Operador ternario
             .attr( "placeholder", ui['draggable'][0].outerText == "Internet Header LLength" ? "IHT" : ui['draggable'][0].outerText)
                 $('#score').html(function(i, val) { return val*1+5 });//Contador para el puntaje
+                punto = $('#score').text();// Se iguala la variable 'punto' con el contenido del Score
                 cont= cont - 1;
                 $('#' + ui['draggable'][0].id).remove();
                 if(cont==0){
                   $('#WinModal').modal('show');
+                  EndGame();// llamado a la funcion del puntaje
                   fin=true;
                   Timer();
 
@@ -256,7 +297,5 @@ function PlayGame(){
 
       });
     }
-  //**********   /Valida Cajas Respuesta 
+  //**********   /Valida Cajas Respuesta
 }
-
-

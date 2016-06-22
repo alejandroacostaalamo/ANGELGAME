@@ -40,7 +40,7 @@ function Level(){
     //Nivel uno aparecen 12 cartas
   $('#level1').click(function(){
      nivel= 1;
-     timeLevel = 70;
+     timeLevel = 40;
      $('#level1').remove();
      $('#level2').remove();
      $('#level3').remove();

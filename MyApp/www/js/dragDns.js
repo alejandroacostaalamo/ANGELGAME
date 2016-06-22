@@ -19,14 +19,18 @@
   "TXT",
   "mydomain.com"
   ];
-  
+
   var newArreglo = [];
   var resAnswersdns = [];
   var level=0;
   var timeLevel= 0;
   var cont= 0;
+  var punto = 0;
+  var selecLevel1= false;
+  var selecLevel2= false;
+  var selecLevel3= false;
 $(document).ready(function(){
-  Level(); 
+  Level();
 });//Fin de ready
 
 
@@ -66,10 +70,28 @@ function Level(){
 }
 
 function EndGame(){
-  if(arregloFinal[j]=""){
-      $('#WinModal').modal('show');
-        fin=true;
-        Timer();
+  // se suman puntos segun el tiempo que tarde para ganar
+ if ($('#contratiempo').text()>20 && $('#contratiempo').text()<=25) {
+      punto = punto * 1 + 200;
+   $('.punto').text(punto);
+
+ } else if ($('#contratiempo').text()>15 && $('#contratiempo').text()<=20) {
+      punto = punto * 1 + 140;
+   $('.punto').text(punto);
+         //********************************************************************
+
+  } else if ($('#contratiempo').text()>10 && $('#contratiempo').text()<=15) {
+      punto = punto * 1 + 130;
+     $('.punto').text(punto);
+
+  } else if ($('#contratiempo').text()>5 && $('#contratiempo').text()<=10) {
+      punto = punto * 1 + 120;
+     $('.punto').text(punto);
+
+   } else if ($('#contratiempo').text()>=0 && $('#contratiempo').text()<=5) {
+      punto = punto * 1 + 100;
+     $('.punto').text(punto);
+
   }
 }
 
@@ -86,7 +108,7 @@ function Timer(){
     if (seconds_left <= 0)
     {
       //document.getElementById('contratiempo').innerHTML = "Se acabo el tiempo";
-      
+
      $('#LooseModal').modal('show');
       clearInterval(interval);
       //location.reload();
@@ -100,7 +122,7 @@ function Timer(){
 }
 
 
-// Funcion que inicia el juego en el nivel avanzado 
+// Funcion que inicia el juego en el nivel avanzado
 function LevelHard(){
    arregloFinal = boxPositiondns;
 
@@ -112,9 +134,9 @@ function LevelHard(){
     if (boxPositiondns.length != 1){
       for (var i = 0; i <= boxPositiondns.length - 1; i++){
         if (i == numRandom){
-          
+
           $('#pregunta').append('<div id="pregunta'+ boxPositiondns[numRandom] +'" class="caja"> '+ answersdns[boxPositiondns[numRandom]] + '</div>')
-        
+
           //*****Elimina un objeto de un array
           boxPositiondns = jQuery.grep(boxPositiondns, function(b) {
             return b != boxPositiondns[numRandom];
@@ -125,16 +147,16 @@ function LevelHard(){
       }
     }
     else {
-      
+
       $('#pregunta').append('<div id="pregunta'+ boxPositiondns[numRandom] +'" class="caja"> '+ answersdns[boxPositiondns[numRandom]] + '</div>')
-    
+
       //******* Elimina un objeto de un array
       boxPositiondns = jQuery.grep(boxPositiondns, function(b) {
         return b != boxPositiondns[0];
       });
 
     }
-    
+
 
     if (boxPositiondns.length != 0){
       j++;
@@ -145,37 +167,39 @@ function LevelHard(){
 
   restAnswersdns(0);
 
-//**********Valida Cajas Respuesta 
+//**********Valida Cajas Respuesta
   for (var j = 0; j < arregloFinal.length; j++){
     $( "#pregunta" + arregloFinal[j]).draggable({ revert: true,revertDuration: 0 });
     $( "#dns-" + arregloFinal[j] ).droppable({
-      accept: "#pregunta" + arregloFinal[j],    
+      accept: "#pregunta" + arregloFinal[j],
       activeClass: "",
       hoverClass: "",
-        
+
       drop: function( event, ui ) {
         $( this )
           .addClass( "ui-state-highlight" )//*** Color que se le asigna al Input donde se introduce la caja correcta
           //***** Operador ternario
           .attr( "placeholder", ui['draggable'][0].outerText == "Internet Header LLength" ? "IHT" : ui['draggable'][0].outerText)
               $('#score').html(function(i, val) { return val*1+5 });//Contador para el puntaje
+              punto = $('#score').text();// Se iguala la variable 'punto' con el contenido del Score
                 $('#' + ui['draggable'][0].id).remove();
-                cont= cont + 1; 
+                cont= cont + 1;
                 if(cont==15){
                   $('#WinModal').modal('show');
+                  EndGame();// llamado a la funcion del puntaje
                     fin=true;
                     Timer();
-                } 
+                }
       }
 
     });
   }
-  //**********  /Valida Cajas Respuesta 
+  //**********  /Valida Cajas Respuesta
 }
 
 
 
-//inicia el juego segun el nivel 
+//inicia el juego segun el nivel
 function PlayGame(){
       ///***** Crea de forma aleatoria las palabras en la caja contenedora
 
@@ -186,11 +210,11 @@ function PlayGame(){
     $('#dns-' + value).addClass('help-input');
     //*** crea el resto del arreglo (las que no salen en la caja contentenedora)
     boxPositiondns = jQuery.grep(boxPositiondns, function(a) {
-     return a != value;  
-     answersdns[a]; 
+     return a != value;
+     answersdns[a];
     });
-    
-   
+
+
   }//Fin de For i
 
   arregloFinal = boxPositiondns;
@@ -203,9 +227,9 @@ function PlayGame(){
     if (boxPositiondns.length != 1){
       for (var i = 0; i <= boxPositiondns.length - 1; i++){
         if (i == numRandom){
-          
+
           $('#pregunta').append('<div id="pregunta'+ boxPositiondns[numRandom] +'" class="caja"> '+ answersdns[boxPositiondns[numRandom]] + '</div>')
-        
+
           //*****Elimina un objeto de un array
           boxPositiondns = jQuery.grep(boxPositiondns, function(b) {
             return b != boxPositiondns[numRandom];
@@ -216,16 +240,16 @@ function PlayGame(){
       }
     }
     else {
-      
+
       $('#pregunta').append('<div id="pregunta'+ boxPositiondns[numRandom] +'" class="caja"> '+ answersdns[boxPositiondns[numRandom]] + '</div>')
-    
+
       //******* Elimina un objeto de un array
       boxPositiondns = jQuery.grep(boxPositiondns, function(b) {
         return b != boxPositiondns[0];
       });
       cont= cont + 1;
     }
-    
+
 
     if (boxPositiondns.length != 0){
       j++;
@@ -235,32 +259,32 @@ function PlayGame(){
 }
   restAnswersdns(0);
 
-  //**********Valida Cajas Respuesta 
+  //**********Valida Cajas Respuesta
     for (var j = 0; j < arregloFinal.length; j++){
       $( "#pregunta" + arregloFinal[j]).draggable({ revert: true,revertDuration: 0 });
       $( "#dns-" + arregloFinal[j] ).droppable({
-        accept: "#pregunta" + arregloFinal[j],    
+        accept: "#pregunta" + arregloFinal[j],
         activeClass: "",
         hoverClass: "",
-          
+
         drop: function( event, ui ) {
           $( this )
             .addClass( "ui-state-highlight" )//*** Color que se le asigna al Input donde se introduce la caja correcta
             //***** Operador ternario
             .attr( "placeholder", ui['draggable'][0].outerText == "Internet Header LLength" ? "IHT" : ui['draggable'][0].outerText)
                 $('#score').html(function(i, val) { return val*1+5 });//Contador para el puntaje
+                punto = $('#score').text();// Se iguala la variable 'punto' con el contenido del Score
                 cont= cont - 1;
                 $('#' + ui['draggable'][0].id).remove();
                 if(cont==0){
-                  $('#WinModal').modal('show')
+                  $('#WinModal').modal('show');
+                  EndGame();// llamado a la funcion del puntaje
                     fin=true;
-                    Timer(); 
+                    Timer();
                 }
         }
 
       });
     }
-  //**********   /Valida Cajas Respuesta 
+  //**********   /Valida Cajas Respuesta
 }
-
-
