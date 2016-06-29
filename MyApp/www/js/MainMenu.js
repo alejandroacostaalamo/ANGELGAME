@@ -203,9 +203,9 @@ function EffectMusic(active){
 function sesion(){
 	if(localStorage.getItem("fbAccessToken") != null){
 		$('#InfoModal').modal('hide');
-		if (Registrado== false) {
-			$('#UserModal').modal('show', getInfo());
-		}
+		// if (localStorage.getItem('sesionIni')== 'false') {
+		// 	$('#UserModal').modal('show', getInfo());
+		// }
 		$('.GetInfo, .Logout').show();
 		$('.Login').hide();
 		// $('.BtRegister, .Login').hide();

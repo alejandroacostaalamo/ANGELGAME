@@ -40,7 +40,6 @@ $('.BtRegister').click(function(){
 
 
 function Profile(){
-   console.log(ruta);
   $.ajax({
      type: "POST",
      url:  configuracion()+"/profile/"+info3.id+".json",
@@ -49,7 +48,14 @@ function Profile(){
      dataType: "json",
      data: "",
      success: function (data) {
-          console.log(data.user[0]);
+          if (data.user[0] !=null ) {
+            console.log(data.user[0]);
+            localStorage.setItem('sesionIni', 'true');
+          }else {
+            console.log('Usuario No existe');
+            // localStorage.setItem('sesionIni', 'false');
+            $('#UserModal').modal('show', getInfo());
+          }
      }
   });
 }

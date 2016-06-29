@@ -4,7 +4,6 @@ $('.Login').click(function(){
 $('.GetInfo').click(function(){
   $('#UserModal').modal('show');
   getInfo();
-  // Register(info3);
 })
 $('.Logout').click(function(){
   logout();
@@ -18,6 +17,7 @@ $('#BtRegisterBack').click(function(){
 var info="";
 var info2="";
 var info3="";
+// localStorage.sesionIni = false;
 // Defaults to sessionStorage for storing the Facebook token
 // openFB.init({appId: '{MY-appId}'});
 
@@ -32,13 +32,11 @@ function login() {
                    console.log('Facebook login succeeded, got access token: ' + response.authResponse.accessToken);
                    sesion();
                    getInfo();
-                  //  console.log('Esto es info del login: '+info3);
-                  //  Register(info3);
+                   Profile();
                } else {
                    alert('Facebook login failed: ' + response.error);
                }
              }, {scope: 'user_games_activity,email,public_profile,user_about_me,publish_actions'});
-            //  console.log('Esto contiene SCOPE: ' +scope);
 }
 
 function getInfo() {
@@ -50,15 +48,9 @@ function getInfo() {
            info= JSON.stringify(data);
            info2= JSON.stringify(info);
            info3= data;
-          //  var arreglo= [pos1 : info1, pos2 : info2, pos3 : info3];
            document.getElementById("userName").innerHTML = data.name;
-           // document.getElementById("userEmail").innerHTML = data.email;
            document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=normal';
-          //  return {
-          //    info1: info1,
-          //    info2: info2,
-          //    info3: info3
-          //  }
+
           return info3;
            console.log(info.name);
        },
@@ -113,7 +105,3 @@ function logout() {
 function errorHandler(error) {
    alert(error.message);
 }
-
-$(document).ready(function(){
-  // getInfo();
-})
