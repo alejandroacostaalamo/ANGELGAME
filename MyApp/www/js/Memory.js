@@ -154,7 +154,7 @@ function Level(){
 	$('#level1').click(function(){
 		 nivel= 6;
 		 nivel1 = nivel;
-		 timeLevel = 40;
+		 timeLevel = 4;
 		 $('#level1').remove();
 		 $('#level2').remove();
 		 $('#level3').remove();

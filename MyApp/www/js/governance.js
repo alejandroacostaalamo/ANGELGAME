@@ -780,6 +780,7 @@ function validar(){
 			ShowQuestion(2);
 		}
 	});
+	
 	//Palabra 2 Horizontal
 
 	$('#input-2-0').on('keyup',function() {

@@ -17,6 +17,7 @@ $('#BtRegisterBack').click(function(){
 var info="";
 var info2="";
 var info3="";
+var u= "http://angelgame.acostasite.com/Game/"; //Url del juego
 // localStorage.sesionIni = false;
 // Defaults to sessionStorage for storing the Facebook token
 // openFB.init({appId: '{MY-appId}'});

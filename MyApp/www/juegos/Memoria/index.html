@@ -22,10 +22,11 @@
     <script src='../../js/Memory.js'></script>
     <script src='../../js/openfb.js'></script>
     <script src='../../js/FbControllers.js'></script>
-    <script src='../../js/controllers.js'></script> 
+    <script src='../../js/controllers.js'></script>
+    <div id="fb-root"></div>
+    <script src='../../js/FbShare.js'></script>
     <!-- // <script src='../../js/SocialSharing.js'></script> -->
     <script src='../../js/visibility.js'></script>
-
 </head>
     <body>
 
@@ -79,9 +80,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <a onclick="ShareScore()">
-                            <button>Score</button>
-                        </a> -->
+                        <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_self" href="https://www.facebook.com/sharer/sharer.php?u&amp;src=sdkpreparse">Compartir</a></div>
                         <div class="modal-footer">
                             <a href="" onclick="location.reload()">
                                 <button>Back</button>
@@ -104,8 +103,14 @@
                                 <div class="score">
                                     Score: <div class="punto"> 0</div>
                                 </div>
-                                <!-- <button onclick="window.plugins.socialsharing.shareViaTwitter('Message and link via Twitter', null /* img */, 'http://www.x-services.nl')">msg and link via Twitter</button> -->
-                            </div>
+                                <div class="fb-share-button"
+                                data-layout="button" data-size="large" data-mobile-iframe="true">
+                                <a class="fb-xfbml-parse-ignore" target="_self" href="#"
+                                onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(u) +'&p[title]=prueba',
+                                'facebook-share-dialog',
+                                'width=626,height=436');
+                                 return false;">Share on Facebook</a></div>
+                               </div>
                         </div>
                             <!-- <a href="" onclick="ShareScore()">
                             <div class="fb-share-button" data-href="" data-layout="button" data-mobile-iframe="true" ></div>
