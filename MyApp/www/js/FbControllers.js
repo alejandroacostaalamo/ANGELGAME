@@ -1,18 +1,24 @@
-$('.Login').click(function(){
+$('.LoginFB').click(function(){
   login();
-})
+});
+
+$('.Login').click(function(){
+  $('#InfoModal').modal('show');
+});
+
 $('.GetInfo').click(function(){
   $('#UserModal').modal('show');
   getInfo();
-})
+});
+
 $('.Logout').click(function(){
   logout();
   Registrado = false;
-})
-$('#BtRegisterBack').click(function(){
-  Register(info3);
-})
+});
 
+$('#BtRegisterBack').click(function(){
+  //Register(info3);
+});
 
 var info="";
 var info2="";
@@ -24,16 +30,16 @@ var u= "http://angelgame.acostasite.com/Game/"; //Url del juego
 
 //  Uncomment the line below to store the Facebook token in localStorage instead of sessionStorage
 // openFB.init({appId: '{MY-appId}', tokenStore: window.localStorage});
-openFB.init({appId: '{MY-appId}', tokenStore: window.localStorage});
+openFB.init({appId: '1584007955262478', tokenStore: window.localStorage});
 
 function login() {
    openFB.login(
            function(response) {
                if(response.status === 'connected') {
-                   console.log('Facebook login succeeded, got access token: ' + response.authResponse.accessToken);
+                   //alert('Facebook login succeeded, got access token: ' + response.authResponse.accessToken);
                    sesion();
                    getInfo();
-                   Profile();
+                   alert;
                } else {
                    alert('Facebook login failed: ' + response.error);
                }
@@ -44,16 +50,45 @@ function getInfo() {
    openFB.api({
        path: '/me',
        success: function(data) {
-           console.log(JSON.stringify(data));
-           console.log(data);
+           //alert(JSON.stringify(data));
+           //alert(data);
            info= JSON.stringify(data);
            info2= JSON.stringify(info);
-           info3= data;
+          var info3 = { "name" : data.name, "lastName"  : "", "email" : "", "id" : data.id };
+           info3.email = info3.id + "@facebook.com";
            document.getElementById("userName").innerHTML = data.name;
            document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=normal';
-
-          return info3;
-           console.log(info.name);
+//alert(data.id);
+          // Name and lastname
+          // Nombre y apellido
+               var strName = data.name.split(' ');
+               var name = '';
+               var lstName = '';
+               switch (strName.length)
+               {
+                   case 1:
+                       name = strName[0];
+                       break;
+                   case 2:
+                       name = strName[0];
+                       lstName = strName[1];
+                       break;
+                   case 3:
+                       name = strName[0] + " " + strName[1];
+                       lstName = strName[2];
+                       break;
+                   default:
+                       name = strName[0] + " " + strName[1];
+                       lstName = strName[2] + " " + strName[3];
+                       break;
+               }
+                info3.lastName = lstName;
+                info3.name = name;
+                //alert(info3.name);
+                //alert(info3.email);
+           var uid = Register(info3);
+           alert(uid);
+            return info3;
        },
        error: errorHandler});
 
@@ -101,6 +136,7 @@ function logout() {
               sesion();
            },
            errorHandler);
+    $('.Login').show();
 }
 
 function errorHandler(error) {

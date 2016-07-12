@@ -193,7 +193,9 @@ body{
   float: inherit;
 }
 .BtRegister,
+.LoginFB,
 .Login,
+.LoginTwitter,
 .GetInfo,
 .Logout{
   display: none;
