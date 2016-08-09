@@ -201,8 +201,11 @@ function EffectMusic(active){
 }
 
 function sesion(){
+
 	// Si ya inició sesión
-	if(localStorage.getItem("fbAccessToken") != null){
+	alert(localStorage.getItem("UserId"));
+	
+	if(localStorage.getItem("UserId") != null){
 		$('#InfoModal').modal('hide');
 		// if (localStorage.getItem('sesionIni')== 'false') {
 		// 	$('#UserModal').modal('show', getInfo());
