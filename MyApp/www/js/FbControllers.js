@@ -37,9 +37,10 @@ function login() {
            function(response) {
                if(response.status === 'connected') {
                    //alert('Facebook login succeeded, got access token: ' + response.authResponse.accessToken);
+                   localStorage.setItem('method', 1);
                    sesion();
                    getInfo();
-                   alert;
+
                } else {
                    alert('Facebook login failed: ' + response.error);
                }
@@ -47,6 +48,9 @@ function login() {
 }
 
 function getInfo() {
+
+  if(localStorage.getItem("method")==1){
+
    openFB.api({
        path: '/me',
        success: function(data) {
@@ -54,11 +58,11 @@ function getInfo() {
            //alert(data);
            info= JSON.stringify(data);
            info2= JSON.stringify(info);
-          var info3 = { "name" : data.name, "lastName"  : "", "email" : "", "id" : data.id };
-           info3.email = info3.id + "@facebook.com";
+           //var info3 = { "name" : data.name, "lastName"  : "", "email" : "", "id" : data.id };
+           var info3 = { "name" : "", "lastName"  : "", "email" : "", "id" : "","username" : "","method":""};
            document.getElementById("userName").innerHTML = data.name;
            document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=normal';
-//alert(data.id);
+          //alert(data.id);
           // Name and lastname
           // Nombre y apellido
                var strName = data.name.split(' ');
@@ -84,13 +88,86 @@ function getInfo() {
                }
                 info3.lastName = lstName;
                 info3.name = name;
+                info3.email = data.id + "@facebook.com";
+                info3.id=data.id;
+                info3.username=data.name;
+                info3.method=1;
                 //alert(info3.name);
                 //alert(info3.email);
            var uid = Register(info3);
-           alert(uid);
+           
             return info3;
        },
        error: errorHandler});
+
+ }else if(localStorage.getItem("method")==2){
+
+     oauth.get('https://api.twitter.com/1.1/account/verify_credentials.json?skip_status=true',
+              function(data) {
+                
+                
+                
+                 var entry = JSON.parse(data.text);
+                
+                 var info3 = { "name" : "", "lastName"  : "", "email" : "", "id" : "","username" : "", "method":"" };
+                
+                 info3.email = entry.screen_name + "@twitter.com";
+                 
+                 document.getElementById("userName").innerHTML = entry.name;
+
+                 document.getElementById("userPic").src='https://twitter.com/'+entry.screen_name+'/profile_image?size=normal';
+                 
+                //document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=normal';
+                //alert(data.id);
+                // Name and lastname
+                // Nombre y apellido
+                    var username = entry.name;
+                  // Name and lastname
+                      // Nombre y apellido
+                           var strName = username.split(' ');
+                           var name = '';
+                           var lstName = '';
+                           switch (strName.length)
+                           {
+                               case 1:
+                                   name = strName[0];
+                                   break;
+                               case 2:
+                                   name = strName[0];
+                                   lstName = strName[1];
+                                   break;
+                               case 3:
+                                   name = strName[0] + " " + strName[1];
+                                   lstName = strName[2];
+                                   break;
+                               default:
+                                   name = strName[0] + " " + strName[1];
+                                   lstName = strName[2] + " " + strName[3];
+                                   break;
+                           }
+
+                    info3.lastName = lstName;
+
+                    info3.name = name;
+
+                    info3.username = entry.screen_name;
+  
+                    info3.email = entry.id_str+"@twitter.com";
+                  
+                    info3.id = entry.id_str;
+
+                    info3.method=2;
+
+                    var uid = Register(info3);
+              },
+              function(data) { 
+                alert('Error getting user credentials'); 
+                console.log("AppLaudLog: Error " + data); 
+              }
+          );                                         
+         
+
+ }
 
 }
 
@@ -132,7 +209,6 @@ function logout() {
               $('#userName').text("");
               $('#userPic').removeAttr("src");
               localStorage.clear();// Limpia el localStorage
-              alert('Logout successful');
               sesion();
            },
            errorHandler);

@@ -203,8 +203,7 @@ function EffectMusic(active){
 function sesion(){
 
 	// Si ya inició sesión
-	alert(localStorage.getItem("UserId"));
-	
+
 	if(localStorage.getItem("UserId") != null){
 		$('#InfoModal').modal('hide');
 		// if (localStorage.getItem('sesionIni')== 'false') {

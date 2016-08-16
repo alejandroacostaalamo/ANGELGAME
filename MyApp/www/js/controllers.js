@@ -1,6 +1,7 @@
 
 
 
+
 function configuracion(){
   var ruta = "http://angelgame.acostasite.com/ApiAngel/Api";
   //var ruta = "http://angelgame.acostasite.com/ApiAngel/Api";
@@ -20,21 +21,29 @@ function Register(info3){
   $.ajax({
      type: "POST",
      // para la imagen se puede utilizar "small, normal, album, large, square", segun el tamaño deseado
-    //  url: "http://angelgame.acostasite.com/ApiAngel/Api/register/" +data.name+ "/  " +data.id + "/  " + "/  " +'http://graph.facebook.com/' + data.id + '/picture?type=normal',
-                                                                    //Nombre-         Apellido-      Token-        Email-     UserNamre-     Image-     MethodId
-     url: configuracion()+"/register/" +info3.name+ "/" +info3.lastName+ "/" +info3.id + "/" + info3.email + "/" +info3.username+ "/" +null+ "/" + "1.json",
+     //  url: "http://angelgame.acostasite.com/ApiAngel/Api/register/" +data.name+ "/  " +data.id + "/  " + "/  " +'http://graph.facebook.com/' + data.id + '/picture?type=normal',
+                                        //Nombre-         Apellido-      Token-        Email-     UserNamre-     Image-     MethodId
+     url: configuracion()+"/register/" +info3.name+ "/" +info3.lastName+ "/" +info3.id + "/" + info3.email + "/" +info3.username+ "/" +null+ "/" +info3.method+".json",
      cache: false,                                                                                            //**** Para traer el email hace falta la aprobacion de facebook
      contentType: "application/json; charset=utf-8",
      dataType: "json",
      data: "",
-     success: function (data) {
-          //alert(data.user);
-        //  alert('Registro Exitoso');
-          var registrado = data.user.Id;
-          localStorage.setItem('UserId', registrado);
-        //  alert(registrado);
-          return Registrado;
-     }
+     success : function(data) {
+
+     	var registrado=data.user.Id;
+
+     	localStorage.setItem('UserId', registrado);
+
+     	localStorage.setItem('method', 2);
+
+     	sesion();
+
+     },
+
+     error : function(xhr, status) {
+        alert('Disculpe, existió un problema');
+    }
+ 
   });
 }
 
@@ -126,8 +135,9 @@ function loginTwitter() {
 
 function TwitterSuccess(loc){
 	// If not in call back
-	if (!(loc.url.indexOf(callbackUrl) >-1))
+	if (!(loc.url.indexOf(callbackUrl) >-1)){
 		return;
+	}
 
 	// If user hit "No, thanks" when asked to authorize access
 	if (loc.url.indexOf(callbackUrl+"/?denied") >= 0) {
@@ -200,11 +210,13 @@ function TwitterSuccess(loc){
 								
 							   var entry = JSON.parse(data.text);
 								
-							   var info3 = { "name" : "", "lastName"  : "", "email" : "", "id" : "","username" : "" };
+							   var info3 = { "name" : "", "lastName"  : "", "email" : "", "id" : "","username" : "", "method":"" };
 								
 							   info3.email = entry.screen_name + "@twitter.com";
 							   
-							   document.getElementById("userName").innerHTML = data.screen_name;
+							   document.getElementById("userName").innerHTML = entry.name;
+
+							   document.getElementById("userPic").src='https://twitter.com/'+entry.screen_name+'/profile_image?size=normal';
 							   
 							  //document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=normal';
 							  //alert(data.id);
@@ -245,11 +257,11 @@ function TwitterSuccess(loc){
 								  
 								  	info3.id = entry.id_str;
 
-								 	alert(data.user.Id);
+								  	info3.method=2;
 
 								  	var uid = Register(info3);
 
-								  	sesion();
+								  	
                    				
 
 							},
@@ -266,8 +278,7 @@ function TwitterSuccess(loc){
 			}
 		);
 	}
-      else
-		alert('no');		  
+      		  
 }
 
 // Fin twitter

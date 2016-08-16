@@ -36,6 +36,9 @@ var arrayOrder=[];
 var nivel =0;
 var timeLevel = 0;
 fin= false;
+var punto=0;
+
+
 $(window).resize(function(){
 	var WindowW = $(window).innerWidth();
 	var WindowH = $(window).innerHeight();
@@ -46,6 +49,7 @@ $(window).resize(function(){
 	});
 
 })
+
 $(document).ready(function(){
 
 	var WindowW = $(window).innerWidth();
@@ -60,7 +64,7 @@ $(document).ready(function(){
 	$('#levelModal').modal('show');
 	$('#levelModal .modal-body button').click(function(){
 		$('#levelModal').modal('hide');
-	})
+	});
 	Level();
 	// console.log(Timer())
 	// Verifica si esta activo el sonido
@@ -154,7 +158,7 @@ function Level(){
 	$('#level1').click(function(){
 		 nivel= 6;
 		 nivel1 = nivel;
-		 timeLevel = 4;
+		 timeLevel = 40;
 		 $('#level1').remove();
 		 $('#level2').remove();
 		 $('#level3').remove();
@@ -187,7 +191,7 @@ function Level(){
 
 
 //Finaliza el juego al completar los puntos por nivel
-function EndGame(){
+function EndGame(seconds_left){
   // Timer();
 	//Si el nivel seleccionado es uno la cantidad de puntos para ganar sera de 30
 	if (nivel== 6){
@@ -213,9 +217,11 @@ function EndGame(){
         	$('.punto').text(punto);
 
       }
+
 			fin=true;
-			// Timer();
-		}
+
+			ShareScore();
+	  }
 	}
 	//Si el nivel seleccionado es dos la cantidad de puntos para ganar sera de 40
 	if(nivel== 8){
@@ -247,6 +253,8 @@ function EndGame(){
           $('.punto').text(punto);
       }
 			fin=true;
+
+			ShareScore();
 			// Timer();
 		}
 	}
@@ -290,8 +298,11 @@ function EndGame(){
       }
 			fin=true;
 			// Timer();
+
+			ShareScore();
 		}
 	}
+	
 }
 
 //Crea los campos donde estaran contenidos las cartas, que se muestran de forma aleatoria en funcion a las preguntas y respuestas
@@ -319,8 +330,11 @@ function Timer(){
 
   document.getElementById('contratiempo').innerHTML =  --seconds_left;
 
+
   if (fin==false) {
-  	EndGame();
+
+  	  EndGame(seconds_left);
+
 	  if (seconds_left <= 0){
 	    //document.getElementById('contratiempo').innerHTML = "Se acabo el tiempo";
 
@@ -329,11 +343,46 @@ function Timer(){
 	   //alert("Game Over!");
 	   $('#LooseModal').modal('show')
 	   //location.reload();
+
+	    ShareScore();
+
 	  }
+
 	}
+
   // return interval;
   }, 1000);
 
+}
+
+// compartir puntaje del juego en facebook o twitter
+
+function ShareScore(){
+
+	var level=0;
+
+	switch(nivel) {
+	    case 6:
+
+			level=1;
+			break;
+		case 8:
+
+			level=2;
+
+			break;
+
+		case 12:
+			        
+			level=3;
+
+			break;
+	}
+
+
+	var infogame = { "UserId":localStorage.getItem("UserId"), "GameId":4, "TopicId" :3, "levelId" :level,"Score":punto};
+
+	var uid = RegisterGame(infogame);
 }
 
 
