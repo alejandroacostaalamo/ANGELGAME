@@ -11,6 +11,12 @@
     <link rel="icon" href="favicon.ico" type="img/fv-icon.png"/>    
   </head>
 
+  <script type="text/javascript">
+    
+    localStorage.setItem('language', 1);
+
+  </script>
+
   <body>
     <div class="index">
           
@@ -123,7 +129,31 @@
                         </div>
                       </li>
                     </ul>
-                  </li>          
+                  </li>     
+                  <li class="but">
+                    <div class="title">
+                      <h3>Intérprete la salida <i class="fa fa-angle-down"></i></h3>
+                      <a href="juegos/trivia/index-es.html">
+                        <p class="animate">
+                          <span>Jugar</span>                      
+                        </p>
+                        <i class="fa fa-play-circle"></i>
+                      </a href="">
+                    </div>
+                    <ul class="detail" >                    
+                      <li>          
+                        <div class="col-img">
+                          <img class="img-responsive" src="img/fondoTrivia.PNG">
+                        </div>
+                        <div class="col-text">
+                          <!--<h5>LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT</h5>-->
+                          <p>
+                           El objetivo es contestar preguntas referentes a la salida de diversos comandos una forma mas de probar tus conocimientos.
+                          </p>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>               
                 </ul>
 
               </div>  
@@ -161,11 +191,20 @@
                <div>
                   <h3>Idioma</h3>
                 <div class="setting language">
-                <a href="index-es.html"><span class="spanish active" onclick="Index(1)">Español </span></a>  
-                <a href="index.html"><span class="english " onclick="Index(0)"> Ingles</span></a>
-                <a href="index-por.html"><span class="portugues " onclick="Index(2)"> Portugues</span></a>
+                <a href="javascript:traduc(1)"><span class="spanish active" onclick="Index(1)">Español </span></a>  
+                <a href="javascript:traduc(2)"><span class="english " onclick="Index(0)"> Ingles</span></a>
+                <a href="javascript:traduc(3)"><span class="portugues " onclick="Index(2)"> Portugues</span></a>
                 </div>
                </div>
+
+               <div>
+                  <h3>Autenticación</h3>
+               
+              </div>
+
+              <div class="caja">
+                  <div id="setting Authentication"></div>
+              </div>
 
             </div>
             <div class="modal-footer">
@@ -236,12 +275,22 @@
           </div>
         <!-- </div> -->
         <footer>
-          <script src="js/jquery.min.js"></script>
+           <script src="js/jquery.min.js"></script>
           <script src="js/bootstrap.min.js"></script>
           <script src="js/jquery-ui.min.js"></script>
           <script src="js/MainMenu.js"></script>
+          <!-- <script src="js/Memory.js"></script> -->
           <script src='js/jquery.playSound.js'></script>
           <script src='js/visibility.js'></script>
+          <script src="cordova.js"></script>
+          <script src='js/openfb.js'></script>
+          <script src='js/FbControllers.js'></script>
+          <script src='js/jsOAuth-1.3.7.js'></script>
+          <!-- <script src='js/FbControllersBrowser.js'></script> -->
+          <!-- <script src='js/loginFb.js'></script> -->
+          <script src='js/controllers.js'></script>
+          <script src='js/Language.js'></script>
+
           <!-- // <script src='js/SocialSharing.js'></script> -->
           <!-- // <script src="sounds/sound.js"></script> -->
         </footer>

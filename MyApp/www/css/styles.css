@@ -8,6 +8,207 @@
 body{
   font-family:accid;
 }
+
+.caja{
+
+  text-align: right;
+
+  padding-bottom: 50px;
+}
+
+.inactive{
+
+  opacity: 0.2;
+}
+
+.authentication_logout{
+
+  position: relative;
+
+  margin-bottom: 3%;
+
+  margin-right: 8px;
+
+  margin-top: 0;
+
+  width: 100px;
+
+  height: 40px;
+
+  cursor: pointer;
+
+  outline:none;
+
+  border: none;
+
+  color:#FFEC2B;
+
+  background-color:#11718E;
+
+  border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+
+}
+
+.post{
+  margin-top:1%;
+  color:rgba(32, 109, 124, 1);
+  font-family: Arial;
+  font-weight:bold;
+  font-size: 15px;
+}
+
+
+.authentication_face{
+
+  position: relative;
+
+  margin-bottom: 3%;
+
+  margin-right: 8px;
+
+  width: 100px;
+
+  height: 40px;
+
+  margin-top: 10px;
+
+  cursor: pointer;
+
+  outline:none;
+
+  border: 1px solid white;
+
+  color:#FFEC2B;
+
+  background-image: url("../img/login_face.jpg");
+
+  background-size: 100% 100%;
+
+  border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+}
+
+.authentication_twitter{
+
+  position: relative;
+
+  margin-bottom: 3%;
+
+  width: 100px;
+
+  height: 40px;
+
+  margin-top: 10px;
+
+  margin-bottom: 10px;
+
+  margin-right: 8px;
+
+  cursor: pointer;
+
+  outline:none;
+
+  border: 1px solid white;
+
+  color:#FFEC2B;
+
+  background-image: url("../img/twitters.png");
+
+  background-size: 100% 100%;
+
+  border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+
+
+}
+
+
+.authentication_face:hover{
+
+  opacity: 0.4;
+}
+
+.authentication_twitter:hover{
+
+  opacity: 0.4;
+}
+
+.authentication_face:active { 
+
+  opacity: 0.9;
+}
+
+.authentication_twitter:active{
+
+  opacity: 0.9;
+}
+
+.FB{
+
+  position: relative;
+
+  left: -5%;
+
+  margin-top:1%;
+
+  background-image: url("../img/facebook.jpg");
+
+  background-size: 100% 100%;
+
+  background-color:white;
+
+  outline: none;
+
+  border: none;
+
+  width: 50px;
+
+  height: 50px;
+
+}
+
+
+.TW{
+
+  position: relative;
+
+  left: -4%;
+
+  margin-top:1%;
+
+  background-image: url("../img/twitter.png");
+
+  background-size: 100% 100%;
+
+  background-color:white;
+
+  outline: none;
+
+  border: none;
+
+  width: 50px;
+
+  height: 50px;
+}
+
+.TW:hover{
+
+   border-color:#f00;
+  border-width: 10px;
+
+}
+
+.FB:hover{
+
+   border-color:#f00;
+  border-width: 10px;
+  
+}
+
 .modal-open .modal{
   padding-left: 0px!important;
 }
