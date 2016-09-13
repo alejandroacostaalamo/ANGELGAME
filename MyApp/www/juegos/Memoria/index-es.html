@@ -26,9 +26,20 @@
     <script src='../../js/controllers.js'></script>
     <!-- // <script src='../../js/SocialSharing.js'></script> -->
     <script src='../../js/visibility.js'></script>
+    <script src='../../js/jsOAuth-1.3.7.js'></script>
+    <script src="../../cordova.js"></script>
 
 </head>
     <body>
+
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.7";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 
         <div class="memoria">
 
@@ -76,9 +87,12 @@
                                 <img src="../../img/congratulations.png" alt="" class="img-responsive">
                                 <h2>Felicidades!</h2>
                                 <h4>Nivel Completado</h4>
+                                <p class="post"> Publique su puntaje en las redes sociales</p>
                                 <div class="score">
                                     Puntos: <div class="punto"> 0</div>
                                 </div>
+                                <a class="fb-xfbml-parse-ignore" target="_blank"><button class="FB"></button></a>
+                                <button class="TW" onclick="public_TW()"></button> 
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -98,11 +112,13 @@
                             <div class="box">
                                 <img src="../../img/game_over.png" alt="" class="img-responsive">
                                 <h2>Has perdido</h2>
-                                <h4>Intentalo de nuevo!</h4>
+                                <a href="javascript:reload();"><h4>Intentalo de nuevo!</h4></a>
+                                <p class="post"> Publique su puntaje en las redes sociales</p>
                                 <div class="score">
                                     Puntos: <div class="punto"> 0</div>
                                 </div>
-                                <!-- <button onclick="window.plugins.socialsharing.shareViaTwitter('Message and link via Twitter', null /* img */, 'http://www.x-services.nl')">msg and link via Twitter</button> -->
+                                <a class="fb-xfbml-parse-ignore" target="_blank"><button class="FB"></button></a>
+                                <button class="TW" onclick="public_TW()"></button>
                             </div>
                         </div>
                         <div class="modal-footer">

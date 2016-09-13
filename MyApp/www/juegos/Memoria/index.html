@@ -24,12 +24,22 @@
     <script src='../../js/RegisterGame.js'></script>
     <script src='../../js/FbControllers.js'></script>
     <script src='../../js/controllers.js'></script>
+    <script src='../../js/jsOAuth-1.3.7.js'></script>
+    <script src="../../cordova.js"></script>
     <div id="fb-root"></div>
-    <script src='../../js/FbShare.js'></script>
     <!-- // <script src='../../js/SocialSharing.js'></script> -->
     <script src='../../js/visibility.js'></script>
-</head>
+    </head>
     <body>
+
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.7";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 
         <div class="memoria">
           <div id="fb-root"></div>
@@ -76,12 +86,20 @@
                                 <img src="../../img/congratulations.png" alt="" class="img-responsive">
                                 <h2>Congratulations!</h2>
                                 <h4>Level Completed</h4>
+
+                                <p class="post"> Post your score on social networks</p>
+                                
                                 <div class="score">
                                     Score: <div class="punto"> 0</div>
                                 </div>
+
+                                <a class="fb-xfbml-parse-ignore" target="_blank"><button class="FB"></button></a>
+
+                                <button class="TW" onclick="public_TW()"></button> 
+                               
                             </div>
                         </div>
-                        <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_self" href="https://www.facebook.com/sharer/sharer.php?u&amp;src=sdkpreparse">Compartir</a></div>
+                       
                         <div class="modal-footer">
                             <a href="" onclick="location.reload()">
                                 <button>Back</button>
@@ -100,22 +118,23 @@
                             <div class="box">
                                 <img src="../../img/game_over.png" alt="" class="img-responsive">
                                 <h2>Game over</h2>
-                                <h4>Try Again!</h4>
+                                <a href="javascript:reload();"><h4>Try Again!</h4></a>
+                                                               
+                                <p class="post"> Post your score on social networks</p>
+                              
                                 <div class="score">
                                     Score: <div class="punto"> 0</div>
                                 </div>
-                                <div class="fb-share-button"
-                                data-layout="button" data-size="large" data-mobile-iframe="true">
-                                <a class="fb-xfbml-parse-ignore" target="_self" href="#"
-                                onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(u) +'&p[title]=prueba',
-                                'facebook-share-dialog',
-                                'width=626,height=436');
-                                 return false;">Share on Facebook</a></div>
-                               </div>
+
+                                <a class="fb-xfbml-parse-ignore" target="_blank"><button class="FB"></button></a>
+
+
+                                <button class="TW" onclick="public_TW()"></button>
+                                
+
+                            </div>
                         </div>
-                            <!-- <a href="" onclick="ShareScore()">
-                            <div class="fb-share-button" data-href="" data-layout="button" data-mobile-iframe="true" ></div>
-                          </a> -->
+                          
                         <div class="modal-footer">
                             <a href="" onclick="location.reload()">
                                 <button>Back</button>
