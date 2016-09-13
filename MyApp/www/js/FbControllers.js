@@ -30,6 +30,8 @@ var u= "http://angelgame.acostasite.com/Game/"; //Url del juego
 
 //  Uncomment the line below to store the Facebook token in localStorage instead of sessionStorage
 // openFB.init({appId: '{MY-appId}', tokenStore: window.localStorage});
+
+
 openFB.init({appId: '1584007955262478', tokenStore: window.localStorage});
 
 function login() {
@@ -102,74 +104,14 @@ function getInfo() {
 
  }else if(localStorage.getItem("method")==2){
 
-     oauth.get('https://api.twitter.com/1.1/account/verify_credentials.json?skip_status=true',
-              function(data) {
-                
-                
-                
-                 var entry = JSON.parse(data.text);
-                
-                 var info3 = { "name" : "", "lastName"  : "", "email" : "", "id" : "","username" : "", "method":"" };
-                
-                 info3.email = entry.screen_name + "@twitter.com";
+    document.getElementById("userName").innerHTML = localStorage.getItem('entry.name');
+
+    document.getElementById("userPic").src='https://twitter.com/'+localStorage.getItem('entry.screen_name')+'/profile_image?size=normal';
                  
-                 document.getElementById("userName").innerHTML = entry.name;
-
-                 document.getElementById("userPic").src='https://twitter.com/'+entry.screen_name+'/profile_image?size=normal';
-                 
-                //document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=normal';
-                //alert(data.id);
-                // Name and lastname
-                // Nombre y apellido
-                    var username = entry.name;
-                  // Name and lastname
-                      // Nombre y apellido
-                           var strName = username.split(' ');
-                           var name = '';
-                           var lstName = '';
-                           switch (strName.length)
-                           {
-                               case 1:
-                                   name = strName[0];
-                                   break;
-                               case 2:
-                                   name = strName[0];
-                                   lstName = strName[1];
-                                   break;
-                               case 3:
-                                   name = strName[0] + " " + strName[1];
-                                   lstName = strName[2];
-                                   break;
-                               default:
-                                   name = strName[0] + " " + strName[1];
-                                   lstName = strName[2] + " " + strName[3];
-                                   break;
-                           }
-
-                    info3.lastName = lstName;
-
-                    info3.name = name;
-
-                    info3.username = entry.screen_name;
-  
-                    info3.email = entry.id_str+"@twitter.com";
-                  
-                    info3.id = entry.id_str;
-
-                    info3.method=2;
-
-                    var uid = Register(info3);
-              },
-              function(data) { 
-                alert('Error getting user credentials'); 
-                console.log("AppLaudLog: Error " + data); 
-              }
-          );                                         
-         
-
  }
 
 }
+
 
 function share() {
    openFB.api({
@@ -206,15 +148,27 @@ function revoke() {
 function logout() {
    openFB.logout(
            function() {
-              $('#userName').text("");
-              $('#userPic').removeAttr("src");
-              localStorage.clear();// Limpia el localStorage
+               $('#userName').text("");
+               $('#userPic').removeAttr("src");
+               localStorage.removeItem('UserId');
+               localStorage.removeItem('method');
+               localStorage.removeItem('entry.name');
+               localStorage.removeItem('entry.screen_name');
+               localStorage.removeItem('close');// Limpia el localStorage
+               Authentication();
               sesion();
            },
            errorHandler);
     $('.Login').show();
+
+    $('#InfoModal').modal('show');
 }
+
+
 
 function errorHandler(error) {
    alert(error.message);
 }
+
+
+
