@@ -49,17 +49,20 @@ var questions = [{
    
 var DiscoSpeed=0;
 var PreguntaSpeed=0;
+var nivel=0;
 
 function Level(){
   $('#level1').click(function(){
     DiscoSpeed= 10000;
     PreguntaSpeed= 9000;
+    nivel=1;
     Timer();
     Questions();
   }) 
   $('#level2').click(function(){
     DiscoSpeed= 7000;
     PreguntaSpeed= 5000;
+    nivel=3;
     Timer();
     Questions();
   })
@@ -129,6 +132,10 @@ function Timer(){
 
     //document.getElementById('contratiempo').innerHTML = "Se acabo el tiempo";
     clearInterval(interval);
+
+    $('.punto').text(contador);
+
+    ShareScore();
   }
 
   }, 1000);
@@ -249,10 +256,13 @@ function comparacion(random_q, globo){
   //Compara las respuestas correctas e incorrectas 
 
   if(pregunta_actual == "Teredo"){
+
     if(globo_selec == "2001::/32"){
+
       $(globo).stop().css('opacity','0');
       contador = contador + 5;
       $('#punto').text(contador);
+
       $('.answer i').removeClass();
       $('.answer i').addClass('fa fa-check')
       $('.answer i').css({
@@ -603,6 +613,8 @@ function comparacion(random_q, globo){
     $('.ballonsBox').stop().css('opacity','0');    
     $('#WinModal').modal('show');
     $('#contratiempo').remove();
+    $('.punto').text(contador);
+    ShareScore();
   }
 
 };
@@ -610,10 +622,40 @@ function comparacion(random_q, globo){
 
 $(document).ready(function(){
 
-  $('#levelModal').modal('show');
-  $('#levelModal .modal-body button').click(function(){
+  if(localStorage.getItem("intentar")==1 || localStorage.getItem("intentar")==3 ) 
+  {
+
     $('#levelModal').modal('hide');
-  })
+
+    if(localStorage.getItem("intentar")==1){
+
+       DiscoSpeed= 10000;
+       PreguntaSpeed= 9000;
+       nivel=1;
+       Timer();
+       Questions();
+
+    }else if(localStorage.getItem("intentar")==3){
+
+      DiscoSpeed= 7000;
+      PreguntaSpeed= 5000;
+      nivel=3;
+      Timer();
+      Questions();
+    }
+
+    localStorage.removeItem('intentar');
+
+  }else{
+
+    $('#levelModal').modal('show');
+    $('#levelModal .modal-body button').click(function(){
+      $('#levelModal').modal('hide');
+    });
+
+    Level();
+  }
+ 
 
   /*-------------------------------------*/
   var w_width = $(window).innerWidth();
@@ -631,7 +673,79 @@ $(document).ready(function(){
   /*-------------------------------------*/
   /*Funciones que se ejecutan en el ready*/
   /*-------------------------------------*/
-  Level();
+  
   PlayMusic(window.localStorage.getItem('audio'));
 
 })
+
+
+function ShareScore(){
+
+  var infogame = { "UserId":localStorage.getItem("UserId"), "GameId":2, "TopicId" :2, "levelId" :nivel,"Score":contador};
+
+  var uid = RegisterGame(infogame);
+
+  public_FB();
+}
+
+function public_TW(){
+
+  var level='';
+
+  switch(nivel) {
+      case 1:
+
+      level='EASY';
+      break;
+    case 2:
+
+      level='MEDIUM';
+
+      break;
+
+    case 3:
+              
+      level='HARD';
+
+      break;
+  }
+
+  var msj="GAME: FlYLING DISCS  TOPIC:IPv6  NEVEL: "+level+" POINTS: "+contador;
+
+  loginGame(msj);
+}
+
+function public_FB(){
+
+  var level='';
+
+  switch(nivel) {
+      case 1:
+
+      level='EASY';
+      break;
+    case 2:
+
+      level='MEDIUM';
+
+      break;
+
+    case 3:
+              
+      level='HARD';
+
+      break;
+  }
+
+  var msj="GAME: FlYLING DISCS  TOPIC:IPv6  NEVEL: "+level+" POINTS: "+contador;
+
+   $(".fb-xfbml-parse-ignore").attr("href","https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fangelgame.acostasite.com%2FGame%2FPublic.php?description="+msj+"&method=1&amp;src=sdkpreparse");
+}
+
+
+function reload(){
+
+  localStorage.setItem('intentar', nivel);
+
+  location.reload();
+}

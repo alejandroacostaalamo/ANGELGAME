@@ -22,12 +22,42 @@
   var level=0;
   var timeLevel= 0;
   var punto = 0;
-  var selecLevel1= false;
-  var selecLevel2= false;
-  var selecLevel3= false;
+  var nivel=0;
 
 $(document).ready(function(){
-  Level();
+  if(localStorage.getItem("intentar")==1 || localStorage.getItem("intentar")==2 || localStorage.getItem("intentar")==3 ) 
+  {
+
+    $('#levelModal').modal('hide');
+
+    if(localStorage.getItem("intentar")==1){
+
+       nivel= 1;
+       timeLevel = 40;
+       PlayGame();
+       Timer();
+
+    }else if(localStorage.getItem("intentar")==2){
+
+       nivel= 2;
+       timeLevel = 70;
+       PlayGame();
+       Timer();
+
+    }else if(localStorage.getItem("intentar")==3){
+
+      nivel=3;
+      timeLevel = 100;
+      LevelHard();
+      Timer();
+    }
+
+    localStorage.removeItem('intentar');
+
+  }else{
+
+    Level();
+  }
 });//Fin de ready
 
 
@@ -37,13 +67,12 @@ function Level(){
     //Nivel uno aparecen 12 cartas
   $('#level1').click(function(){
      nivel= 1;
-     timeLevel = 20;
+     timeLevel = 40;
      $('#level1').remove();
      $('#level2').remove();
      $('#level3').remove();
      PlayGame();
      Timer();
-     selecLevel1 = true;
   });
     //Nivel dos aparecen 16 cartas
   $('#level2').click(function(){
@@ -54,56 +83,111 @@ function Level(){
      $('#level3').remove();
      PlayGame();
      Timer();
-     selecLevel2 = true;
   });
     //Nivel tres aparecen 24 cartas
   $('#level3').click(function(){
+    nivel=3;
      timeLevel = 100;
      $('#level1').remove();
      $('#level2').remove();
      $('#level3').remove();
      LevelHard();
      Timer();
-     selecLevel3 = true;
   });
 
 }
 
 function EndGame(){
-  // se suman puntos segun el tiempo que tarde para ganar
-  if ($('#contratiempo').text()>50) {
-      punto = punto * 1 + 160;
-     $('.punto').text(punto);
-         //********************************************************************
-   } else if ($('#contratiempo').text()>40 && $('#contratiempo').text()<=50) {
-      punto = punto * 1 + 140;
-   $('.punto').text(punto);
+  
+  if(nivel==1){
 
- } else if ($('#contratiempo').text()>30 && $('#contratiempo').text()<=35) {
-      punto = punto * 1 + 120;
-   $('.punto').text(punto);
+      if ($('#contratiempo').text()>30) {
+          punto = punto + 100;
+          $('.punto').text(punto);
 
- } else if ($('#contratiempo').text()>25 && $('#contratiempo').text()<=30) {
-      punto = punto * 1 + 100;
-   $('.punto').text(punto);
+      } else if ($('#contratiempo').text()>20 && $('#contratiempo').text()<=30) {
+          punto = punto + 60;
+          $('.punto').text(punto);
 
- } else if ($('#contratiempo').text()>20 && $('#contratiempo').text()<=25) {
-      punto = punto * 1 + 80;
-   $('.punto').text(punto);
-         //********************************************************************
+      } else if ($('#contratiempo').text()>10 && $('#contratiempo').text()<=20) {
+          punto = punto + 40;
+          $('.punto').text(punto);
 
-  } else if ($('#contratiempo').text()>10 && $('#contratiempo').text()<=15) {
-      punto = punto * 1 + 60;
-     $('.punto').text(punto);
+        } else if ($('#contratiempo').text()>=0 && $('#contratiempo').text()<=10) {
+          punto = punto + 20;
+          $('.punto').text(punto);
 
-  } else if ($('#contratiempo').text()>5 && $('#contratiempo').text()<=10) {
-      punto = punto * 1 + 40;
-     $('.punto').text(punto);
+      }
 
-   } else if ($('#contratiempo').text()>=0 && $('#contratiempo').text()<=5) {
-      punto = punto * 1 + 20;
-     $('.punto').text(punto);
+    }
 
+  
+    if(nivel==2){
+      
+
+      if ($('#contratiempo').text()>60) {
+          punto = punto + 200;
+          $('.punto').text(punto);
+
+      } else if ($('#contratiempo').text()>50 && $('#contratiempo').text()<=60) {
+          punto = punto + 100;
+          $('.punto').text(punto);
+
+      } else if ($('#contratiempo').text()>30 && $('#contratiempo').text()<=40) {
+          punto = punto + 80;
+          $('.punto').text(punto);
+
+      } else if ($('#contratiempo').text()>20 && $('#contratiempo').text()<=30) {
+          punto = punto + 60;
+          $('.punto').text(punto);
+
+      } else if ($('#contratiempo').text()>10 && $('#contratiempo').text()<=20) {
+          punto = punto + 40;
+          $('.punto').text(punto);
+
+        } else if ($('#contratiempo').text()>=0 && $('#contratiempo').text()<=10) {
+          punto = punto + 20;
+          $('.punto').text(punto);
+      }   
+    }
+
+    if(nivel==3){
+    
+      
+      if ($('#contratiempo').text()>60) {
+          punto = punto + 200;
+          $('.punto').text(punto);
+
+
+      } else if ($('#contratiempo').text()>70 && $('#contratiempo').text()<=80) {
+          punto = punto + 150;
+          $('.punto').text(punto);
+
+      } else if ($('#contratiempo').text()>60 && $('#contratiempo').text()<=70) {
+          punto = punto + 120;
+          $('.punto').text(punto);
+
+      } else if ($('#contratiempo').text()>50 && $('#contratiempo').text()<=60) {
+          punto = punto + 100;
+          $('.punto').text(punto);
+
+      } else if ($('#contratiempo').text()>30 && $('#contratiempo').text()<=40) {
+          punto = punto + 80;
+          $('.punto').text(punto);
+
+      } else if ($('#contratiempo').text()>20 && $('#contratiempo').text()<=30) {
+          punto = punto + 60;
+          $('.punto').text(punto);
+
+      } else if ($('#contratiempo').text()>10 && $('#contratiempo').text()<=20) {
+          punto = punto + 40;
+          $('.punto').text(punto);
+
+        } else if ($('#contratiempo').text()>=0 && $('#contratiempo').text()<=10) {
+          punto = punto + 20;
+          $('.punto').text(punto);
+      }
+    
   }
 }
 
@@ -125,6 +209,7 @@ function Timer(){
    //  //****** Elimina las cajas de respuesta al culminar el tiempo
       $( "#pregunta0,#pregunta1, #pregunta2, #pregunta3, #pregunta4, #pregunta5, #pregunta6, #pregunta7, #pregunta8, #pregunta9, #pregunta10, #pregunta11, #pregunta12, #pregunta13" ).remove();
 
+      ShareScore();
     }
   }
   }, 1000);
@@ -189,16 +274,17 @@ function LevelHard(){
           .addClass( "ui-state-highlight" )//*** Color que se le asigna al Input donde se introduce la caja correcta
           //***** Operador ternario
           .attr( "placeholder", ui['draggable'][0].outerText == "Internet Header LLength" ? "IHT" : ui['draggable'][0].outerText)
-              $('#score').html(function(i, val) { return val*1+5 });//Contador para el puntaje
-              punto = $('#score').text();// Se iguala la variable 'punto' con el contenido del Score
-              $('#' + ui['draggable'][0].id).remove();
+              punto+=5;
+              $('#score').text(punto);
+              $('.punto').text(punto);
+               $('#' + ui['draggable'][0].id).remove();
                 cont= cont + 1;
                 if(cont==11){
                   $('#WinModal').modal('show');
                   EndGame();// llamado a la funcion del puntaje
                   fin=true;
                   Timer();
-
+                  ShareScore();
                 }
       }
 
@@ -282,20 +368,92 @@ function PlayGame(){
             .addClass( "ui-state-highlight" )//*** Color que se le asigna al Input donde se introduce la caja correcta
             //***** Operador ternario
             .attr( "placeholder", ui['draggable'][0].outerText == "Internet Header LLength" ? "IHT" : ui['draggable'][0].outerText)
-                $('#score').html(function(i, val) { return val*1+5 });//Contador para el puntaje
-                punto = $('#score').text();// Se iguala la variable 'punto' con el contenido del Score
-                cont= cont - 1;
-                $('#' + ui['draggable'][0].id).remove();
+              punto+=5;
+              $('#score').text(punto);
+              $('.punto').text(punto);
+              cont= cont - 1;
+              $('#' + ui['draggable'][0].id).remove();
                 if(cont==0){
                   $('#WinModal').modal('show');
                   EndGame();// llamado a la funcion del puntaje
                   fin=true;
                   Timer();
-
+                  ShareScore();
                 }
         }
 
       });
     }
   //**********   /Valida Cajas Respuesta
+}
+
+
+function ShareScore(){
+
+  var infogame = { "UserId":localStorage.getItem("UserId"), "GameId":3, "TopicId" :3, "levelId" :nivel,"Score":punto};
+
+  var uid = RegisterGame(infogame);
+
+  public_FB();
+}
+
+function public_TW(){
+
+  var level='';
+
+  switch(nivel) {
+      case 1:
+
+      level='EASY';
+      break;
+    case 2:
+
+      level='MEDIUM';
+
+      break;
+
+    case 3:
+              
+      level='HARD';
+
+      break;
+  }
+
+  var msj="GAME: DRAG  TOPIC:TCP  NEVEL: "+level+" POINTS: "+punto;
+
+  loginGame(msj);
+}
+
+function public_FB(){
+
+  var level='';
+
+  switch(nivel) {
+      case 1:
+
+      level='EASY';
+      break;
+    case 2:
+
+      level='MEDIUM';
+
+      break;
+
+    case 3:
+              
+      level='HARD';
+
+      break;
+  }
+
+  var msj="GAME: DRAG  TOPIC:TCP  NEVEL: "+level+" POINTS: "+punto;
+
+  $(".fb-xfbml-parse-ignore").attr("href","https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fangelgame.acostasite.com%2FGame%2FPublic.php?description="+msj+"&method=1&amp;src=sdkpreparse");
+}
+
+function reload(){
+
+  localStorage.setItem('intentar', nivel);
+
+  location.reload();
 }

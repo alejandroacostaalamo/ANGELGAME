@@ -29,7 +29,40 @@
 
 $(document).ready(function(){
 
-  Level();
+  if(localStorage.getItem("intentar")==1 || localStorage.getItem("intentar")==2 || localStorage.getItem("intentar")==3 ) 
+  {
+
+    $('#levelModal').modal('hide');
+
+    if(localStorage.getItem("intentar")==1){
+
+       nivel= 1;
+       timeLevel = 40;
+       PlayGame();
+       Timer();
+
+    }else if(localStorage.getItem("intentar")==2){
+
+       nivel= 2;
+       timeLevel = 70;
+       PlayGame();
+       Timer();
+
+    }else if(localStorage.getItem("intentar")==3){
+
+      nivel=3;
+      timeLevel = 100;
+      LevelHard();
+      Timer();
+    }
+
+    localStorage.removeItem('intentar');
+
+  }else{
+
+    Level();
+  }
+
 });//Fin de ready
 
 
@@ -266,9 +299,8 @@ function LevelHard(){
               punto+=5;
               $('#score').text(punto);
               $('.punto').text(punto);
+              $('#' + ui['draggable'][0].id).remove();
               cont= cont + 1;
-              console.log(cont);
-
               if(cont==8){
                 $('#WinModal').modal('show');
                 EndGame();// llamado a la funcion del puntaje
@@ -388,5 +420,70 @@ function ShareScore(){
   var infogame = { "UserId":localStorage.getItem("UserId"), "GameId":3, "TopicId" :1, "levelId" :nivel,"Score":punto};
 
   var uid = RegisterGame(infogame);
+
+  public_FB();
 }
 
+
+function public_TW(){
+
+  var level='';
+
+  switch(nivel) {
+      case 1:
+
+      level='EASY';
+      break;
+    case 2:
+
+      level='MEDIUM';
+
+      break;
+
+    case 3:
+              
+      level='HARD';
+
+      break;
+  }
+
+  var msj="GAME: DRAG  TOPIC:IPv4  NEVEL: "+level+" POINTS: "+punto;
+
+  loginGame(msj);
+}
+
+
+function public_FB(){
+
+  var level='';
+
+  switch(nivel) {
+      case 1:
+
+      level='EASY';
+      break;
+    case 2:
+
+      level='MEDIUM';
+
+      break;
+
+    case 3:
+              
+      level='HARD';
+
+      break;
+  }
+
+  var msj="GAME: DRAG  TOPIC:IPv4  NEVEL: "+level+" POINTS: "+punto;
+
+  $(".fb-xfbml-parse-ignore").attr("href","https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fangelgame.acostasite.com%2FGame%2FPublic.php?description="+msj+"&method=1&amp;src=sdkpreparse");
+}
+
+
+function reload(){
+
+  localStorage.setItem('intentar', nivel);
+
+  location.reload();
+}

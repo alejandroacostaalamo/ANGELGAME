@@ -1,35 +1,94 @@
 var audioElement = document.createElement('audio');
 
-var questions = [{
-  descrip: "Loopback",
-  choices: ["127.0.0.1","127.1.0.0","0.0.0.1/1","127.127.0/1","255.0.0.1","127.27.27.0"],
-  correctAnswer: "127.0.0.1",
-  color: "#F7FF06"
-}, {
-  descrip: "Ruta por defecto",
-  choices: ["0.0.0.11","0.0.0.0","124.0.1.0","0.0.0","0.0.1.1","0.0.0.0/124"],
-  correctAnswer: "0.0.0.0",
-  color: "#E606FF"
-}, {
-  descrip: "Multicast",
-  choices: ["224.0.0.0","239.0.0.255","224.0.0.0/1","255.255.255.255","255.0.0.0","224.0.0.255"],
-  correctAnswer: ["224.0.0.0", "239.255.255.255"],
-  color: "#FFFFFF"
-}, {
-  descrip: "Direccion Privada",
-  choices: ["10.127.0.0","172.0.0.0","168.10.0.1","192.168.0.0/16","10.0.0.0/8","172.16.0.0/12"],
-  correctAnswer: ["10.0.0.0/8","172.16.0.0/12","192.168.0.0/16"],
-  color: "#60FF00"
-}]; 
+
+if(localStorage.getItem("language")==1)
+{
+
+    var questions = [{
+    descrip: "Bucle de retorno",
+    choices: ["127.0.0.1","127.1.0.0","0.0.0.1/1","127.127.0/1","255.0.0.1","127.27.27.0"],
+    correctAnswer: "127.0.0.1",
+    color: "#F7FF06"
+     }, {
+    descrip: "Ruta por defecto",
+    choices: ["0.0.0.11","0.0.0.0","124.0.1.0","0.0.0","0.0.1.1","0.0.0.0/124"],
+    correctAnswer: "0.0.0.0",
+    color: "#E606FF"
+    }, {
+    descrip: "Multidifusión",
+    choices: ["224.0.0.0","239.0.0.255","224.0.0.0/1","255.255.255.255","255.0.0.0","224.0.0.255"],
+    correctAnswer: ["224.0.0.0", "239.255.255.255"],
+    color: "#FFFFFF"
+    }, {
+    descrip: "Direccion Privada",
+    choices: ["10.127.0.0","172.0.0.0","168.10.0.1","192.168.0.0/16","10.0.0.0/8","172.16.0.0/12"],
+    correctAnswer: ["10.0.0.0/8","172.16.0.0/12","192.168.0.0/16"],
+    color: "#60FF00"
+    }]; 
+
+
+
+}else if(localStorage.getItem("language")==2){
+
+    var questions = [{
+    descrip: "Loopback",
+    choices: ["127.0.0.1","127.1.0.0","0.0.0.1/1","127.127.0/1","255.0.0.1","127.27.27.0"],
+    correctAnswer: "127.0.0.1",
+    color: "#F7FF06"
+     }, {
+    descrip: "Default route",
+    choices: ["0.0.0.11","0.0.0.0","124.0.1.0","0.0.0","0.0.1.1","0.0.0.0/124"],
+    correctAnswer: "0.0.0.0",
+    color: "#E606FF"
+    }, {
+    descrip: "Multicast",
+    choices: ["224.0.0.0","239.0.0.255","224.0.0.0/1","255.255.255.255","255.0.0.0","224.0.0.255"],
+    correctAnswer: ["224.0.0.0", "239.255.255.255"],
+    color: "#FFFFFF"
+    }, {
+    descrip: "Private address",
+    choices: ["10.127.0.0","172.0.0.0","168.10.0.1","192.168.0.0/16","10.0.0.0/8","172.16.0.0/12"],
+    correctAnswer: ["10.0.0.0/8","172.16.0.0/12","192.168.0.0/16"],
+    color: "#60FF00"
+    }]; 
+
+}else if(localStorage.getItem("language")==3){
+
+    var questions = [{
+    descrip: "Loopback",
+    choices: ["127.0.0.1","127.1.0.0","0.0.0.1/1","127.127.0/1","255.0.0.1","127.27.27.0"],
+    correctAnswer: "127.0.0.1",
+    color: "#F7FF06"
+     }, {
+    descrip: "Rota padrão",
+    choices: ["0.0.0.11","0.0.0.0","124.0.1.0","0.0.0","0.0.1.1","0.0.0.0/124"],
+    correctAnswer: "0.0.0.0",
+    color: "#E606FF"
+    }, {
+    descrip: "Multicast",
+    choices: ["224.0.0.0","239.0.0.255","224.0.0.0/1","255.255.255.255","255.0.0.0","224.0.0.255"],
+    correctAnswer: ["224.0.0.0", "239.255.255.255"],
+    color: "#FFFFFF"
+    }, {
+    descrip: "endereço privado",
+    choices: ["10.127.0.0","172.0.0.0","168.10.0.1","192.168.0.0/16","10.0.0.0/8","172.16.0.0/12"],
+    correctAnswer: ["10.0.0.0/8","172.16.0.0/12","192.168.0.0/16"],
+    color: "#60FF00"
+    }]; 
+}
+
+
 var DiscoSpeed=0;
 var PreguntaSpeed=0;
 var timeLevel=0;
+var nivel=0;
 
 function Level(){
   $('#level1').click(function(){
     DiscoSpeed= 14000;
     PreguntaSpeed= 11000;
     timeLevel = 55;
+    nivel=1;
     Timer();
     Questions();
   }) 
@@ -37,6 +96,7 @@ function Level(){
     DiscoSpeed= 10000;
     PreguntaSpeed= 8000;
     timeLevel = 64;
+    nivel=3;
     Timer();
     Questions();
   })
@@ -118,6 +178,12 @@ function Timer(){
 
     //document.getElementById('contratiempo').innerHTML = "Se acabo el tiempo";
     clearInterval(interval);
+
+    $('.punto').text(contador);
+
+    ShareScore();
+
+
   }
 
   }, 1000);
@@ -208,6 +274,7 @@ function Questions(){
         if(count == cantidad_opciones){
           count = 0;
           isFinish = true;
+
         }
     }
 
@@ -296,10 +363,9 @@ function comparacion(random_q, globo){
       },500);
     }
 
-
-
-
   }
+
+  
   if(pregunta_actual == "Loopback"){
     if(globo_selec == "127.0.0.1"){
       $(globo).stop().css('opacity','0');
@@ -340,6 +406,8 @@ function comparacion(random_q, globo){
 
     }
   }
+
+
   if(pregunta_actual == "Ruta por defecto"){
     if(globo_selec == "0.0.0.0"){
       $(globo).stop().css('opacity','0');
@@ -379,6 +447,8 @@ function comparacion(random_q, globo){
       },500);
     }
   }
+
+
   if(pregunta_actual == "Direccion Privada"){
     if(globo_selec == "10.0.0.0/8"){
       $(globo).stop().css('opacity','0');
@@ -451,10 +521,12 @@ function comparacion(random_q, globo){
 
     //Alerta de partida finalizada
   if (contador==35) {
+   
     $('.ballonsBox').stop().css('opacity','0');    
     $('#WinModal').modal('show');
     $('#contratiempo').remove();
-
+    $('.punto').text(contador);
+    ShareScore();
   }
 
 };
@@ -462,10 +534,42 @@ function comparacion(random_q, globo){
 
 $(document).ready(function(){
 
-  $('#levelModal').modal('show');
-  $('#levelModal .modal-body button').click(function(){
+  if(localStorage.getItem("intentar")==1 || localStorage.getItem("intentar")==3 ) 
+  {
+
     $('#levelModal').modal('hide');
-  })
+
+    if(localStorage.getItem("intentar")==1){
+
+       DiscoSpeed= 14000;
+       PreguntaSpeed= 11000;
+       timeLevel = 55;
+       nivel=1;
+       Timer();
+       Questions();
+
+    }else if(localStorage.getItem("intentar")==3){
+
+      DiscoSpeed= 10000;
+      PreguntaSpeed= 8000;
+      timeLevel = 64;
+      nivel=3;
+      Timer();
+      Questions();
+    }
+
+    localStorage.removeItem('intentar');
+
+  }else{
+
+    $('#levelModal').modal('show');
+    $('#levelModal .modal-body button').click(function(){
+      $('#levelModal').modal('hide');
+    });
+
+    Level();
+  }
+ 
 
   /*-------------------------------------*/
   var w_width = $(window).innerWidth();
@@ -483,8 +587,80 @@ $(document).ready(function(){
   /*-------------------------------------*/
   /*Funciones que se ejecutan en el ready*/
   /*-------------------------------------*/
-  Level();
   PlayMusic(window.localStorage.getItem('audio'));
 
 
-})
+});
+
+function ShareScore(){
+
+  var infogame = { "UserId":localStorage.getItem("UserId"), "GameId":2, "TopicId" :1, "levelId" :nivel,"Score":contador};
+
+  var uid = RegisterGame(infogame);
+
+  public_FB();
+}
+
+
+function public_TW(){
+
+  var level='';
+
+  switch(nivel) {
+      case 1:
+
+      level='EASY';
+      break;
+    case 2:
+
+      level='MEDIUM';
+
+      break;
+
+    case 3:
+              
+      level='HARD';
+
+      break;
+  }
+
+  var msj="GAME: FlYLING DISCS  TOPIC:IPv4  NEVEL: "+level+" POINTS: "+contador;
+
+  loginGame(msj);
+}
+
+function public_FB(){
+
+  var level='';
+
+  switch(nivel) {
+      case 1:
+
+      level='EASY';
+      break;
+    case 2:
+
+      level='MEDIUM';
+
+      break;
+
+    case 3:
+              
+      level='HARD';
+
+      break;
+  }
+
+  var msj="GAME: FlYLING DISCS  TOPIC:IPv4  NEVEL: "+level+" POINTS: "+contador;
+
+  $(".fb-xfbml-parse-ignore").attr("href","https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fangelgame.acostasite.com%2FGame%2FPublic.php?description="+msj+"&method=1&amp;src=sdkpreparse");
+}
+
+
+
+function reload(){
+
+  localStorage.setItem('intentar', nivel);
+
+  location.reload();
+}

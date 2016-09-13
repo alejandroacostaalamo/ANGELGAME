@@ -55,23 +55,7 @@ var fin= false;
 
 var timeLevel = 200;
 
-// function level(){
-// 	$('#level1').click(function(){
-// 		 2= 2;
-// 		 timeLevel = 200;
-// 		 Timer();
-// 	});
-// 	$('#level2').click(function(){
-// 		 2= 4;
-// 		 timeLevel = 200;
-// 		 Timer();
-// 	});
-// 	$('#level3').click(function(){
-// 		 2= 6;
-// 		 timeLevel = 200;
-// 		 Timer();
-// 	});
-// }
+
 function EndGame(){
   if(punto==40){
       $('#WinModal').modal('show');

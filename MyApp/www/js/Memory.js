@@ -61,11 +61,45 @@ $(document).ready(function(){
 		'width':WindowW + 'px'
 	});
 
-	$('#levelModal').modal('show');
-	$('#levelModal .modal-body button').click(function(){
-		$('#levelModal').modal('hide');
-	});
-	Level();
+	if(localStorage.getItem("intentar")==6 || localStorage.getItem("intentar")==8 || localStorage.getItem("intentar")==12 ) 
+	{
+
+		if(localStorage.getItem("intentar")==6){
+
+			 nivel= 6;
+			 nivel1 = nivel;
+			 timeLevel = 40;
+			 StarGame();
+			 Timer();
+
+		}else if(localStorage.getItem("intentar")==8){
+
+			 nivel= 8;
+			 nivel2 = nivel;
+			 timeLevel = 70;
+			 StarGame();
+			 Timer();
+
+		}else if(localStorage.getItem("intentar")==12){
+
+			nivel= 12;
+			nivel3 = nivel;
+			timeLevel = 100;
+			StarGame();
+			Timer();
+		}
+
+		localStorage.removeItem('intentar');
+
+	}else{
+
+		$('#levelModal').modal('show');
+		$('#levelModal .modal-body button').click(function(){
+			$('#levelModal').modal('hide');
+		});
+
+		Level();
+	}
 	// console.log(Timer())
 	// Verifica si esta activo el sonido
 	PlayMusic(window.localStorage.getItem('audio'));
@@ -383,6 +417,10 @@ function ShareScore(){
 	var infogame = { "UserId":localStorage.getItem("UserId"), "GameId":4, "TopicId" :3, "levelId" :level,"Score":punto};
 
 	var uid = RegisterGame(infogame);
+
+	public_FB();
+
+
 }
 
 
@@ -559,3 +597,68 @@ function comparar(id){
 		}
 	}
 }
+
+
+
+function public_TW(){
+
+	var level='';
+
+	switch(nivel) {
+	    case 6:
+
+			level='EASY';
+			break;
+		case 8:
+
+			level='MEDIUM';
+
+			break;
+
+		case 12:
+			        
+			level='HARD';
+
+			break;
+	}
+
+	var msj="GAME: MEMORIA  TOPIC:IPv4  NEVEL: "+level+" POINTS: "+punto;
+
+	loginGame(msj);
+}
+
+
+function public_FB(){
+
+	var level='';
+
+	switch(nivel) {
+	    case 6:
+
+			level='EASY';
+			break;
+		case 8:
+
+			level='MEDIUM';
+
+			break;
+
+		case 12:
+			        
+			level='HARD';
+
+			break;
+	}
+
+	var msj="GAME: MEMORIA  TOPIC:IPv4  NEVEL: "+level+" POINTS: "+punto;
+
+	$(".fb-xfbml-parse-ignore").attr("href","https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fangelgame.acostasite.com%2FGame%2FPublic.php?description="+msj+"&method=1&amp;src=sdkpreparse");
+}
+
+function reload(){
+
+	localStorage.setItem('intentar', nivel);
+
+	location.reload();
+}
+
