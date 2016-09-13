@@ -85,7 +85,9 @@ $(document).ready(function(){
 	// 	}
 	// }, false);
 
-})
+	Authentication();
+
+});
 
 $(window).resize(function(){
 	var WindowW = $(window).innerWidth();
@@ -204,6 +206,7 @@ function sesion(){
 
 	// Si ya inició sesión
 
+
 	if(localStorage.getItem("UserId") != null){
 		$('#InfoModal').modal('hide');
 		// if (localStorage.getItem('sesionIni')== 'false') {
@@ -213,10 +216,158 @@ function sesion(){
 		$('.Login').hide();
 		// $('.BtRegister, .Login').hide();
 	}
-	else{
+	else if(localStorage.getItem("close")==1){
+
+		$('#InfoModal').modal('hide');
+		$('.GetInfo, .Logout').hide();
+		$('.Login').show();
+
+	}else{
 		// $('.BtRegister, .Login').show();
 		$('.Login').show();
 		$('.GetInfo, .Logout').hide();
 		$('#InfoModal').modal('show');
 	}
 }
+
+$('#close').click(function(){
+  
+  localStorage.setItem('close', 1);
+
+});
+
+
+function loguear(){
+
+	$('#settingModal').modal('hide');
+
+    $('#InfoModal').modal('show');
+
+    $('#InfoModal').modal('show');
+}
+
+function ginfo(){
+
+	$('#settingModal').modal('hide');
+
+	$('#UserModal').modal('show');
+  	getInfo();
+}
+
+
+
+function Authentication(){
+
+	$(".authentication_face").remove();
+
+	$(".authentication_twitter").remove();
+
+	$(".authentication_logout").remove();
+
+
+	if(localStorage.getItem("method")==1){
+
+		var opcion2=document.createElement("input");
+
+		opcion2.setAttribute("type","button");
+
+		opcion2.setAttribute("class","authentication_logout");
+
+		if(localStorage.getItem("language")==1){
+
+			opcion2.setAttribute("value","cerrar sesión");
+
+		}else if(localStorage.getItem("language")==2){
+
+			opcion2.setAttribute("value","Logout");
+
+		}else if(localStorage.getItem("language")==3){
+
+			opcion2.setAttribute("value","sair");
+		}
+
+		opcion2.setAttribute("onclick","logout()");
+
+		document.getElementById("setting Authentication").appendChild(opcion2);
+
+		var opcion1=document.createElement("input");
+
+		opcion1.setAttribute("type","button");
+
+		opcion1.setAttribute("class","authentication_face");
+
+		opcion1.setAttribute("value",".");
+
+		opcion1.setAttribute("onclick","ginfo()");
+
+		document.getElementById("setting Authentication").appendChild(opcion1);
+
+	}
+	else if(localStorage.getItem("method")==2){
+
+		var opcion1=document.createElement("input");
+
+		opcion1.setAttribute("type","button");
+
+		opcion1.setAttribute("class","authentication_logout");
+
+		if(localStorage.getItem("language")==1){
+
+			opcion1.setAttribute("value","cerrar sesión");
+
+		}else if(localStorage.getItem("language")==2){
+
+			opcion1.setAttribute("value","Logout");
+
+		}else if(localStorage.getItem("language")==3){
+
+			opcion1.setAttribute("value","sair");
+		}
+
+		opcion1.setAttribute("onclick","logout()");
+
+		document.getElementById("setting Authentication").appendChild(opcion1);
+
+		var opcion2=document.createElement("input");
+
+		opcion2.setAttribute("type","button");
+
+		opcion2.setAttribute("value",".");
+
+		opcion2.setAttribute("onclick","ginfo()");
+
+		opcion2.setAttribute("class","authentication_twitter");
+
+		document.getElementById("setting Authentication").appendChild(opcion2);
+
+	}else{
+
+		var opcion1=document.createElement("input");
+
+		opcion1.setAttribute("type","button");
+
+		opcion1.setAttribute("class","authentication_face");
+
+		opcion1.setAttribute("onclick","login()");
+
+		document.getElementById("setting Authentication").appendChild(opcion1);
+
+		var opcion2=document.createElement("input");
+
+		opcion2.setAttribute("type","button");
+
+		opcion2.setAttribute("class","authentication_twitter");
+
+		opcion2.setAttribute("onclick","loginTwitter()");
+
+		document.getElementById("setting Authentication").appendChild(opcion2);
+
+		$('.authentication_twitter').toggleClass("inactive");
+
+		$('.authentication_face').toggleClass("inactive");
+	}
+}
+
+
+
+
