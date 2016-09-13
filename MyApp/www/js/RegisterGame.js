@@ -11,8 +11,117 @@ function RegisterGame(infogame){
      data: "",
 
      error : function(xhr, status) {
-        alert('Disculpe, existió un problema al registrar Game');
+
+      alert("no se pudieron registrar los datos");
     }
  
   });
+}
+
+
+var options = { 
+
+    consumerKey: 'JrI34FiA1Y63RmKSRImPBFATK',
+    consumerSecret: 'x1sHCguShXRA3YyZhs3tUIT87kDRbiSoi2I6Exwyp1RU6YTlro',
+    callbackUrl: 'http://angelgame.acostasite.com/ApiAngel/Api'
+
+};
+var callbackUrl= 'http://angelgame.acostasite.com/ApiAngel/Api';
+var cb;
+var requestParams;
+
+var mensaje='';
+  
+function loginGame(msj){
+
+  mensaje=msj
+
+  var oauth = OAuth(options);
+  
+  oauth.get('https://api.twitter.com/oauth/request_token',
+  
+        function(data) {
+            requestParams = data.text;
+     
+            cb=window.open('https://api.twitter.com/oauth/authorize?'+data.text, 
+                    { showLocationBar : false });   
+      cb.addEventListener('loadstop', function(loc){
+                                              TwitterGame(loc);
+                                              });         
+        },
+        function(data) { 
+            alert('Error : No Authorization');          
+        }
+  );
+}
+
+function TwitterGame(loc){
+
+  if (!(loc.url.indexOf(callbackUrl) >-1)){
+    return;
+  }
+
+  // If user hit "No, thanks" when asked to authorize access
+  if (loc.url.indexOf(callbackUrl+"/?denied") >= 0) {
+    alert('User declined access');
+    cb.close();   
+    return;
+  }
+
+  // Same as above, but user went to app's homepage instead
+  // of back to app. Don't close the browser in this case.
+  if (loc.url === (callbackUrl+"/")) {
+    alert('User declined access');
+    return;
+  }
+  
+  
+  // The supplied oauth_callback_url for this session is being loaded
+  
+  if (loc.url.indexOf(callbackUrl+"?") >= 0) {
+    
+    var index, verifier = '';   
+    
+    var params = loc.url.substr(loc.url.indexOf('?') + 1);
+    
+    params = params.split('&');
+    
+    for (var i = 0; i < params.length; i++) {
+      
+      var y = params[i].split('=');
+      
+      if(y[0] === 'oauth_verifier') {
+        
+        verifier = y[1];
+      }
+    }
+    
+    var oauth = OAuth(options);
+    oauth.get('https://api.twitter.com/oauth/access_token?oauth_verifier='+verifier+'&'+requestParams,
+        function(data) { 
+
+          var accessParams = {};
+          var qvars_tmp = data.text.split('&');
+          for (var i = 0; i < qvars_tmp.length; i++) {
+            var y = qvars_tmp[i].split('=');
+            accessParams[y[0]] = decodeURIComponent(y[1]);
+          }
+
+          oauth.setAccessToken([accessParams.oauth_token, accessParams.oauth_token_secret]);
+
+            oauth.post('https://api.twitter.com/1.1/statuses/update.json?status='+mensaje,
+            function(data) { 
+
+              alert(data);
+            });
+            cb.close();
+        },function(data) { 
+        alert('Error : No Authorization'); 
+        console.log("AppLaudLog: 1 Error " + data);                             
+      }
+    );
+
+  }
+
+  
 }
