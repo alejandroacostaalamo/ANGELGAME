@@ -34,7 +34,9 @@ function Register(info3){
 
      	localStorage.setItem('UserId', registrado);
 
-     	localStorage.setItem('method', 2);
+     	localStorage.setItem('method', info3.method);
+
+     	Authentication();
 
      	sesion();
 
@@ -76,7 +78,6 @@ function Profile(){
             alert(data.user[0]);
             localStorage.setItem('sesionIni', 'true');
           }else {
-            alert('Usuario No existe');
             // localStorage.setItem('sesionIni', 'false');
             $('#UserModal').modal('show', getInfo());
           }
@@ -110,8 +111,8 @@ var requestParams;
 
 
 
-
 function loginTwitter() {
+	
 	var oauth = OAuth(options);
 	
 	oauth.get('https://api.twitter.com/oauth/request_token',
@@ -123,6 +124,7 @@ function loginTwitter() {
                     { showLocationBar : false });   
 			cb.addEventListener('loadstop', function(loc){
                                               TwitterSuccess(loc);
+
                                               });					
         },
         function(data) { 
@@ -213,10 +215,14 @@ function TwitterSuccess(loc){
 							   var info3 = { "name" : "", "lastName"  : "", "email" : "", "id" : "","username" : "", "method":"" };
 								
 							   info3.email = entry.screen_name + "@twitter.com";
+
+							   localStorage.setItem('entry.name', entry.name);
+
+							   localStorage.setItem('entry.screen_name',entry.screen_name);
 							   
 							   document.getElementById("userName").innerHTML = entry.name;
 
-							   document.getElementById("userPic").src='https://twitter.com/'+entry.screen_name+'/profile_image?size=normal';
+							   document.getElementById("userPic").src='https://twitter.com/1.1/'+entry.screen_name+'/?size=normal';
 							   
 							  //document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=normal';
 							  //alert(data.id);
@@ -262,7 +268,7 @@ function TwitterSuccess(loc){
 								  	var uid = Register(info3);
 
 								  	
-                   				
+                   					
 
 							},
 							function(data) { 
