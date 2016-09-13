@@ -11,6 +11,12 @@
     <link rel="icon" href="favicon.ico" type="img/fv-icon.png"/>
   </head>
 
+  <script type="text/javascript">
+    
+    localStorage.setItem('language', 2);
+
+  </script>
+
   <body>
     <div class="index">
       <div class="UserPanel">
@@ -35,7 +41,7 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" id="close" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
@@ -175,6 +181,33 @@
                       </li>
                     </ul>
                   </li>
+
+                  <li class="but">
+                    <div class="title">
+                      <h3>Output interpreter <i class="fa fa-angle-down"></i></h3>
+                      <a href="juegos/trivia/index.html">
+                        <p class="animate">
+                          <span>Play it</span>
+                        </p>
+                        <i class="fa fa-play-circle"></i>
+                      </a href="">
+                    </div>
+                    <ul class="detail" >
+                      <li>
+                        <div class="col-img">
+                          <img class="img-responsive" src="img/fondoTrivia.png">
+                        </div>
+                        <div class="col-text">
+                         <!-- <h5>LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT</h5> -->
+                          <p>
+                            
+                            The goal is to answer questions regarding the output of various commands one more way to test your knowledge .
+                          </p>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+
                 </ul>
 
               </div>
@@ -196,7 +229,7 @@
             </div>
             <div class="modal-body">
                 <div>
-                <div class="col-xs-12">
+                <div class="col-xs-13">
 
                 </div>
                   <h3>Music</h3>
@@ -215,25 +248,35 @@
                <div>
                   <h3>Language</h3>
                 <div class="setting language">
-                  <a href="index-es.html"><span class="spanish "  onclick="Index(1)">Spanish </span></a>
-                  <a href="index.html"><span class="english active" onclick="Index(0)"> English</span></a>
-                  <a href="index-por.html"><span class="english " onclick="Index(2)"> Portuguese</span></a>
+                  <a href="javascript:traduc(1)" ><span class="spanish "  onclick="Index(1)">Spanish </span></a>
+                  <a href="javascript:traduc(2)"><span class="english active" onclick="Index(0)"> English</span></a>
+                  <a href="javascript:traduc(3)"><span class="english " onclick="Index(2)"> Portuguese</span></a>
                 </div>
                </div>
+
+              <div>
+                  <h3>Authentication</h3>
+                  
+              </div>
+
+              <div class="caja">
+                  <div id="setting Authentication"></div>
+              </div>
 
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
               <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
             </div>
-          </div>
+
         </div>
       </div>
+    </div>
 
       <!-- Modal -->
       <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
+          <div class="modal-content" style=>
             <div class="modal-header">
               <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
               <h4 class="modal-title" id="aboutModalLabel">ABOUT</h4>
@@ -299,13 +342,19 @@
           <script src="cordova.js"></script>
           <script src='js/openfb.js'></script>
           <script src='js/FbControllers.js'></script>
-		      <script src='js/jsOAuth-1.3.7.js'></script>
+          <script src='js/jsOAuth-1.3.7.js'></script>
           <!-- <script src='js/FbControllersBrowser.js'></script> -->
           <!-- <script src='js/loginFb.js'></script> -->
           <script src='js/controllers.js'></script>
+          <script src='js/Language.js'></script>
           <!-- // <script src='js/SocialSharing.js'></script> -->
           <!-- // <script src="sounds/sound.js"></script> -->
         </footer>
     </div>
   </body>
 </html>
+
+
+
+
+
