@@ -432,7 +432,9 @@ function public_TW(){
 
   var msj="GAME: DRAG  TOPIC:DNS  NEVEL: "+level+" POINTS: "+punto;
 
-  loginGame(msj);
+  var src='http://angelgame.acostasite.com/Game/img/drag_img.png';
+
+  loginGame(msj,src);
 }
 
 
@@ -470,3 +472,5 @@ function reload(){
 
   location.reload();
 }
+
+

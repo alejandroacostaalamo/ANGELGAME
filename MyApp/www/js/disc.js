@@ -626,7 +626,9 @@ function public_TW(){
 
   var msj="GAME: FlYLING DISCS  TOPIC:IPv4  NEVEL: "+level+" POINTS: "+contador;
 
-  loginGame(msj);
+  var src='http://angelgame.acostasite.com/Game/img/disco.png';
+
+  loginGame(msj,src);
 }
 
 function public_FB(){

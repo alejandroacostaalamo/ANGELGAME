@@ -624,7 +624,10 @@ function public_TW(){
 
 	var msj="GAME: MEMORIA  TOPIC:IPv4  NEVEL: "+level+" POINTS: "+punto;
 
-	loginGame(msj);
+	var src='http://angelgame.acostasite.com/Game/img/memory_img.png';
+
+	loginGame(msj,src);
+
 }
 
 

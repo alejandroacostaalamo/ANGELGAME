@@ -2,6 +2,8 @@ function RegisterGame(infogame){
  
  // llamado al servicio score para guardar informacion del juego
 
+
+
   $.ajax({
      type: "POST",
      url:"http://angelgame.acostasite.com/ApiAngel/Api/score/" +infogame.UserId+ "/" +infogame.GameId+ "/" +infogame.TopicId + "/" + infogame.levelId + "/" +infogame.Score+".json",
@@ -19,6 +21,7 @@ function RegisterGame(infogame){
 }
 
 
+
 var options = { 
 
     consumerKey: 'JrI34FiA1Y63RmKSRImPBFATK',
@@ -31,10 +34,16 @@ var cb;
 var requestParams;
 
 var mensaje='';
-  
-function loginGame(msj){
 
-  mensaje=msj
+var link='';
+
+var dir='https://angelgame.acostasite.com/Game/';
+  
+function loginGame(msj,src){
+
+  mensaje=msj;
+
+  link=src;
 
   var oauth = OAuth(options);
   
@@ -97,6 +106,7 @@ function TwitterGame(loc){
     }
     
     var oauth = OAuth(options);
+
     oauth.get('https://api.twitter.com/oauth/access_token?oauth_verifier='+verifier+'&'+requestParams,
         function(data) { 
 
@@ -107,14 +117,17 @@ function TwitterGame(loc){
             accessParams[y[0]] = decodeURIComponent(y[1]);
           }
 
-          oauth.setAccessToken([accessParams.oauth_token, accessParams.oauth_token_secret]);
+         oauth.setAccessToken([accessParams.oauth_token, accessParams.oauth_token_secret]);
 
-            oauth.post('https://api.twitter.com/1.1/statuses/update.json?status='+mensaje,
+            oauth.post('https://api.twitter.com/1.1/statuses/update.json?status='+mensaje+' '+dir,
             function(data) { 
 
               alert(data);
             });
             cb.close();
+
+            succesPublic(mensaje,link);
+            
         },function(data) { 
         alert('Error : No Authorization'); 
         console.log("AppLaudLog: 1 Error " + data);                             
@@ -124,4 +137,18 @@ function TwitterGame(loc){
   }
 
   
+}
+
+
+function succesPublic(description,src){
+
+  var modal='<div class="modal fade" id="public_twitter" style="z-index:7000;" role="dialog" aria-labelledby="basicModal" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h3>Its publication was a success</h3></div><div class="modal-body row"><div id="img" class="container col-xs-12 col-md-4"></div><div class="container col-xs-12 col-md-8"><h4 id="description"></h4></div></div><div class="modal-footer"><a href="#" data-dismiss="modal"><button>Ok</button></a></div></div></div></div>';
+
+  $( "body" ).append(modal);
+
+  $("#description").append(description);
+
+  $("#img").append('<img src="'+src+'" class="img-responsive" style="width:250px;height:250px">');
+
+  $("#public_twitter").modal("show");
 }

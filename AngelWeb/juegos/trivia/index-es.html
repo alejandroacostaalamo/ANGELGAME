@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Trivia</title>
+
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link rel="stylesheet" type="shortcut icon" href="" type="image/x-icon">
+
+	<link rel="stylesheet" type="text/css" href="css/Trivia.css">
+
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+
+	<script src='../../js/jquery.min.js'></script>
+
+	<script src="js/Trivia.js"></script>
+
+	<script src="js/modernizr.js"></script>
+
+	<script src='../../js/openfb.js'></script>
+
+	<script src='../../js/jsOAuth-1.3.7.js'></script>
+
+	<script src='../../js/RegisterGame.js'></script>
+
+    <script src='../../js/FbControllers.js'></script>
+
+    <script src='../../js/controllers.js'></script>
+
+</head>
+<body >
+
+	<script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.7";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+	<div id="message" style="visibility:hidden">
+		
+		<div id="content">
+
+
+		</div>
+
+	</div>
+
+	<div id="bloquear"></div>
+
+	<div id="menu">
+
+		<div id='score'>
+			
+			<center>
+
+				Puntos <div id='puntos' >0</div>
+
+			</center>
+
+		</div>
+
+		<div id='times'>
+			
+			<center>
+
+				Tiempo <div id='time' >200</div>
+
+			</center>
+
+		</div>
+
+	</div>
+
+	<div id='command'>
+
+		<p id='presentation'>Comando:</p>
+
+		<p id='commandQuestion'></p>
+		
+	</div>
+
+	<br>
+
+	<div id='Question'>
+
+		<p class="prs" id='presentation'>Pregunta 1:</p>
+
+		<p id='titleQuestion'></p>
+
+		<div id='Questions'>
+			
+
+		</div>
+
+	</div>
+
+	<a href="" onclick="history.back()"><div id="exit">Salir</div></a>
+	
+</body>
+</html>

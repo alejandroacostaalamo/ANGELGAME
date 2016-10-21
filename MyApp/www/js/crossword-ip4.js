@@ -834,7 +834,9 @@ function public_TW(){
 
   var msj="GAME: CROSSWORD  TOPIC:IPv4  POINTS: "+punto;
 
-  loginGame(msj);
+  var src='http://angelgame.acostasite.com/Game/img/crucigrama_img.PNG';
+
+  loginGame(msj,src);
 }
 
 function validar(){

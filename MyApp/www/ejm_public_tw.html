@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>OpenFB Sample</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="ratchet.css">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
+<div class="content content-padded">
+
+<button class="btn btn-block" onclick="login()">Login with Twitter</button>
+
+</div>
+<script src="cordova.js"></script>
+<script src='js/jsOAuth-1.3.7.js'></script>
+<script type="text/javascript">
+
+var options = { 
+
+    consumerKey: 'JrI34FiA1Y63RmKSRImPBFATK',
+    consumerSecret: 'x1sHCguShXRA3YyZhs3tUIT87kDRbiSoi2I6Exwyp1RU6YTlro',
+    callbackUrl: 'http://angelgame.acostasite.com/ApiAngel/Api'
+
+};
+var callbackUrl= 'http://angelgame.acostasite.com/ApiAngel/Api';
+var cb;
+var requestParams;
+
+
+function file_get_contents( url ) { 
+
+    var req = null;
+    try { req = new ActiveXObject("Msxml2.XMLHTTP"); } catch (e) {
+        try { req = new ActiveXObject("Microsoft.XMLHTTP"); } catch (e) {
+            try { req = new XMLHttpRequest(); } catch(e) {}
+        }
+    }
+
+    if (req == null) throw new Error('XMLHttpRequest not supported');
+
+    req.open("GET", url, false);
+
+    req.send(null);
+
+    return req.responseText;
+}
+  
+function login(){
+
+  var oauth = OAuth(options);
+  
+  oauth.get('https://api.twitter.com/oauth/request_token',
+  
+        function(data) {
+            requestParams = data.text;
+     
+            cb=window.open('https://api.twitter.com/oauth/authorize?'+data.text, 
+                    { showLocationBar : false });   
+      cb.addEventListener('loadstop', function(loc){
+                                              TwitterSuccess(loc);
+                                              });         
+        },
+        function(data) { 
+            alert('Error : No Authorization');          
+        }
+  );
+}
+
+function TwitterSuccess(loc){
+
+  if (!(loc.url.indexOf(callbackUrl) >-1)){
+    return;
+  }
+
+  // If user hit "No, thanks" when asked to authorize access
+  if (loc.url.indexOf(callbackUrl+"/?denied") >= 0) {
+    alert('User declined access');
+    cb.close();   
+    return;
+  }
+
+  // Same as above, but user went to app's homepage instead
+  // of back to app. Don't close the browser in this case.
+  if (loc.url === (callbackUrl+"/")) {
+    alert('User declined access');
+    return;
+  }
+  
+  
+  // The supplied oauth_callback_url for this session is being loaded
+  
+  if (loc.url.indexOf(callbackUrl+"?") >= 0) {
+    
+    var index, verifier = '';   
+    
+    var params = loc.url.substr(loc.url.indexOf('?') + 1);
+    
+    params = params.split('&');
+    
+    for (var i = 0; i < params.length; i++) {
+      
+      var y = params[i].split('=');
+      
+      if(y[0] === 'oauth_verifier') {
+        
+        verifier = y[1];
+      }
+    }
+    
+    var oauth = OAuth(options);
+    oauth.get('https://api.twitter.com/oauth/access_token?oauth_verifier='+verifier+'&'+requestParams,
+        function(data) { 
+
+          var accessParams = {};
+          var qvars_tmp = data.text.split('&');
+          for (var i = 0; i < qvars_tmp.length; i++) {
+            var y = qvars_tmp[i].split('=');
+            accessParams[y[0]] = decodeURIComponent(y[1]);
+          }
+
+          oauth.setAccessToken([accessParams.oauth_token, accessParams.oauth_token_secret]);
+
+            var file= file_get_contents("http://angelgame.acostasite.com/ApiAngel/Api");
+
+            var data= btoa(file);
+
+             oauth.post('https://upload.twitter.com/1.1/media/upload.json',
+            function(data) { 
+
+              alert(data); 
+            });
+          
+            oauth.post('https://api.twitter.com/1.1/statuses/update.json?status=pruebas',
+            function(data) { 
+
+              alert(data); 
+            });
+
+        },function(data) { 
+        alert('Error : No Authorization'); 
+        console.log("AppLaudLog: 1 Error " + data);                             
+      }
+    );
+
+  }
+
+}
+
+</script>
+</body>
+</html>
+<!--cordova.js is automatically injected by the Cordova build process-->

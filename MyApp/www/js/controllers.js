@@ -4,8 +4,7 @@
 
 function configuracion(){
   var ruta = "http://angelgame.acostasite.com/ApiAngel/Api";
-  //var ruta = "http://angelgame.acostasite.com/ApiAngel/Api";
-
+  
   return ruta;
 }
 

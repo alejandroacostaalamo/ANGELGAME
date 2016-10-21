@@ -1,0 +1,1310 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="user-scalable=yes, initial-scale=1, maximum-scale=1, minimum-scale=0.5, width=device-width, height=device-height" />
+
+<title>A. N. G. E. L.</title>
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">    
+<link rel="icon" href="favicon.ico" type="img/fv-icon.png"/> 
+<link rel="stylesheet" href="css/game.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/play.css" type="text/css" media="all">
+<link rel="stylesheet" type="text/css" href="../../css/styles.css">
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script src="../../js/bootstrap.min.js"></script> 
+<script src='../../js/jquery-ui.min.js'></script>
+<script src="../../js/crossword.js"></script>
+<script src='../../js/openfb.js'></script>
+<script src='../../js/FbControllers.js'></script>
+<script src='../../js/controllers.js'></script>
+<script src='../../js/RegisterGame.js'></script>
+<script src='../../js/jsOAuth-1.3.7.js'></script>
+
+</head>
+
+<body>
+<div id="wrapper" class="crucigrama">
+	<div id="content">
+	<div class="modal fade" id="WinModal" tabindex="-1" role="dialog" aria-labelledby="WinModalLabel">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                  </div>
+                  <div class="modal-body text-center">
+                      <div class="box">
+                          <img src="../../img/congratulations.png" alt="" class="img-responsive">
+                          <h2>Parabéns</h2>
+                          <h4>Nivel Máximo</h4>
+                          <p class="post">Postar sua pontos nas redes sociais</p>
+                          <div class="score">
+                              Ponto: <div class="punto"> 0</div>
+                          </div>
+                          <button class="FB" onclick="public_FB()"></button>
+						  <button class="TW" onclick="public_TW()"></button>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <a href="" onclick="location.reload()">
+                          <button>Atrás</button>
+                      </a>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <div class="modal fade" id="LooseModal" tabindex="-1" role="dialog" aria-labelledby="LooseModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    </div>
+                    <div class="modal-body text-center">
+                        <div class="box">
+                            <img src="../../img/game_over.png" alt="" class="img-responsive">
+                            <h2>Fim de Jogo</h2>
+                            <h4>Tenta Novo</h4>
+                            <p class="post">Postar sua pontos nas redes sociais</p>
+                            <div class="score">
+                              Ponto: <div class="punto"> 0</div>
+                          	</div>
+                          	<button class="FB" onclick="public_FB()"></button>
+							<button class="TW" onclick="public_TW()"></button>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="" onclick="location.reload()">
+                            <button>Atrás</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<div id="crossword">
+
+			<table class="crossword">
+					<tbody>
+						<!-- FILA 1 -->
+						<tr>
+							<td class="no-border " id="cell-0-0">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-0-1">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-0-2">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-0-3">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-0-4">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-0-5">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-0-6">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-0-7">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-0-8">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-0-9">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-0-10">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-0-11">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-0-12">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-0-13">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-0-14">
+								&nbsp;
+							</td>
+							<td class="" id="cell-0-15" onClick="ShowQuestion(1)">
+								<div class="number">1</div>
+								<input id="input-0-15" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord1h(); validWord1v()">
+							</td>
+							<td class="" id="cell-0-16" onClick="ShowQuestion(1)">
+								<input id="input-0-16" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord1h()">
+							</td>
+							<td class="" id="cell-0-17" onClick="ShowQuestion(1)">
+								<input id="input-0-17" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord1h()">
+							</td>
+						</tr>
+						<!-- FILA 1 -->
+						
+						<!-- FILA 2 -->
+						<tr>
+							<td class="no-border " id="cell-1-0">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-1-1">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-1-2">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-1-3">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-1-4">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-1-5">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-1-6">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-1-7">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-1-8">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-1-9">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-1-10">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-1-11">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-1-12">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-1-13">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-1-14">
+								&nbsp;
+							</td>
+							<td class="" id="cell-1-15" onClick="ShowQuestion(1)">
+								<input id="input-1-15" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord1v()">
+							</td>
+							<td class="no-border " id="cell-1-16">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-1-17">
+								&nbsp;
+							</td>
+						</tr>
+						<!-- FILA 2 -->
+						
+						<!-- FILA 3 -->
+						<tr>
+							<td class="no-border " id="cell-2-0">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-2-1">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-2-2">
+								&nbsp;
+							</td>
+							<td class="" id="cell-2-3" onClick="ShowQuestion(2)">
+								<div class="number">2</div>
+								<input id="input-2-3" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord2()">
+							</td>
+							<td class="no-border " id="cell-2-4">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-2-5">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-2-6">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-2-7">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-2-8">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-2-9">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-2-10">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-2-11">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-2-12">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-2-13">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-2-14">
+								&nbsp;
+							</td>
+							<td class="" id="cell-2-15" onClick="ShowQuestion(1)">
+								<input id="input-2-15" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord1v()">
+							</td>
+							<td class="no-border " id="cell-2-16">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-2-17">
+								&nbsp;
+							</td>
+						</tr>
+						<!-- FILA 3 -->
+						
+						<!-- FILA 4 -->
+						<tr>
+							<td class="no-border " id="cell-3-0">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-3-1">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-3-2">
+								&nbsp;
+							</td>
+							<td class="" id="cell-3-3" onClick="ShowQuestion(2)">
+								<input id="input-3-3" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord2()">
+							</td>
+							<td class="no-border " id="cell-3-4">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-3-5">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-3-6">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-3-7">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-3-8">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-3-9">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-3-10">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-3-11">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-3-12">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-3-13">
+								&nbsp;
+							</td>
+							<td class="" id="cell-3-14" onClick="ShowQuestion(3)">
+								<div class="number">3</div>
+								<input id="input-3-14" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord3h(); validWord3v()">
+							</td>
+							<td class="" id="cell-3-15" onClick="ShowQuestion(3)">
+								<input id="input-3-15" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord1v();validWord3h();">
+							</td>
+							<td class="no-border " id="cell-3-16">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-3-17">
+								&nbsp;
+							</td>
+						</tr>
+						<!-- FILA 4 -->
+						
+						<!-- FILA 5 -->
+						<tr>
+							<td class="no-border " id="cell-4-0">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-4-1">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-4-2">
+								&nbsp;
+							</td>
+							<td class="" id="cell-4-3" onClick="ShowQuestion(2)">
+								<input id="input-4-3" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord2()">
+							</td>
+							<td class="no-border " id="cell-4-4">
+								&nbsp;
+							</td>
+							<td class="" id="cell-4-5" onClick="ShowQuestion(4)">
+								<div class="number">4</div>
+								<input id="input-4-5" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord4()">
+							</td>
+							<td class="no-border " id="cell-4-6">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-4-7">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-4-8">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-4-9">
+								&nbsp;
+							</td>
+							<td class="" id="cell-4-10" onClick="ShowQuestion(5)">
+								<div class="number">5</div>
+								<input id="input-4-10" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord5()">
+							</td>
+							<td class="" id="cell-4-11" onClick="ShowQuestion(5)">
+								<input id="input-4-11" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord5()">
+							</td>
+							<td class="" id="cell-4-12" onClick="ShowQuestion(6)">
+								<div class="number">6</div>
+								<input id="input-4-12" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord5();validWord6();">
+							</td>
+							<td class="" id="cell-4-13" onClick="ShowQuestion(5)">
+								<input id="input-4-13" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord5()">
+							</td>
+							<td class="" id="cell-4-14" onClick="ShowQuestion(5)">
+								<input id="input-4-14" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord3v();validWord5();">
+							</td>
+							<td class="no-border " id="cell-4-15">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-4-16">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-4-17">
+								&nbsp;
+							</td>
+						</tr>
+						<!-- FILA 5 -->
+						
+						<!-- FILA 6 -->
+						<tr>
+							<td class="no-border " id="cell-5-0">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-5-1">
+								&nbsp;
+							</td>
+							<td class="" id="cell-5-2" onClick="ShowQuestion(7)">
+								<div class="number">7</div>
+								<input id="input-5-2" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord7h(); validWord7v()">
+							</td>
+							<td class="" id="cell-5-3" onClick="ShowQuestion(7)">
+								<input id="input-5-3" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord2();validWord7h();">
+							</td>
+							<td class="" id="cell-5-4" onClick="ShowQuestion(7)">
+								<input id="input-5-4" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord7h()">
+							</td>
+							<td class="" id="cell-5-5" onClick="ShowQuestion(7)">
+								<input id="input-5-5" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord4();validWord7h();">
+							</td>
+							<td class="no-border " id="cell-5-6">
+								&nbsp;
+							</td>
+							<td class="" id="cell-5-7" onClick="ShowQuestion(8)">
+								<div class="number">8</div>
+								<input id="input-5-7" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord8()">
+							</td>
+							<td class="no-border " id="cell-5-8">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-5-9">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-5-10">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-5-11">
+								&nbsp;
+							</td>
+							<td class="" id="cell-5-12" onClick="ShowQuestion(6)">
+								<input id="input-5-12" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord6()">
+							</td>
+							<td class="no-border " id="cell-5-13">
+								&nbsp;
+							</td>
+							<td class="" id="cell-5-14" onClick="ShowQuestion(3)">
+								<input id="input-5-14" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord3v()">
+							</td>
+							<td class="no-border " id="cell-5-15">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-5-16">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-5-17">
+								&nbsp;
+							</td>
+						</tr>
+						<!-- FILA 6 -->
+						
+						<!-- FILA 7 -->
+						<tr>
+							<td class="no-border " id="cell-6-0">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-6-1">
+								&nbsp;
+							</td>
+							<td class="" id="cell-6-2" onClick="ShowQuestion(7)">
+								<input id="input-6-2" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord7v()">
+							</td>
+							<td class="no-border " id="cell-6-3">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-6-4">
+								&nbsp;
+							</td>
+							<td class="" id="cell-6-5" onClick="ShowQuestion(9)">
+								<div class="number">9</div>
+								<input id="input-6-5" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord4(); validWord9();">
+							</td>
+							<td class="" id="cell-6-6" onClick="ShowQuestion(9)">
+								<input id="input-6-6" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord9()">
+							</td>
+							<td class="" id="cell-6-7" onClick="ShowQuestion(9)">
+								<input id="input-6-7" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord8(); validWord9();">
+							</td>
+							<td class="" id="cell-6-8" onClick="ShowQuestion(9)">
+								<input id="input-6-8" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord9()">
+							</td>
+							<td class="" id="cell-6-9" onClick="ShowQuestion(9)">
+								<input id="input-6-9" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord9()">
+							</td>
+							<td class="" id="cell-6-10" onClick="ShowQuestion(9)">
+								<input id="input-6-10" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord9()">
+							</td>
+							<td class="" id="cell-6-11" onClick="ShowQuestion(9)">
+								<input id="input-6-11" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord9()">
+							</td>
+							<td class="" id="cell-6-12" onClick="ShowQuestion(9)">
+								<input id="input-6-12" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord6(); validWord9();">
+							</td>
+							<td class="no-border " id="cell-6-13">
+								&nbsp;
+							</td>
+							<td class="" id="cell-6-14" onClick="ShowQuestion(3)">
+								<input id="input-6-14" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord3v()">
+							</td>
+							<td class="no-border " id="cell-6-15">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-6-16">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-6-17">
+								&nbsp;
+							</td>
+						</tr>
+						<!-- FILA 7 -->
+						
+						<!-- FILA 8 -->
+						<tr>
+							<td class="" id="cell-7-0" onClick="ShowQuestion(10)">
+								<div class="number">10</div>
+								<input id="input-7-0" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord10()">
+							</td>
+							<td class="" id="cell-7-1" onClick="ShowQuestion(10)">
+								<input id="input-7-1" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord10()">
+							</td>
+							<td class="" id="cell-7-2" onClick="ShowQuestion(10)">
+								<input id="input-7-2" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord7v(); validWord10();">
+							</td>
+							<td class="" id="cell-7-3" onClick="ShowQuestion(10)">
+								<input id="input-7-3" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord10()">
+							</td>
+							<td class="no-border " id="cell-7-4">
+								&nbsp;
+							</td>
+							<td class="" id="cell-7-5" onClick="ShowQuestion(4)">
+								<input id="input-7-5" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord4()">
+							</td>
+							<td class="no-border " id="cell-7-6">
+								&nbsp;
+							</td>
+							<td class="" id="cell-7-7" onClick="ShowQuestion(8)">
+								<input id="input-7-7" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord8()">
+							</td>
+							<td class="no-border " id="cell-7-8">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-7-9">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-7-10">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-7-11">
+								&nbsp;
+							</td>
+							<td class="" id="cell-7-12" onClick="ShowQuestion(6)">
+								<input id="input-7-12" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord6()">
+							</td>
+							<td class="no-border " id="cell-7-13">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-7-14">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-7-15">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-7-16">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-7-17">
+								&nbsp;
+							</td>
+						</tr>
+						<!-- FILA 8 -->
+						
+						<!-- FILA 9 -->
+						<tr>
+							<td class="no-border " id="cell-8-0">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-8-1">
+								&nbsp;
+							</td>
+							<td class="" id="cell-8-2" onClick="ShowQuestion(7)">
+								<input id="input-8-2" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord7v()">
+							</td>
+							<td class="no-border " id="cell-8-3">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-8-4">
+								&nbsp;
+							</td>
+							<td class="" id="cell-8-5" onClick="ShowQuestion(4)">
+								<input id="input-8-5" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord4()">
+							</td>
+							<td class="no-border " id="cell-8-6">
+								&nbsp;
+							</td>
+							<td class="" id="cell-8-7" onClick="ShowQuestion(8)">
+								<input id="input-8-7" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord8()">
+							</td>
+							<td class="no-border " id="cell-8-8">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-8-9">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-8-10">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-8-11">
+								&nbsp;
+							</td>
+							<td class="" id="cell-8-12" onClick="ShowQuestion(6)">
+								<input id="input-8-12" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord6()">
+							</td>
+							<td class="no-border " id="cell-8-13">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-8-14">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-8-15">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-8-16">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-8-17">
+								&nbsp;
+							</td>
+						</tr>
+						<!-- FILA 9 -->
+						
+						<!-- FILA 10 -->
+						<tr>
+							<td class="no-border " id="cell-9-0">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-9-1">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-9-2">
+								&nbsp;
+							</td>
+							<td class="" id="cell-9-3" onClick="ShowQuestion(11)">
+								<div class="number">11</div>
+								<input id="input-9-3" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord11h(); validWord11v()">
+							</td>
+							<td class="" id="cell-9-4" onClick="ShowQuestion(11)">
+								<input id="input-9-4" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord11h()">
+							</td>
+							<td class="" id="cell-9-5" onClick="ShowQuestion(11)">
+								<input id="input-9-5" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord4(); validWord11h();">
+							</td>
+							<td class="no-border " id="cell-9-6">
+								&nbsp;
+							</td>
+							<td class="" id="cell-9-7" onClick="ShowQuestion(8)">
+								<input id="input-9-7" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord8()">
+							</td>
+							<td class="no-border " id="cell-9-8">
+								&nbsp;
+							</td>
+							<td class="" id="cell-9-9" onClick="ShowQuestion(12)">
+								<div class="number">12</div>
+								<input id="input-9-9" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord12()">
+							</td>
+							<td class="" id="cell-9-10" onClick="ShowQuestion(13)">
+								<div class="number">13</div>
+								<input id="input-9-10" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord12(); validWord13();">
+							</td>
+							<td class="" id="cell-9-11" onClick="ShowQuestion(12)">
+								<input id="input-9-11" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord12()">
+							</td>
+							<td class="" id="cell-9-12" onClick="ShowQuestion(12)">
+								<input id="input-9-12" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord6(); validWord12();">
+							</td>
+							<td class="" id="cell-9-13" onClick="ShowQuestion(14)">
+								<div class="number">14</div>
+								<input id="input-9-13" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord12(); validWord14();">
+							</td>
+							<td class="no-border " id="cell-9-14">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-9-15">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-9-16">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-9-17">
+								&nbsp;
+							</td>
+						</tr>
+						<!-- FILA 10 -->
+						
+						<!-- FILA 11 -->
+						<tr>
+							<td class="no-border " id="cell-10-0">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-10-1">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-10-2">
+								&nbsp;
+							</td>
+							<td class="" id="cell-10-3" onClick="ShowQuestion(11)">
+								<input id="input-10-3" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord11v()">
+							</td>
+							<td class="no-border " id="cell-10-4">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-10-5">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-10-6">
+								&nbsp;
+							</td>
+							<td class="" id="cell-10-7" onClick="ShowQuestion(8)">
+								<input id="input-10-7" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord8()">
+							</td>
+							<td class="no-border " id="cell-10-8">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-10-9">
+								&nbsp;
+							</td>
+							<td class="" id="cell-10-10" onClick="ShowQuestion(13)">
+								<input id="input-10-10" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord13()">
+							</td>
+							<td class="no-border " id="cell-10-11">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-10-12">
+								&nbsp;
+							</td>
+							<td class="" id="cell-10-13" onClick="ShowQuestion(14)">
+								<input id="input-10-13" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord14()">
+							</td>
+							<td class="no-border " id="cell-10-14">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-10-15">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-10-16">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-10-17">
+								&nbsp;
+							</td>
+						</tr>
+						<!-- FILA 11 -->
+						
+						<!-- FILA 12 -->
+						<tr>
+							<td class="no-border " id="cell-11-0">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-11-1">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-11-2">
+								&nbsp;
+							</td>
+							<td class="" id="cell-11-3" onClick="ShowQuestion(11)">
+								<input id="input-11-3" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord11v()">
+							</td>
+							<td class="no-border " id="cell-11-4">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-11-5">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-11-6">
+								&nbsp;
+							</td>
+							<td class="" id="cell-11-7" onClick="ShowQuestion(8)">
+								<input id="input-11-7" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord8()">
+							</td>
+							<td class="no-border " id="cell-11-8">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-11-9">
+								&nbsp;
+							</td>
+							<td class="" id="cell-11-10" onClick="ShowQuestion(13)">
+								<input id="input-11-10" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord13()">
+							</td>
+							<td class="no-border " id="cell-11-11">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-11-12">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-11-13">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-11-14">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-11-15">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-11-16">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-11-17">
+								&nbsp;
+							</td>
+						</tr>
+						<!-- FILA 12 -->
+						
+						<!-- FILA 13 -->
+						<tr>
+							<td class="no-border " id="cell-12-0">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-12-1">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-12-2">
+								&nbsp;
+							</td>
+							<td class="" id="cell-12-3" onClick="ShowQuestion(11)">
+								<input id="input-12-3" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord11v()">
+							</td>
+							<td class="no-border " id="cell-12-4">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-12-5">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-12-6">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-12-7">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-12-8">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-12-9">
+								&nbsp;
+							</td>
+							<td class="" id="cell-12-10" onClick="ShowQuestion(13)">
+								<input id="input-12-10" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord13()">
+							</td>
+							<td class="no-border " id="cell-12-11">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-12-12">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-12-13">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-12-14">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-12-15">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-12-16">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-12-17">
+								&nbsp;
+							</td>
+						</tr>
+						<!-- FILA 13 -->
+						
+						<!-- FILA 14 -->
+						<tr>
+							<td class="" id="cell-13-0" onClick="ShowQuestion(15)">
+								<div class="number">15</div>
+								<input id="input-13-0" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord15()">
+							</td>
+							<td class="" id="cell-13-1" onClick="ShowQuestion(15)">
+								<input id="input-13-1" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord15()">
+							</td>
+							<td class="" id="cell-13-2" onClick="ShowQuestion(15)">
+								<input id="input-13-2" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord15()">
+							</td>
+							<td class="" id="cell-13-3" onClick="ShowQuestion(15)">
+								<input id="input-13-3" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord11v(); validWord15();">
+							</td>
+							<td class="" id="cell-13-4" onClick="ShowQuestion(15)">
+								<input id="input-13-4" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord15()">
+							</td>
+							<td class="" id="cell-13-5" onClick="ShowQuestion(15)">
+								<input id="input-13-5" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord15()">
+							</td>
+							<td class="no-border " id="cell-13-6">
+								&nbsp;
+							</td>
+							<td class="" id="cell-13-7" onClick="ShowQuestion(16)">
+								<div class="number">16</div>
+								<input id="input-13-7" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord16h(); validWord16v()">
+							</td>
+							<td class="" id="cell-13-8" onClick="ShowQuestion(16)">
+								<input id="input-13-8" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord16h()">
+							</td>
+							<td class="" id="cell-13-9" onClick="ShowQuestion(16)">
+								<input id="input-13-9" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord16h()">
+							</td>
+							<td class="" id="cell-13-10" onClick="ShowQuestion(16)">
+								<input id="input-13-10" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord13(); validWord16h();">
+							</td>
+							<td class="" id="cell-13-11" onClick="ShowQuestion(16)">
+								<input id="input-13-11" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord16h()">
+							</td>
+							<td class="no-border " id="cell-13-12">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-13-13">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-13-14">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-13-15">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-13-16">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-13-17">
+								&nbsp;
+							</td>
+						</tr>
+						<!-- FILA 14 -->
+						
+						<!-- FILA 15 -->
+						<tr>
+							<td class="no-border " id="cell-14-0">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-14-1">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-14-2">
+								&nbsp;
+							</td>
+							<td class="" id="cell-14-3" onClick="ShowQuestion(11)">
+								<input id="input-14-3" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord11v()">
+							</td>
+							<td class="no-border " id="cell-14-4">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-14-5">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-14-6">
+								&nbsp;
+							</td>
+							<td class="" id="cell-14-7" onClick="ShowQuestion(16)">
+								<input id="input-14-7" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord16v()">
+							</td>
+							<td class="no-border " id="cell-14-8">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-14-9">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-14-10">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-14-11">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-14-12">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-14-13">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-14-14">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-14-15">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-14-16">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-14-17">
+								&nbsp;
+							</td>
+						</tr>
+						<!-- FILA 15 -->
+						
+						<!-- FILA 16 -->
+						<tr>
+							<td class="no-border " id="cell-15-0">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-15-1">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-15-2">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-15-3">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-15-4">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-15-5">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-15-6">
+								&nbsp;
+							</td>
+							<td class="" id="cell-15-7" onClick="ShowQuestion(17)">
+								<div class="number">17</div>
+								<input id="input-15-7" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord16v(); validWord17()">
+							</td>
+							<td class="" id="cell-15-8" onClick="ShowQuestion(17)">
+								<input id="input-15-8" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord17()">
+							</td>
+							<td class="" id="cell-15-9" onClick="ShowQuestion(17)">
+								<input id="input-15-9" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord17()">
+							</td>
+							<td class="no-border " id="cell-15-10">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-15-11">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-15-12">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-15-13">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-15-14">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-15-15">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-15-16">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-15-17">
+								&nbsp;
+							</td>
+						</tr>
+						<!-- FILA 16 -->
+						
+						<!-- FILA 17 -->
+						<tr>
+							<td class="no-border " id="cell-16-0">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-16-1">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-16-2">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-16-3">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-16-4">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-16-5">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-16-6">
+								&nbsp;
+							</td>
+							<td class="" id="cell-16-7" onClick="ShowQuestion(16)">
+								<input id="input-16-7" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord16v()">
+							</td>
+							<td class="no-border " id="cell-16-8">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-16-9">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-16-10">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-16-11">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-16-12">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-16-13">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-16-14">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-16-15">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-16-16">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-16-17">
+								&nbsp;
+							</td>
+						</tr>
+						<!-- FILA 17 -->
+						
+						<!-- FILA 18 -->
+						<tr>
+							<td class="no-border " id="cell-17-0">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-17-1">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-17-2">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-17-3">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-17-4">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-17-5">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-17-6">
+								&nbsp;
+							</td>
+							<td class="" id="cell-17-7" onClick="ShowQuestion(16)">
+								<input id="input-17-7" type="text" size="1" maxlength="1" class="hidden-field" onBlur="validWord16v()">
+							</td>
+							<td class="no-border " id="cell-17-8">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-17-9">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-17-10">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-17-11">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-17-12">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-17-13">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-17-14">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-17-15">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-17-16">
+								&nbsp;
+							</td>
+							<td class="no-border " id="cell-17-17">
+								&nbsp;
+							</td>
+						</tr>
+						<!-- FILA 18 -->
+						</tbody>
+					</table>
+    </div>
+
+	<div id="clues" style="visibility:hidden;">
+		<div id="clues-inner">    
+            <div id="across-box">
+                <h5>Horizontal</h5>
+                <ol id="across">
+                        <li id="clue-20"><strong>1.</strong> Número de bits en IPv6</li>
+                    
+                        <li id="clue-15"><strong>3.</strong> Tamaño de la cabecera IPv4 sin opciones</li>
+                    
+                        <li id="clue-2"><strong>5.</strong> Mecanismo donde el OSs utiliza la MAC address, inserta FF FE in entre el 3ro y el 4to campo de la MAC </li>
+                    
+                        <li id="clue-3"><strong>7.</strong> Pool Central de recursos de Internet</li>
+                    
+                        <li id="clue-17"><strong>9.</strong> Este campo fue removido en IPv6</li>
+                    
+                        <li id="clue-14"><strong>10.</strong> IPv6 aumentó el número de ____ </li>
+                    
+                        <li id="clue-6"><strong>11.</strong> Nombre del documento que describe las especificaciones IPv6 </li>
+                    
+                        <li id="clue-9"><strong>12.</strong> Mecanismo que retorna una dirección IPv6</li>
+                    
+                        <li id="clue-8"><strong>15.</strong> Mecanismo de transición que transporta IPv6 sobre UDP</li>
+                    
+                        <li id="clue-11"><strong>16.</strong> Nombre de la fuerza de trabajo de IPv6 para LATAM & CARIBE (sponsored by Lacnic)</li>
+                    
+                        <li id="clue-1"><strong>17.</strong> icmpv4 + arp en IPv6</li>
+                    
+                </ol>
+            </div>
+            <div id="down-box">        
+                <h5>Vertical</h5>
+                <ol id="down">
+                    
+                        <li id="clue-18"><strong>1.</strong> Mínimo MTU requerido en IPv6</li>            
+                    
+                        <li id="clue-7"><strong>2.</strong> Registro DNS en IPv6 que reemplaza "A" de IPv4</li>            
+                    
+                        <li id="clue-13"><strong>3.</strong> Número del RFC (principal) que específica IPv6 </li>            
+                    
+                        <li id="clue-5"><strong>4.</strong> Nombre del RIR para Latam & CARIBE </li>            
+                    
+                        <li id="clue-19"><strong>6.</strong> Es requerido para el correcto funcionamiento de IPv6</li>            
+                    
+                        <li id="clue-12"><strong>7.</strong> Nombre de la organización que crea estandares IP</li>            
+                    
+                        <li id="clue-0"><strong>8.</strong> Donde corre IPv6</li>            
+                    
+                        <li id="clue-21"><strong>11.</strong> Dispositivo (en inglés) que mueve tráfico de una subred a otra</li>
+
+                        <li id="clue-10"><strong>13.</strong> Mecanismo de transición obsoleto parecido al NAT</li>            
+                    
+                        <li id="clue-16"><strong>14.</strong> Tamaño de la cabecera IPv6</li>            
+                    
+                        <li id="clue-4"><strong>16.</strong> El sistema operativo Open Source más popular</li>            
+                    
+                </ol>
+            </div>
+        </div>
+    </div>
+    
+        <div class="retry">
+          <a href="index-por.html" >
+              <button>Atrás </button>
+          </a>
+    	</div> 
+    <div class="clear"></div>
+</div>
+
+<div id="questions110" style="position:absolute;bottom:0;width: 100%;">
+<!-- 
+	<div id="q1" class="questionsTips"><strong>1 - Linha: Número de bits em IPv6 .<br>Coluna: Exigência de MTU mínima para o IPv6.</strong></div>
+	
+	<div id="q2" class="questionsTips"><strong>2 - Coluna: Registo DNS IPv6 substituição de "A" de IPv4.</strong></div>
+	
+	<div id="q3" class="questionsTips"><strong>3 - Linha: Tamanho do cabeçalho IPv4 sem opções.<br>Coluna: Número de RFC ( principal) que o IPv6 específico.</strong></div>
+	
+	<div id="q4" class="questionsTips"><strong>4 - Coluna: Nome RIR para Latam & CARIBE.</strong></div>
+	
+	<div id="q5" class="questionsTips"><strong>5 - Linha: Mecanismo onde o OSs usando o endereço MAC , FF FE inserido entre 3 e 4 de campo do MAC .</strong></div>
+	
+	<div id="q6" class="questionsTips"><strong>6 - Coluna: Ele é necessário para o funcionamento adequado do IPv6.</strong></div>
+	
+	<div id="q7" class="questionsTips"><strong>7 - Linha: Pool Central de recursos de Internet.<br>Coluna: Nome da organização que cria padrão IP .</strong></div>
+	
+	<div id="q8" class="questionsTips"><strong>8 - Coluna: Onde IPv6 é executado.</strong></div>
+	
+	<div id="q9" class="questionsTips"><strong>9 - Linha: Este campo foi removido em IPv6 .</strong></div>
+	
+	<div id="q10" class="questionsTips"><strong>10 - Linha: IPv6 aumentou o número de ____.</strong></div> -->
+	
+</div>
+
+<div id="questions1117">
+
+	<div id="q1" class="questionsTips"><strong>1 - Linha: Número de bits em IPv6 .<br>Coluna: Exigência de MTU mínima para o IPv6.</strong></div>
+	
+	<div id="q2" class="questionsTips"><strong>2 - Coluna: Registo DNS IPv6 substituição de "A" de IPv4.</strong></div>
+	
+	<div id="q3" class="questionsTips"><strong>3 - Linha: Tamanho do cabeçalho IPv4 sem opções.<br>Coluna: Número de RFC ( principal) que o IPv6 específico.</strong></div>
+	
+	<div id="q4" class="questionsTips"><strong>4 - Coluna: Nome RIR para Latam & CARIBE.</strong></div>
+	
+	<div id="q5" class="questionsTips"><strong>5 - Linha: Mecanismo onde o OSs usando o endereço MAC , FF FE inserido entre 3 e 4 de campo do MAC .</strong></div>
+	
+	<div id="q6" class="questionsTips"><strong>6 - Coluna: Ele é necessário para o funcionamento adequado do IPv6.</strong></div>
+	
+	<div id="q7" class="questionsTips"><strong>7 - Linha: Pool Central de recursos de Internet.<br>Coluna: Nome da organização que cria padrão IP .</strong></div>
+	
+	<div id="q8" class="questionsTips"><strong>8 - Coluna: Onde IPv6 é executado.</strong></div>
+	
+	<div id="q9" class="questionsTips"><strong>9 - Linha: Este campo foi removido em IPv6 .</strong></div>
+	
+	<div id="q10" class="questionsTips"><strong>10 - Linha: IPv6 aumentou o número de ____.</strong></div>
+
+	<div id="q11" class="questionsTips"><strong>11 - Linha: Nome do documento que descreve IPv6 Specs .<br>Coluna: Do dispositivo (em ingles) que se move o tráfego de uma sub-rede para outra.</strong></div>
+	
+	<div id="q12" class="questionsTips"><strong>12 - Linha: Mecanismo que retorna una dirección IPv6.</strong></div>
+	
+	<div id="q13" class="questionsTips"><strong>13 - Coluna: Mecanismo de transição obsoleto semelhante ao NAT.</strong></div>
+	
+	<div id="q14" class="questionsTips"><strong>14 - Coluna: Tamanho do cabeçalho IPv6.</strong></div>
+	
+	<div id="q15" class="questionsTips"><strong>15 - Linha: Mecanismo de transição que transporta IPv6 sobre UDP.</strong></div>
+	
+	<div id="q16" class="questionsTips"><strong>16 - IPv6 Nome força de trabalho para LATAM e CARIBE (sponsored by Lacnic).<br>Coluna:O sistema operacional de código aberto mais popular.</strong></div>
+	
+	<div id="q17" class="questionsTips"><strong>17 - Linha: icmpv4 + arp em IPv6.</strong></div>
+
+</div>
+<div class="head">
+    <div class="score">
+        Ponto: 
+        <div id="punto">0</div>
+    </div>
+    <div class="time" >
+        Tempo: 
+        <div id="contratiempo">00</div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../../js/view.js"></script>
+
+
+</body>
+</html>

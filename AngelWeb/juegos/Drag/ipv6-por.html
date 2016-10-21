@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Ipv6</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico" type="../../img/fv-icon.png"/> 
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">    
+    <link rel="stylesheet" type="text/css" href="../../css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../../css/media.css">
+
+    <script src='../../js/jquery.js'></script>
+    <script src='../../js/jquery.min.js'></script>
+    <script src="../../js/bootstrap.min.js"></script> 
+    <script src='../../js/jquery-ui.min.js'></script>
+    <script src='../../js/jquery.ui.touch-punch.min.js'></script>
+    <script src='../../js/drag.js'></script>
+    <script src='../../js/openfb.js'></script>
+    <script src='../../js/FbControllers.js'></script>
+    <script src='../../js/controllers.js'></script>
+    <script src='../../js/dragIpv6.js'></script>
+    <script src='../../js/visibility.js'></script>
+    <script src='../../js/RegisterGame.js'></script>
+    <script src='../../js/jsOAuth-1.3.7.js'></script>
+ 
+  </head>
+  <body>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.7";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+    <div class="drag">
+      <div class="modal fade" id="levelModal" tabindex="-1" role="dialog" aria-labelledby="levelModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title" id="levelModalLabel">IPV6</h2>
+            </div>
+            <div class="modal-body">
+              <div class="game-info">
+              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore culpa, consequatur ab reprehenderit reiciendis laudantium atque. Provident blanditiis voluptatem, corporis! Esse laboriosam voluptatem neque. Praesentium rem illum, molestias voluptatibus facilis.</p> -->
+                <div class="level-difficulty">
+                    <h4>Escolha um nível de dificuldade</h4>                    
+                    <button id="level1" type="submit" class="btn btn-default">Fácil</button>
+                    <p>Haverá cinco ( 5) ou seis (6) caixas cheias</p>
+                    <hr>
+                    <button id="level2" type="submit" class="btn btn-default">Meio</button>
+                    <p>Haverá três (3) ou quatro (4) caixas cheias</p>
+                    <hr>
+                    <button id="level3" type="submit" class="btn btn-default">Difícil</button>
+                    <p>Não haverá caixa cheia.</p>
+                </div>
+              </div>  
+            </div>
+            <div class="modal-footer">
+              <a href="#" onclick="history.back()">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Atrás</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>  
+      <div class="modal fade" id="WinModal" tabindex="-1" role="dialog" aria-labelledby="WinModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        </div>
+                        <div class="modal-body text-center">
+                            <div class="box">
+                                <img src="../../img/congratulations.png" alt="" class="img-responsive">
+                                <h2>Parabéns</h2>
+                                <h4>Nivel Máximo</h4>
+                                <p class="post">Postar sua pontos nas redes sociais</p>
+                                <div class="score">
+                                    Ponto: <div class="punto"> 0</div>
+                                </div>
+                                <a class="fb-xfbml-parse-ignore" target="_blank"><button class="FB"></button></a>
+                                <button class="TW" onclick="public_TW()"></button>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="" onclick="location.reload()">
+                                <button>Atrás</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="LooseModal" tabindex="-1" role="dialog" aria-labelledby="LooseModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        </div>
+                        <div class="modal-body text-center">
+                            <div class="box">
+                                <img src="../../img/game_over.png" alt="" class="img-responsive">
+                                <h2>Fim de Jogo</h2>
+                                <a href="javascript:reload();"><h4>Tenta Novo</h4></a>
+                                <p class="post">Postar sua pontos nas redes sociais</p>
+                                <div class="score">
+                                    Ponto: <div class="punto"> 0</div>
+                                </div>
+                                <a class="fb-xfbml-parse-ignore" target="_blank"><button class="FB"></button></a>
+                                <button class="TW" onclick="public_TW()"></button>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="" onclick="location.reload()">
+                                <button>Atrás</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+
+      <div class="head">
+        <div class="score">
+            Ponto: 
+            <div id="score">0</div>
+        </div>
+        <div class="time" >
+            Tempo: 
+            <div id="contratiempo">00</div>
+        </div>
+      </div>
+
+      <div id="boxipv6" class="row text-center">
+        <input id="ipv6-0"  class="col-xs-2 col-sm-2 col-md-2 input" disabled="disabled"> 
+        <input id="ipv6-1"  class="col-xs-3 col-sm-3 col-md-3 input" disabled="disabled"> 
+        <input id="ipv6-2"  class="col-xs-7 col-sm-7 col-md-7 input" disabled="disabled"> 
+        <input id="ipv6-3"  class="col-xs-8 col-sm-8 col-md-8 input" disabled="disabled">
+        <input id="ipv6-4"  class="col-xs-2 col-sm-2 col-md-2 input" disabled="disabled"> 
+        <input id="ipv6-5"  class="col-xs-2 col-sm-2 col-md-2 input" disabled="disabled"> 
+        <input  id="ipv6-6" class="col-xs-12 col-sm-12 col-md-12  input" disabled="disabled"> 
+        <input  id="ipv6-7" class="col-xs-12 col-sm-12 col-md-12  input" disabled="disabled"> 
+      </div>
+
+      <div id="pregunta">
+        <div class="title">Arraste a caixa abaixo <i class="fa fa-angle-down"></i></div>
+      </div>
+      <div class="retry">
+          <a href="" onclick="location.reload()">
+              <button>Atrás</button>
+          </a>
+      </div>
+    </div>
+  </body>
+</html>

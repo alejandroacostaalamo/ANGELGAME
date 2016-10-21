@@ -421,7 +421,9 @@ function public_TW(){
 
   var msj="GAME: DRAG  TOPIC:TCP  NEVEL: "+level+" POINTS: "+punto;
 
-  loginGame(msj);
+  var src='http://angelgame.acostasite.com/Game/img/drag_img.png';
+
+  loginGame(msj,src);
 }
 
 function public_FB(){
