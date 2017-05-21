@@ -1,60 +1,40 @@
-
+// Vars
 var puntaje=0;
-
 var time=200;
-
 var Questions=0;
-
 var posicion= new Array();
-
 var resolved_questions= new Array();
-
-
-
 var incorrect=0;
+var totalQuestions=0;
+var texto="Pregunta";
+var failh2="Has perdido";
+var failh4="Intentalo de nuevo";
+var correcth2="Felicidades!";
+var correcth4="Nivel Completo";
+var p="Publique su puntaje en las redes sociales";
+var accept ="Aceptar";
+var labelSelect="Cantidad de Preguntas";
+var selectTitle="Seleccione";
+var sel="<select id='cmbQuestions'><option value='5'>5</option><option selected value='7'>7</option><option value='9'>9</option><option value='10'>10</option></select>"
 
-
-if(localStorage.getItem("language")==1){
-
-	var texto="Pregunta";
-
-	var failh2="Has perdido";
-
-	var failh4="Intentalo de nuevo";
-
-	var correcth2="Felicidades!";
-
-	var correcth4="Nivel Completo";
-
-	var p="Publique su puntaje en las redes sociales";
-
-}else if(localStorage.getItem("language")==2){
-
-	var texto="Question";
-
-	var failh2="Game over";
-
-	var failh4="Try Again";
-
-	var correcth2="Congratulations!";
-
-	var correcth4="Level Completed";
-
-	var p="Post your score on social networks";
-
+if(localStorage.getItem("language")==2){
+	texto="Question";
+	failh2="Game over";
+	failh4="Try Again";
+	correcth2="Congratulations!";
+	correcth4="Level Completed";
+	p="Post your score on social networks";
+	accept ="Accept";
+	labelSelect="Questions quantity";
+    selectTitle="Select";
 }else if(localStorage.getItem("language")==3){
-
-	var texto="Pergunta";
-
-	var failh2="Fim de Jogo";
-
-	var failh4="Tenta Novo!";
-
-	var correcth2="Parabéns";
-
-	var correcth4="Nivel Maximo";
-
-	var p="Postar sua pontos nas redes sociais";
+	texto="Pergunta";
+	failh2="Fim de Jogo";
+	failh4="Tenta Novo!";
+	correcth2="Parabéns";
+	correcth4="Nivel Maximo";
+	p="Postar sua pontos nas redes sociais";
+	accept ="OK";
 }
 
 
@@ -92,7 +72,7 @@ function timer(i){
 
   		ShareScore();
 
-  	}else if(Questions==8){
+  	}else if(Questions==(totalQuestions+1)){
 
   		clearInterval(interval);
 
@@ -106,8 +86,25 @@ function timer(i){
 
 	  	ShareScore();
   	}
+	else if(totalQuestions==0)
+	{
+		
+  		$('#bloquear').attr('class', 'bloquear');
+
+	  	$('#message').removeAttr( "style" );
+
+	  	$('#message').attr('class', 'message');
+
+	  	$('#content').html('<div id="correct"><center><h2>'+selectTitle+'</h2><h4>'+labelSelect+'</h4><p class="post">'+sel+'</p></center><center><div class="ppt"><button class="button" onclick="SetQuantity()"></button></div></center></div>');
+
+		
+	}
  
   }, 1000);
+}
+
+function SetQuantity(){
+	totalQuestions = $("#cmbQuestions").val();
 }
 
 function ramdom(){
@@ -116,9 +113,9 @@ function ramdom(){
 
 	var salir=0;
 
-	for(var i=0;i<7;i++)
+	for(var i=0;i<totalQuestions;i++)
 	{
-		posicion[i]=Math.floor((Math.random() * 7) + 1);
+		posicion[i]=Math.floor((Math.random() * totalQuestions) + 1);
 
 		if(i>0)
 		{
@@ -141,7 +138,7 @@ function ramdom(){
 				}
 				else
 				{
-					posicion[i]=Math.floor((Math.random() * 7) + 1);
+					posicion[i]=Math.floor((Math.random() * totalQuestions) + 1);
 
 					con=0;
 				}
@@ -195,6 +192,21 @@ function selection(m){
 		case 7:
 
 			Question7();
+
+		break;
+		case 8:
+
+			Question8();
+
+		break;
+		case 9:
+
+			Question9();
+
+		break;
+		default:
+
+			Question10();
 
 		break;
 	}
@@ -335,7 +347,7 @@ function Question1(){
 
 		var question1=[
 			
-			'Address IP destination',
+			'IP Address  destination',
 
 			'a. www.google.com',
 
@@ -343,12 +355,12 @@ function Question1(){
 
 			'c. Default Gateway',
 
-			'd. Not is possible to determine'
+			'd. It is not possible to determine'
 		];
 
 		var question2=[
 
-			'Time maximum of response',
+			'Maximum time of response',
 
 			'a. 6.484',
 
@@ -537,7 +549,7 @@ function Question2(){
 
 		var question1=[
 
-			'Cual fue el servidor DNS utilizado?',
+			'¿Cuál fue el servidor DNS utilizado?',
 
 			'a) Lacnic.net',
 
@@ -551,7 +563,7 @@ function Question2(){
 
 		var question2=[
 
-			'Que significa el “1” Antes de mail.lacnic.net.',
+			'¿Qué significa el “1” Antes de mail.lacnic.net?',
 
 			'a) La primera respuesta esperada',
 
@@ -559,12 +571,12 @@ function Question2(){
 
 			'c) Número de secuencia',
 
-			'd) Prioridad del mail server?'
+			'd) Prioridad del mail server'
 		];
 
 		var question3=[
 
-			'Que indica la frase: “Non-authoritative answer:”',
+			'¿Qué indica la frase: “Non-authoritative answer:”?',
 
 			'a) El servidor que nos responde no es autoritativo para la consulta',
 
@@ -579,7 +591,7 @@ function Question2(){
 		var question4=[
 
 
-			'Que se buscó para lacnic.net?',
+			'¿Qué se buscó para lacnic.net?',
 
 			'a) Los servidores DNS?',
 
@@ -595,7 +607,7 @@ function Question2(){
 
 		var question1=[
 
-			'Which was the server DNS used?',
+			'Which was the DNS server used?',
 
 			'a) Lacnic.net',
 
@@ -603,7 +615,7 @@ function Question2(){
 
 			'c) 8.8.8.8',
 
-			'd) The server default team'
+			'd) The server default on the computer'
 
 		];
 
@@ -617,32 +629,32 @@ function Question2(){
 
 			'c) Sequence number',
 
-			'd) Priority of the mail server?'
+			'd) Priority of the mail server'
 		];
 
 		var question3=[
 
-			'That indicates the phrase: "Non-authoritative answer:"',
+			'What does indicate the phrase: "Non-authoritative answer:"?',
 
-			'a) The server that answers is not authoritative for the query',
+			'a) The server that is responding is not authoritative for the query',
 
 			'b) Impossible to get answer',
 
 			'c) Do not trust the answer',
 
-			'd) Try more later'
+			'd) Try later'
 		];
 
 
 		var question4=[
 
-			'That be sought for lacnic.net?',
+			'What was searched for lacnic.net?',
 
-			'a) The DNS servers?',
+			'a) The DNS servers',
 
-			'b) mail servers?',
+			'b) Mail servers',
 
-			'c) All those records?',
+			'c) All those records',
 
 			'd) None of the previous',
 
@@ -865,7 +877,7 @@ function Question3(){
 
 		question1=[
 
-			'Cual fue el servidor DNS utilizado?',
+			'¿Cuál fue el servidor DNS utilizado?',
 
 			'a) 2001:13c7:7002:4128::147',
 
@@ -879,7 +891,7 @@ function Question3(){
 
 		question2=[
 
-			'Que significa el flag “rd” al comienzo de la salida.',
+			'¿Qué significa el flag “rd” al comienzo de la salida?',
 
 			'a) La primera respuesta esperada',
 
@@ -892,7 +904,7 @@ function Question3(){
 
 		question3=[
 
-			'Que se buscó para www.lacnic.net?',
+			'¿Qué se buscó para www.lacnic.net?',
 
 			'a)	Los servidores DNS',
 
@@ -907,7 +919,7 @@ function Question3(){
 
 		question1=[
 
-			'Which was the server DNS used?',
+			'Which was the DNS server used?',
 
 			'a) 2001:13c7:7002:4128::147',
 
@@ -915,13 +927,13 @@ function Question3(){
 
 			'c) 8.8.8.8',
 
-			'd) The server default team'
+			'd) The default server on the computer'
 
 		];
 
 		question2=[
 
-			'What does RD means at the beginning of the output.',
+			'What does RD means at the beginning of the output?',
 
 			'a) The first expected answer',
 
@@ -934,7 +946,7 @@ function Question3(){
 
 		question3=[
 
-			'Which it sought to www.lacnic.net?',
+			'What was searched for www.lacnic.net?',
 
 			'a) DNS servers',
 
@@ -942,7 +954,7 @@ function Question3(){
 
 			'c)	Any DNS record',
 
-			'd)	The DNS authoritative'
+			'd)	The authoritative DNS'
 		];
 
 	}else if(localStorage.getItem("language")==3){
@@ -963,7 +975,7 @@ function Question3(){
 
 		question2=[
 
-			'Isso significa que o logotipo "rd" no início da produção.',
+			'Isso significa que o logotipo "rd" no início da produção?',
 
 			'a) A primeira resposta esperada',
 
@@ -1112,7 +1124,7 @@ function Question4(){
 		question1=[
 
 			'De la salida anterior que podemos inferir:',
-			'a)	Se Intentó utilizar un Web Server como DNS Server',
+			'a)	Se intentó utilizar un Web Server como DNS Server',
 			'b)	El DNS server estaba caído',
 			'c)	200.47.79.2 no es un DNS Server',
 			'd) 200.47.79.2 es un DNS Server pero no permite recursividad desde mi dirección IP'
@@ -1123,11 +1135,11 @@ function Question4(){
 
 		question1=[
 
-			'Of the Output previous which we can infer:',
-			'a)	He tried to use a Web Server as a DNS Server',
+			'In the previous output we can infer:',
+			'a)	Tried to use a Web Server as a DNS Server',
 			'b)	The DNS server was down',
-			'c)	200.47.79.2 not is a DNS Server',
-			'd) 200.47.79.2 is a DNS Server but not allow recursion from my address IP'
+			'c)	200.47.79.2 is not a DNS Server',
+			'd) 200.47.79.2 is a DNS Server, but it does not allow recursion from my address IP'
 
 		];
 
@@ -1185,8 +1197,8 @@ function Question5(){
 	{
 		question1=[
 
-			'De la salida Anterior que podemos inferir:',
-			'a)	2001:13c7:7002:4128::147 es la respuesta esperaba',
+			'De la salida anterior que podemos inferir:',
+			'a)	2001:13c7:7002:4128::147 es la respuesta esperada',
 			'b)	No puedo realizar una consulta IPv6 a un server IPv4',
 			'c)	La sección Answer Section no tiene lógica',
 			'd)	www.lacnic.net no tiene dirección IPv4'
@@ -1196,11 +1208,11 @@ function Question5(){
 
 		question1=[
 
-			'Of the Output previous which we can infer:',
-			'a) 2001:13c7: 7002:4128:147 is the answer expected',
-			'b) can not make a query IPv6 to IPv4 server',
-			'c) The section Answer Section does not have logical',
-			'd) www.lacnic.net does not have address IPv4'
+			'In the previous output we can infer:',
+			'a) 2001:13c7: 7002:4128:147 is the expected answer',
+			'b) Cannot make a query IPv6 to IPv4 server',
+			'c) The Answer Section is not logic',
+			'd) www.lacnic.net does not have IPv4 address'
 		];
 
 	}else if(localStorage.getItem("language")==3){
@@ -1257,7 +1269,7 @@ function Question6(){
 
 		question1=[
 
-			'Cual es la ruta por defecto en la salida anterior:',
+			'¿Cuál es la ruta por defecto en la salida anterior?',
 			'a)	192.168.1.1',
 			'b)	8.8.4.4',
 			'c)	Necesito ver la tabla de enrutamiento',
@@ -1267,18 +1279,18 @@ function Question6(){
 
 		question2=[
 
-			'Por que hay tres valores para cada salto?',
+			'¿Por qué hay tres valores para cada salto?',
 			'a)	Es un cálculo promedio en base a la topología de la red',
 			'b)	Cada equipo siempre devuelve tres paquetes',
 			'c)	No son saltos',
-			'd)	Por que se enviaron tres paquetes por cada incremento de TTL'
+			'd)	Porque se enviaron tres paquetes por cada incremento de TTL'
 		];
 
 	}else if(localStorage.getItem("language")==2){
 
 		question1=[
 
-			'Which is the default in the previous exit route:',
+			'Which is the default route in the previous exit?',
 			'a)	192.168.1.1',
 			'b)	8.8.4.4',
 			'c)	I need to see the routing table',
@@ -1288,11 +1300,11 @@ function Question6(){
 
 		question2=[
 
-			'Because there are three values for each jump?',
+			'Why are there three values for each jump?',
 			'a)	It is an average calculation based on the topology of the network',
-			'b)	Each team always returns three packages',
-			'c)	Are not jumps',
-			'd)	Because is sent three packages by each increase of ttl'
+			'b)	Each machine always returns three packages',
+			'c)	They are not jumps',
+			'd)	Because it was sent three packages by each increase of ttl'
 		];
 
 	}else if(localStorage.getItem("language")==3){
@@ -1407,7 +1419,7 @@ function Question7(){
 
 		question1=[
 
-			'Que significan los * en la salida:',
+			'¿Qué significan los * en la salida?',
 			'a)	Terminó el traceroute',
 			'b)	No ha llegado a su destino y sigue incrementando el Hop Limit',
 			'c)	Problema de software, quizás un BUG',
@@ -1418,18 +1430,18 @@ function Question7(){
 
 		question1=[
 
-			'That means the * in the output',
-			'a)	He finished the traceroute',
-			'b)	It has not reached its destination and it continues to grow the Hop Limit',
+			'What does it mean the * in the output?',
+			'a)	The traceroute has finished',
+			'b)	It has not reached its destination and continues to grow the Hop Limit',
 			'c)	Software problem, perhaps a BUG',
-			'd)	Please stop the tracerouter and start one new'
+			'd)	Please stop the tracerouter and start a new one'
 		];
 
 	}else if(localStorage.getItem("language")==3){
 
 		question1=[
 
-			'O que fazer o * na saída:',
+			'O que fazer o * na saída?',
 			'a)	Ele terminou a traceroute',
 			'b)	Não chegou ao seu destino e ainda aumenta o limite de saltos',
 			'c)	Problema de software, talvez um BUG',
@@ -1458,6 +1470,221 @@ function Question7(){
 		}else{
 
 			respuesta.setAttribute("onclick","score(7);incorrecta("+i+");");
+
+		}
+
+		document.getElementById("Questions").appendChild(respuesta);
+	}
+
+	for(var j=1; j < question1.length; j++) {
+
+		document.getElementById("respuesta"+j).innerHTML =question1[j];
+
+	}
+}
+
+function Question8(){
+
+	var command8="<img style='width:100%' src='img/pregunta-8.png'>";
+
+	if(localStorage.getItem("language")==1){
+
+		question1=[
+   
+			'De la salida anterior, ¿Dónde parece haber un problema?',
+			'a)	4.69.141.37',
+			'b)	8.8.8.8',
+			'c)	192.168.1.1',
+			'd)	???'
+		];
+
+	}if(localStorage.getItem("language")==2){
+
+		question1=[
+
+			'In the previous output, Where is the problem?',
+			'a)	4.69.141.37',
+			'b)	8.8.8.8',
+			'c)	192.168.1.1',
+			'd)	???'
+		];
+
+	}else if(localStorage.getItem("language")==3){
+
+		question1=[
+
+			'A partir da saída, onde parece ser um problema?',
+			'a)	4.69.141.37',
+			'b)	8.8.8.8',
+			'c)	192.168.1.1',
+			'd)	???'
+		];
+
+	}
+
+	$( "#commandQuestion" ).html(command8);
+
+	$( "#titleQuestion" ).html(question1[0]);
+
+	for (var i =1; i < question1.length; i++) {
+
+	    var respuesta=document.createElement("div");
+
+		respuesta.setAttribute("class","respuesta");
+
+		respuesta.setAttribute("id","respuesta"+i);
+
+
+		if(i==1){
+
+			respuesta.setAttribute("onclick","score(8);correcta("+i+");");
+
+		}else{
+
+			respuesta.setAttribute("onclick","score(8);incorrecta("+i+");");
+
+		}
+
+		document.getElementById("Questions").appendChild(respuesta);
+	}
+
+	for(var j=1; j < question1.length; j++) {
+
+		document.getElementById("respuesta"+j).innerHTML =question1[j];
+
+	}
+}
+
+function Question9(){
+
+	var command9="<img style='width:100%' src='img/pregunta-9.png'>";
+
+	if(localStorage.getItem("language")==1){
+
+		question1=[
+			'¿De la salida de tcpdump que comando se puede inferir fue capturado?',
+			'a)	ping',
+			'b)	mtr',
+			'c)	dig',
+			'd)	traceroute'
+		];
+
+	}if(localStorage.getItem("language")==2){
+
+		question1=[
+
+			'In the tcpdump output, What command was captured?',
+			'a)	ping',
+			'b)	mtr',
+			'c)	dig',
+			'd)	traceroute'
+		];
+
+	}else if(localStorage.getItem("language")==3){
+
+		question1=[
+
+			'Como saída tcpdump esse comando foi capturado?',
+			'a)	ping',
+			'b)	mtr',
+			'c)	dig',
+			'd)	traceroute'
+		];
+
+	}
+
+	$( "#commandQuestion" ).html(command9);
+
+	$( "#titleQuestion" ).html(question1[0]);
+
+	for (var i =1; i < question1.length; i++) {
+
+	    var respuesta=document.createElement("div");
+
+		respuesta.setAttribute("class","respuesta");
+
+		respuesta.setAttribute("id","respuesta"+i);
+
+
+		if(i==4){
+
+			respuesta.setAttribute("onclick","score(9);correcta("+i+");");
+
+		}else{
+
+			respuesta.setAttribute("onclick","score(9);incorrecta("+i+");");
+
+		}
+
+		document.getElementById("Questions").appendChild(respuesta);
+	}
+
+	for(var j=1; j < question1.length; j++) {
+
+		document.getElementById("respuesta"+j).innerHTML =question1[j];
+
+	}
+}
+
+function Question10(){
+
+	var command10="en0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500<br>        ether ac:bc:32:96:82:2bv        inet6 fe80::aebc:32ff:fe96:822b%en0 prefixlen 64 scopeid 0x4<br>        inet6 2001:470:5:516:aebc:32ff:fe96:822b prefixlen 64 autoconf<br>        inet6 2001:470:5:516:1588:89ea:8369:1181 prefixlen 64 autoconf temporary<br>        inet 192.168.1.10 netmask 0xffffff00 broadcast 192.168.1.255<br>        nd6 options=1<PERFORMNUD><br>        media: autoselect<br>        status: active<br>";
+
+	if(localStorage.getItem("language")==1){
+
+		question1=[
+   
+			'De las direcciones IPv6 de esta interfaz, ¿Cuál tendrá preferencia al momento de realizar una conexión a Internet?',
+			'a)	fe80::aebc:32ff:fe96:822b%en0',
+			'b)	2001:470:5:516:aebc:32ff:fe96:822b',
+			'c)	2001:470:5:516:1588:89ea:8369:1181',
+			'd)	Ninguna de las anteriores'
+		];
+
+	}if(localStorage.getItem("language")==2){
+
+		question1=[
+
+			'In the IPV6 addresses in this interface, Which one will have preference on an Internet connection?',
+			'a)	fe80::aebc:32ff:fe96:822b%en0',
+			'b)	2001:470:5:516:aebc:32ff:fe96:822b',
+			'c)	2001:470:5:516:1588:89ea:8369:1181',
+			'd)	Ninguna de las anteriores'
+		];
+
+	}else if(localStorage.getItem("language")==3){
+
+		question1=[
+
+			'Os endereços IPv6 dessa interface, o que preferência ao fazer uma conexão com a Internet?',
+			'a)	fe80::aebc:32ff:fe96:822b%en0',
+			'b)	2001:470:5:516:aebc:32ff:fe96:822b',
+			'c)	2001:470:5:516:1588:89ea:8369:1181',
+			'd)	Ninguna de las anteriores'
+		];
+
+	}
+
+	$( "#commandQuestion" ).html(command10);
+
+	$( "#titleQuestion" ).html(question1[0]);
+
+	for (var i =1; i < question1.length; i++) {
+
+	    var respuesta=document.createElement("div");
+
+		respuesta.setAttribute("class","respuesta");
+
+		respuesta.setAttribute("id","respuesta"+i);
+
+
+		if(i==3){
+
+			respuesta.setAttribute("onclick","score(10);correcta("+i+");");
+
+		}else{
+
+			respuesta.setAttribute("onclick","score(10);incorrecta("+i+");");
 
 		}
 
