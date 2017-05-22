@@ -33,21 +33,36 @@ $(document).ready(function(){
     if(localStorage.getItem("intentar")==1){
 
        nivel= 1;
-       timeLevel = 40;
+        if ($('#cmbTime').val()==''){
+		timeLevel = 40;
+		$('#cmbTime').val(timeLevel);
+	}
+	 else
+		timeLevel = parseInt($('#cmbTime').val());
        PlayGame();
        Timer();
 
     }else if(localStorage.getItem("intentar")==2){
 
        nivel= 2;
-       timeLevel = 70;
+        if ($('#cmbTime').val()==''){
+		timeLevel = 70;
+		$('#cmbTime').val(timeLevel);
+	}
+	 else
+		timeLevel = parseInt($('#cmbTime').val());
        PlayGame();
        Timer();
 
     }else if(localStorage.getItem("intentar")==3){
 
       nivel=3;
-      timeLevel = 100;
+       if ($('#cmbTime').val()==''){
+		timeLevel = 100;
+		$('#cmbTime').val(timeLevel);
+	}
+	 else
+		timeLevel = parseInt($('#cmbTime').val());
       LevelHard();
       Timer();
     }
@@ -67,7 +82,12 @@ function Level(){
     //Nivel uno aparecen 12 cartas
   $('#level1').click(function(){
      nivel= 1;
-     timeLevel = 40;
+      if ($('#cmbTime').val()==''){
+		timeLevel = 40;
+		$('#cmbTime').val(timeLevel);
+	}
+	 else
+		timeLevel = parseInt($('#cmbTime').val());
      $('#level1').remove();
      $('#level2').remove();
      $('#level3').remove();
@@ -77,7 +97,12 @@ function Level(){
     //Nivel dos aparecen 16 cartas
   $('#level2').click(function(){
      nivel= 2;
-     timeLevel = 70;
+      if ($('#cmbTime').val()==''){
+		timeLevel = 70;
+		$('#cmbTime').val(timeLevel);
+	}
+	 else
+		timeLevel = parseInt($('#cmbTime').val());
      $('#level1').remove();
      $('#level2').remove();
      $('#level3').remove();
@@ -87,7 +112,12 @@ function Level(){
     //Nivel tres aparecen 24 cartas
   $('#level3').click(function(){
     nivel=3;
-     timeLevel = 100;
+      if ($('#cmbTime').val()==''){
+		timeLevel = 100;
+		$('#cmbTime').val(timeLevel);
+	}
+	 else
+		timeLevel = parseInt($('#cmbTime').val());
      $('#level1').remove();
      $('#level2').remove();
      $('#level3').remove();

@@ -15,7 +15,9 @@ var p="Publique su puntaje en las redes sociales";
 var accept ="Aceptar";
 var labelSelect="Cantidad de Preguntas";
 var selectTitle="Seleccione";
+var labelSelect2="Tiempo";
 var sel="<select id='cmbQuestions'><option value='5'>5</option><option selected value='7'>7</option><option value='9'>9</option><option value='10'>10</option></select>"
+var sel2=""
 
 if(localStorage.getItem("language")==2){
 	texto="Question";
@@ -27,6 +29,7 @@ if(localStorage.getItem("language")==2){
 	accept ="Accept";
 	labelSelect="Questions quantity";
     selectTitle="Select";
+	labelSelect2="Time";
 }else if(localStorage.getItem("language")==3){
 	texto="Pergunta";
 	failh2="Fim de Jogo";
@@ -35,76 +38,87 @@ if(localStorage.getItem("language")==2){
 	correcth4="Nivel Maximo";
 	p="Postar sua pontos nas redes sociais";
 	accept ="OK";
+	labelSelect="Questions quantity";
+    selectTitle="Select";
+	labelSelect2="Time";
 }
 
-
 $(document).ready(function(){
+	// Elegir cantidad y tiempo
+	BuildTimeCmb();
+	$('#bloquear').attr('class', 'bloquear');
+	$('#message').removeAttr( "style" );
+	$('#message').attr('class', 'message');
+	$('#content').html('<div id="correct"><center><h2>'+selectTitle+'</h2><h4>'+labelSelect+'</h4><p class="post">'+sel+'</p><h4>'+labelSelect2+'</h4><p class="post">'+sel2+'</p></center><center><div class="ppt"><button class="btn btn-default" onclick="SetQuantity()">'+accept+'</button></div></center></div>');
 
-	timer();
-
-	ramdom();
-
+	// Ciclo
+	timer();	
 	Questions+=1;
-
-
 	selection(posicion[0]);
-
 });
 
+function BuildTimeCmb(){
+	sel2="<select id='cmbTime'>";
+	for(var i=20;i<=250;i++){
+		sel2+="<option value='"+i+"'";
+		if (i==200)
+			sel2+=" selected";
+		sel2+=">"+i+"</option>";
+	}
+	sel2+="</select>";
+}
 
 function timer(i){
 
   var interval = setInterval(function() {
 
-  	document.getElementById('time').innerHTML =  --time;
+  	
+	// Si ya se eligió la cantidad de preguntas
+	if(0<totalQuestions){
+		document.getElementById('time').innerHTML =  --time;
+		if(time<=0){
 
-  	if(time<=0){
+			clearInterval(interval);
 
-  		clearInterval(interval);
+			$('#bloquear').attr('class', 'bloquear');
 
-  		$('#bloquear').attr('class', 'bloquear');
+			$('#message').removeAttr( "style" );
 
-  		$('#message').removeAttr( "style" );
+			$('#message').attr('class', 'message');
 
-  		$('#message').attr('class', 'message');
+			$('#content').html('<div id="failet"><center><img class="logo" src="../../img/game_over.png" ><h2>'+failh2+'</h2><a href="javascript:location.reload();"><h4>'+failh4+'</h4></a><p class="post">'+p+'</p></center><center><div class="ppt"><a class="fb-xfbml-parse-ignore" target="_blank"><button class="FB"></button></a><button class="TW" onclick="public_TW()"></button></div></center></div>');
+			$('#Question').html('');
+			$('#command').html('');
+			ShareScore();
 
-  		$('#content').html('<div id="failet"><center><img class="logo" src="../../img/game_over.png" ><h2>'+failh2+'</h2><a href="javascript:location.reload();"><h4>'+failh4+'</h4></a><p class="post">'+p+'</p></center><center><div class="ppt"><a class="fb-xfbml-parse-ignore" target="_blank"><button class="FB"></button></a><button class="TW" onclick="public_TW()"></button></div></center></div>');
+		}else if(Questions==(totalQuestions+1)){
 
-  		ShareScore();
+			clearInterval(interval);
 
-  	}else if(Questions==(totalQuestions+1)){
+			$('#bloquear').attr('class', 'bloquear');
 
-  		clearInterval(interval);
+			$('#message').removeAttr( "style" );
 
-  		$('#bloquear').attr('class', 'bloquear');
+			$('#message').attr('class', 'message');
 
-	  	$('#message').removeAttr( "style" );
+			$('#content').html('<div id="correct"><center><img class="logo" src="../../img/congratulations.png" ><h2>'+correcth2+'</h2><h4>'+correcth4+'</h4><p class="post">'+p+'</p></center><center><div class="ppt"><a class="fb-xfbml-parse-ignore" target="_blank"><button class="FB"></button></a><button class="TW" onclick="public_TW()"></button></div></center></div>');
+			$('#Question').html('');
+			$('#command').html('');
+			
+			ShareScore();
 
-	  	$('#message').attr('class', 'message');
-
-	  	$('#content').html('<div id="correct"><center><img class="logo" src="../../img/congratulations.png" ><h2>'+correcth2+'</h2><h4>'+correcth4+'</h4><p class="post">'+p+'</p></center><center><div class="ppt"><a class="fb-xfbml-parse-ignore" target="_blank"><button class="FB"></button></a><button class="TW" onclick="public_TW()"></button></div></center></div>');
-
-	  	ShareScore();
-  	}
-	else if(totalQuestions==0)
-	{
-		
-  		$('#bloquear').attr('class', 'bloquear');
-
-	  	$('#message').removeAttr( "style" );
-
-	  	$('#message').attr('class', 'message');
-
-	  	$('#content').html('<div id="correct"><center><h2>'+selectTitle+'</h2><h4>'+labelSelect+'</h4><p class="post">'+sel+'</p></center><center><div class="ppt"><button class="button" onclick="SetQuantity()"></button></div></center></div>');
-
-		
-	}
+		}
+	} 
  
   }, 1000);
 }
 
 function SetQuantity(){
-	totalQuestions = $("#cmbQuestions").val();
+	totalQuestions = parseInt($("#cmbQuestions").val());
+	time = parseInt($("#cmbTime").val());	
+	$('#bloquear').removeAttr('class');
+	$('#content').html('');
+	ramdom();
 }
 
 function ramdom(){
@@ -150,7 +164,9 @@ function ramdom(){
 }
 
 function selection(m){
-
+	/*console.log('selecionQuestions' + Questions);
+	if(totalQuestions>0 && Questions>totalQuestions);
+		return;	*/
 	switch(m) {
 
 		case 1:
@@ -249,7 +265,8 @@ function score(m){
 				$("#commandQuestion").removeAttr('style');
 
 				$( ".prs" ).text(texto+" "+Questions+":");
-
+				
+	
 				selection(posicion[i]);
 
 			},1000);

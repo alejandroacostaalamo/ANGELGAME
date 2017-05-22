@@ -68,7 +68,13 @@ $(document).ready(function(){
 
 			 nivel= 6;
 			 nivel1 = nivel;
-			 timeLevel = 40;
+			 if ($('#cmbTime').val()==''){
+				timeLevel = 40;
+				$('#cmbTime').val(timeLevel);
+			 }
+			 else
+				timeLevel = parseInt($('#cmbTime').val());		 
+			 
 			 StarGame();
 			 Timer();
 
@@ -76,7 +82,13 @@ $(document).ready(function(){
 
 			 nivel= 8;
 			 nivel2 = nivel;
-			 timeLevel = 70;
+			 if ($('#cmbTime').val()==''){
+				timeLevel = 70;
+				$('#cmbTime').val(timeLevel);
+			 }
+			 else
+				timeLevel = parseInt($('#cmbTime').val());		 
+			 
 			 StarGame();
 			 Timer();
 
@@ -84,7 +96,13 @@ $(document).ready(function(){
 
 			nivel= 12;
 			nivel3 = nivel;
-			timeLevel = 100;
+			if ($('#cmbTime').val()==''){
+				timeLevel = 100;
+				$('#cmbTime').val(timeLevel);
+			 }
+			 else
+				timeLevel = parseInt($('#cmbTime').val());		 
+			 
 			StarGame();
 			Timer();
 		}
@@ -192,7 +210,12 @@ function Level(){
 	$('#level1').click(function(){
 		 nivel= 6;
 		 nivel1 = nivel;
-		 timeLevel = 40;
+		 if ($('#cmbTime').val()==''){
+			timeLevel = 40;
+			$('#cmbTime').val(timeLevel);
+		 }
+		 else
+			 timeLevel = parseInt($('#cmbTime').val());		 
 		 $('#level1').remove();
 		 $('#level2').remove();
 		 $('#level3').remove();
@@ -203,7 +226,12 @@ function Level(){
 	$('#level2').click(function(){
 		 nivel= 8;
 		 nivel2 = nivel;
-		 timeLevel = 70;
+		 if ($('#cmbTime').val()==''){
+			timeLevel = 70;
+			$('#cmbTime').val(timeLevel);
+		 }
+		 else
+			 timeLevel = parseInt($('#cmbTime').val());		 
 		 $('#level1').remove();
 		 $('#level2').remove();
 		 $('#level3').remove();
@@ -214,7 +242,12 @@ function Level(){
 	$('#level3').click(function(){
 		 nivel= 12;
 		 nivel3 = nivel;
-		 timeLevel = 100;
+		 if ($('#cmbTime').val()==''){
+			timeLevel = 100;
+			$('#cmbTime').val(timeLevel);
+		 }
+		 else
+			 timeLevel = parseInt($('#cmbTime').val());
 		 $('#level1').remove();
 		 $('#level2').remove();
 		 $('#level3').remove();
