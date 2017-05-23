@@ -118,6 +118,7 @@ function SetQuantity(){
 	time = parseInt($("#cmbTime").val());	
 	$('#bloquear').removeAttr('class');
 	$('#content').html('');
+	$('#message').removeAttr('class');
 	ramdom();
 }
 

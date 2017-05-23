@@ -216,7 +216,7 @@ var punto=0;
 
 var fin= false;
 
-var timeLevel = 500;
+var timeLevel = localStorage.getItem("timeCrossWord");
 
 
 function EndGame(){

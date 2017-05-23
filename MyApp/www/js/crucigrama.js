@@ -3,6 +3,18 @@ $(document).ready(function(){
 	$('#levelModal').modal('show');
 
 	$('#levelModal button').click(function(){
+		// Set time
+		if ($('#cmbTime').val()==''){
+			timeLevel = 500;
+			$('#cmbTime').val(timeLevel);
+		}
+		 else
+			timeLevel = parseInt($('#cmbTime').val());
+		
+		// Guardar
+		localStorage.setItem("timeCrossWord",timeLevel);
+		
+		// Hide
 		$('#levelModal').modal('hide');
 	})
 	var WindowW = $(window).innerWidth();

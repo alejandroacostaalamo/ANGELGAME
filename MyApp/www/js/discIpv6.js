@@ -55,6 +55,12 @@ function Level(){
   $('#level1').click(function(){
     DiscoSpeed= 10000;
     PreguntaSpeed= 9000;
+    if ($('#cmbTime').val()==''){
+		seconds_left = 60;
+		$('#cmbTime').val(timeLevel);
+	}
+	else
+		seconds_left = parseInt($('#cmbTime').val());
     nivel=1;
     Timer();
     Questions();
@@ -63,6 +69,12 @@ function Level(){
     DiscoSpeed= 7000;
     PreguntaSpeed= 5000;
     nivel=3;
+	if ($('#cmbTime').val()==''){
+		seconds_left = 60;
+		$('#cmbTime').val(timeLevel);
+	}
+	else
+		seconds_left = parseInt($('#cmbTime').val());
     Timer();
     Questions();
   })
@@ -110,9 +122,10 @@ function PlayMusic(active){
 var isFinish = false;
 var contador = 0;
 
+var seconds_left = 59;
+
 function Timer(){
   //Conteo Regresivo
-  var seconds_left = 59;
   // var minutes_left = 0;
   var interval = setInterval(function() {
   //document.getElementById('contratiempo').innerHTML =  '0'+minutes_left +':'+ --seconds_left;

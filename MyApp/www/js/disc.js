@@ -87,7 +87,12 @@ function Level(){
   $('#level1').click(function(){
     DiscoSpeed= 14000;
     PreguntaSpeed= 11000;
-    timeLevel = 55;
+    if ($('#cmbTime').val()==''){
+		timeLevel = 55;
+		$('#cmbTime').val(timeLevel);
+	}
+	else
+		timeLevel = parseInt($('#cmbTime').val());
     nivel=1;
     Timer();
     Questions();
@@ -95,7 +100,12 @@ function Level(){
   $('#level2').click(function(){
     DiscoSpeed= 10000;
     PreguntaSpeed= 8000;
-    timeLevel = 64;
+    if ($('#cmbTime').val()==''){
+		timeLevel = 64;
+		$('#cmbTime').val(timeLevel);
+	}
+	else
+		timeLevel = parseInt($('#cmbTime').val());
     nivel=3;
     Timer();
     Questions();
@@ -541,19 +551,29 @@ $(document).ready(function(){
 
     if(localStorage.getItem("intentar")==1){
 
-       DiscoSpeed= 14000;
-       PreguntaSpeed= 11000;
-       timeLevel = 55;
-       nivel=1;
-       Timer();
-       Questions();
+		DiscoSpeed= 14000;
+		PreguntaSpeed= 11000;
+		if ($('#cmbTime').val()==''){
+			timeLevel = 55;
+			$('#cmbTime').val(timeLevel);
+		}
+		else
+			timeLevel = parseInt($('#cmbTime').val());
+		nivel=1;
+		Timer();
+		Questions();
 
     }else if(localStorage.getItem("intentar")==3){
 
       DiscoSpeed= 10000;
       PreguntaSpeed= 8000;
-      timeLevel = 64;
-      nivel=3;
+      if ($('#cmbTime').val()==''){
+			timeLevel = 55;
+			$('#cmbTime').val(timeLevel);
+		}
+		else
+			timeLevel = parseInt($('#cmbTime').val());
+		nivel=3;
       Timer();
       Questions();
     }
