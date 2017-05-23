@@ -39,8 +39,8 @@ if(localStorage.getItem("language")==2){
 	p="Postar sua pontos nas redes sociais";
 	accept ="OK";
 	labelSelect="Questions quantity";
-    selectTitle="Select";
-	labelSelect2="Time";
+    selectTitle="Selecionar";
+	labelSelect2="Tempo";
 }
 
 $(document).ready(function(){
