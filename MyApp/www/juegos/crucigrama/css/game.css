@@ -50,4 +50,6 @@ body{
     position: fixed;
     bottom: 0;
     width: 100%;
+	top:85px;
+	 z-index: -12;
 }
