@@ -4,7 +4,7 @@
   fin= false;
   var answersIpv4 = [
     "Version",
-    "Internet Header LLength",
+    "Internet Header Length",
     "Type of Service",
     "Total Length",
     "Identification",

@@ -5,7 +5,7 @@
   fin= false;
   var answersudp = [
     "Source Port",
-    "Destitation Port",
+    "Destination Port",
     "Length",
     "Checksum",
     "Data",
