@@ -1,19 +1,18 @@
 
-  var boxPositioneth = [0,1,2,3,4,5,6,7,8,9];
+  var boxPositioneth = [0,1,2,3,4,5,6,7,8];
   var arregloFinal = [];
   var cont= 0;
   fin= false;
   var answersudp = [
-    "Preamble 8 bytes",
-    "Destination Address 8 bytes",
-    "Source Address 8 bytes",
-    "Type 2 bytes",
-    "Destination Address 8 bytes",
-	"Source Address 8 bytes",
-	"Data 1500 bytes",
-	"CRC 4 bytes",
-	"MAC Header",
-	"Data"
+    "32 bits",
+    "8",
+    "8",
+    "8",
+    "8",
+	"Type",
+	"Code",
+	"Checksum",
+	"Variables Fields, depending on ICMPv6 Type"
   ];
 
   var newArreglo = [];
@@ -295,7 +294,7 @@ function LevelHard(){
 //**********Valida Cajas Respuesta
   for (var j = 0; j < arregloFinal.length; j++){
     $( "#pregunta" + arregloFinal[j]).draggable({ revert: true,revertDuration: 0 });
-    $( "#ethernet-" + arregloFinal[j] ).droppable({
+    $( "#icmpv6-" + arregloFinal[j] ).droppable({
       accept: "#pregunta" + arregloFinal[j],
       activeClass: "",
       hoverClass: "",
@@ -334,9 +333,9 @@ function PlayGame(){
   for(var i=0; i<xt; i++){
     var value = Math.round(Math.random()* 9);
 	newArreglo[value]= value;
-    $('#ethernet-' + value).attr( "placeholder", answersudp[value]);
-    $('#ethernet-' + value).attr( "title", answersudp[value]);
-    $('#ethernet-' + value).addClass('help-input');
+    $('#icmpv6-' + value).attr( "placeholder", answersudp[value]);
+    $('#icmpv6-' + value).attr( "title", answersudp[value]);
+    $('#icmpv6-' + value).addClass('help-input');
     //*** crea el resto del arreglo (las que no salen en la caja contentenedora)
     boxPositioneth = jQuery.grep(boxPositioneth, function(a) {
      return a != value;
@@ -391,7 +390,7 @@ function PlayGame(){
   //**********Valida Cajas Respuesta
     for (var j = 0; j < arregloFinal.length; j++){
       $( "#pregunta" + arregloFinal[j]).draggable({ revert: true,revertDuration: 0 });
-      $( "#ethernet-" + arregloFinal[j] ).droppable({
+      $( "#icmpv6-" + arregloFinal[j] ).droppable({
         accept: "#pregunta" + arregloFinal[j],
         activeClass: "",
         hoverClass: "",
@@ -453,7 +452,7 @@ function public_TW(){
       break;
   }
 
-  var msj="GAME: DRAG  TOPIC:ETHERNET  NEVEL: "+level+" POINTS: "+punto;
+  var msj="GAME: DRAG  TOPIC:icmpv6  NEVEL: "+level+" POINTS: "+punto;
 
   var src='http://angelgame.acostasite.com/Game/img/drag_img.png';
 
@@ -482,7 +481,7 @@ function public_FB(){
       break;
   }
 
-  var msj="GAME: DRAG  TOPIC:ETHERNET  NEVEL: "+level+" POINTS: "+punto;
+  var msj="GAME: DRAG  TOPIC:icmpv6  NEVEL: "+level+" POINTS: "+punto;
 
   $(".fb-xfbml-parse-ignore").attr("href","https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fangelgame.acostasite.com%2FGame%2FPublic.php?description="+msj+"&method=1&amp;src=sdkpreparse");
 }
