@@ -422,7 +422,7 @@ function PlayGame(){
 
 function ShareScore(){
 
-  var infogame = { "UserId":localStorage.getItem("UserId"), "GameId":3, "TopicId" :4, "levelId" :nivel,"Score":punto};
+  var infogame = { "UserId":localStorage.getItem("UserId"), "GameId":3, "TopicId" :7, "levelId" :nivel,"Score":punto};
 
   var uid = RegisterGame(infogame);
 

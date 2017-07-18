@@ -1,5 +1,20 @@
 Datos de la llave
 
+archivo llave: angel.keystore
+
+archivo correspondiente a estas contraseñas: appkey.keystore
 password: 4NG3L_2016
 Alias: ANGEL
 Alias password:4NG3L_2016
+
+
+Comandos: 
+
+Para generar llave:
+keytool -genkey -v -keystore angel.keystore -alias angel01 -keyalg RSA -keysize 2048 -validity 14600
+
+Para asignar la llave 
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore angel.keystore C:/Users/Usuario/Desktop/ANGEL/MyApp/platforms/android/build/outputs/apk/android-release-unsigned.apk angel01
+
+para alinear la app con certificado:
+zipalign -v 4 C:/Users/Usuario/Desktop/ANGEL/MyApp/platforms/android/build/outputs/apk/android-release-unsigned.apk angelGame.apk
