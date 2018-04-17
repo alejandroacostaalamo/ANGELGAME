@@ -294,7 +294,7 @@ function LevelHard(){
 //**********Valida Cajas Respuesta
   for (var j = 0; j < arregloFinal.length; j++){
     $( "#pregunta" + arregloFinal[j]).draggable({ revert: true,revertDuration: 0 });
-    $( "#icmpv6-" + arregloFinal[j] ).droppable({
+    $( "#ICMPv6-" + arregloFinal[j] ).droppable({
       accept: "#pregunta" + arregloFinal[j],
       activeClass: "",
       hoverClass: "",
@@ -333,9 +333,9 @@ function PlayGame(){
   for(var i=0; i<xt; i++){
     var value = Math.round(Math.random()* 9);
 	newArreglo[value]= value;
-    $('#icmpv6-' + value).attr( "placeholder", answersudp[value]);
-    $('#icmpv6-' + value).attr( "title", answersudp[value]);
-    $('#icmpv6-' + value).addClass('help-input');
+    $('#ICMPv6-' + value).attr( "placeholder", answersudp[value]);
+    $('#ICMPv6-' + value).attr( "title", answersudp[value]);
+    $('#ICMPv6-' + value).addClass('help-input');
     //*** crea el resto del arreglo (las que no salen en la caja contentenedora)
     boxPositioneth = jQuery.grep(boxPositioneth, function(a) {
      return a != value;
@@ -390,7 +390,7 @@ function PlayGame(){
   //**********Valida Cajas Respuesta
     for (var j = 0; j < arregloFinal.length; j++){
       $( "#pregunta" + arregloFinal[j]).draggable({ revert: true,revertDuration: 0 });
-      $( "#icmpv6-" + arregloFinal[j] ).droppable({
+      $( "#ICMPv6-" + arregloFinal[j] ).droppable({
         accept: "#pregunta" + arregloFinal[j],
         activeClass: "",
         hoverClass: "",
@@ -452,7 +452,7 @@ function public_TW(){
       break;
   }
 
-  var msj="GAME: DRAG  TOPIC:icmpv6  NEVEL: "+level+" POINTS: "+punto;
+  var msj="GAME: DRAG  TOPIC:ICMPv6  NEVEL: "+level+" POINTS: "+punto;
 
   var src='http://angelgame.acostasite.com/Game/img/drag_img.png';
 
@@ -481,7 +481,7 @@ function public_FB(){
       break;
   }
 
-  var msj="GAME: DRAG  TOPIC:icmpv6  NEVEL: "+level+" POINTS: "+punto;
+  var msj="GAME: DRAG  TOPIC:ICMPv6  NEVEL: "+level+" POINTS: "+punto;
 
   $(".fb-xfbml-parse-ignore").attr("href","https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fangelgame.acostasite.com%2FGame%2FPublic.php?description="+msj+"&method=1&amp;src=sdkpreparse");
 }

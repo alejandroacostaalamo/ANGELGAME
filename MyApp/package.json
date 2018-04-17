@@ -1,0 +1,13 @@
+{
+  "name": "com.angel.c1457020085351",
+  "version": "2.0",
+  "displayName": "A.N.G.E.L.",
+  "cordova": {
+    "platforms": [
+      "android"
+    ]
+  },
+  "dependencies": {
+    "cordova-android": "~7.0.0"
+  }
+}

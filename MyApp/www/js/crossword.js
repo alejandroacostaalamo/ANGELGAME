@@ -119,7 +119,7 @@ var word4v = 'lacnic';
 
 var word5h = 'eui64';
 
-var word6v = 'icmpv6';
+var word6v = 'ICMPv6';
 
 var word7h = 'iana';
 var word7v = 'ietf';

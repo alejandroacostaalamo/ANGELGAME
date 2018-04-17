@@ -19,7 +19,60 @@
 
   <body>
     <div class="index por">
-          
+          <div class="UserPanel">
+        <button class="Login">Login</button>
+        <button class="GetInfo">GetInfo</button>
+        <button class="Logout">Logout</button>
+      </div>
+
+      <div class="modal fade" id="InfoModal" tabindex="-1" role="dialog" aria-labelledby="InfoModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="aboutModalLabel">OPCIONAL:</h4>
+            </div>
+            <div class="modal-body">
+              <div class="text-center">
+                <p>
+Por favor, faça o login com sua rede social preferida para acompanhar seu progresso e compartilhar com seus amigos:</p>
+                <hr>
+                <!-- <button class="BtRegister">Register</button> -->
+                <button class="LoginFB">Entrar com Facebook</button>
+                  <button class="LoginTwitter">Entrar com Twitter</button>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="close" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="UserModal" tabindex="-1" role="dialog" aria-labelledby="UserModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">
+Informação de usuário:</h4>
+            </div>
+            <div class="modal-body">
+              <div class="userData">
+                <!---->
+                <!-- <img src="http://lorempixel.com/400/200/" alt="">
+                <p>Name: <br><span>sdsdsd</span></p> -->
+                <!---->
+                <img id="userPic"/>
+                <p style="color: #fff">Nome: <span style="color: #fff" id="userName"></span></p>
+
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button id="BtRegisterBack" type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- Modal -->
       <div class="modal fade" id="playModal" tabindex="-1" role="dialog" aria-labelledby="playModalLabel">
         <div class="modal-dialog" role="document">
