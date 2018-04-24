@@ -61,7 +61,7 @@ function getInfo() {
            info= JSON.stringify(data);
            info2= JSON.stringify(info);
            //var info3 = { "name" : data.name, "lastName"  : "", "email" : "", "id" : data.id };
-           var info3 = { "name" : "", "lastName"  : "", "email" : "", "id" : "","username" : "","method":""};
+           var info3 = { "name" : "", "lastName"  : "", "email" : "", "id" : "","username" : "","method":"", "image":""};
            document.getElementById("userName").innerHTML = data.name;
            document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=normal';
           //alert(data.id);
@@ -94,6 +94,7 @@ function getInfo() {
                 info3.id=data.id;
                 info3.username=data.name;
                 info3.method=1;
+                info3.image='http://graph.facebook.com/' + data.id + '/picture?type=normal';
                 //alert(info3.name);
                 //alert(info3.email);
            var uid = Register(info3);

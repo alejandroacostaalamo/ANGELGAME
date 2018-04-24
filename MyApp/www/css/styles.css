@@ -397,6 +397,7 @@ body{
 .LoginFB,
 .Login,
 .LoginTwitter,
+.LoginInstagram,
 .GetInfo,
 .Logout{
   display: none;

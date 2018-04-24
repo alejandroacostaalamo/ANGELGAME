@@ -4,10 +4,18 @@
   "displayName": "A.N.G.E.L.",
   "cordova": {
     "platforms": [
-      "android"
-    ]
+      "android",
+      "browser"
+    ],
+    "plugins": {
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-whitelist": {}
+    }
   },
   "dependencies": {
-    "cordova-android": "~7.0.0"
+    "cordova-android": "~7.0.0",
+    "cordova-browser": "^5.0.3",
+    "cordova-plugin-inappbrowser": "^3.0.0",
+    "cordova-plugin-whitelist": "1"
   }
 }

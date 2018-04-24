@@ -14,7 +14,7 @@ var Registrado = false;
 
 
 function Register(info3){
-  // alert(ruta);
+   //alert(configuracion()+"/register/" +info3.name+ "/" +info3.lastName+ "/" +info3.id + "/" + info3.email + "/" +info3.username+ "/" +null+ "/" +info3.method+".json");
   //alert('Info 3 me trae esto');
   //alert(info3);
   $.ajax({
@@ -22,14 +22,16 @@ function Register(info3){
      // para la imagen se puede utilizar "small, normal, album, large, square", segun el tamaño deseado
      //  url: "http://angelgame.acostasite.com/ApiAngel/Api/register/" +data.name+ "/  " +data.id + "/  " + "/  " +'http://graph.facebook.com/' + data.id + '/picture?type=normal',
                                         //Nombre-         Apellido-      Token-        Email-     UserNamre-     Image-     MethodId
-     url: configuracion()+"/register/" +info3.name+ "/" +info3.lastName+ "/" +info3.id + "/" + info3.email + "/" +info3.username+ "/" +null+ "/" +info3.method+".json",
+	// register($name = null, $lastname = null, $token = null, $email = null, $username = null, $image = null, $methodId = null
+     url: configuracion()+"/register.json",
      cache: false,                                                                                            //**** Para traer el email hace falta la aprobacion de facebook
      contentType: "application/json; charset=utf-8",
      dataType: "json",
-     data: "",
+     data: {name : info3.name, lastName:info3.lastName, id:info3.id, email:info3.email, username:info3.username, image:info3.image, method:info3.method},
      success : function(data) {
 
      	var registrado=data.user.Id;
+     	//alert(registrado);
 
      	localStorage.setItem('UserId', registrado);
 
@@ -42,7 +44,7 @@ function Register(info3){
      },
 
      error : function(xhr, status) {
-        alert('Disculpe, existió un problema');
+        alert('Error calling angel api');
     }
  
   });
@@ -211,7 +213,7 @@ function TwitterSuccess(loc){
 								
 							   var entry = JSON.parse(data.text);
 								
-							   var info3 = { "name" : "", "lastName"  : "", "email" : "", "id" : "","username" : "", "method":"" };
+							   var info3 = { "name" : "", "lastName"  : "", "email" : "", "id" : "","username" : "", "method":"", "image":"" };
 								
 							   info3.email = entry.screen_name + "@twitter.com";
 
@@ -253,16 +255,12 @@ function TwitterSuccess(loc){
 						               }
 
 								   	info3.lastName = lstName;
-
 								 	info3.name = name;
-
-								 	info3.username = entry.screen_name;
-	
-								  	info3.email = entry.id_str+"@twitter.com";
-								  
+								 	info3.username = entry.screen_name;	
+								  	info3.email = entry.id_str+"@twitter.com";								  
 								  	info3.id = entry.id_str;
-
 								  	info3.method=2;
+								  	info3.image='https://twitter.com/1.1/'+entry.screen_name+'/?size=normal';
 
 								  	var uid = Register(info3);
 
@@ -287,3 +285,132 @@ function TwitterSuccess(loc){
 }
 
 // Fin twitter
+
+// Instagram
+
+$('.LoginInstagram').click(function(){
+  loginInstagram();
+});
+
+
+
+
+var cb2;
+var requestParams;
+
+
+
+function loginInstagram() {
+	
+	cb=window.open('https://api.instagram.com/oauth/authorize/?client_id=4ac68463df9b4dd8b3177c047f570cf9&redirect_uri='+callbackUrl+'&response_type=token', 
+                    { showLocationBar : false });   
+	cb.addEventListener('loadstop', function(loc){
+           InstagramSuccess(loc, cb);
+           
+		});					
+}
+
+function InstagramSuccess(loc, cb){
+	//alert(loc.url);
+	// If not in call back
+	if (!(loc.url.indexOf(callbackUrl) >-1)){
+		return;
+	}
+
+	// If user hit "No, thanks" when asked to authorize access
+	if (loc.url.indexOf(callbackUrl+"/?denied") >= 0) {
+		alert('User declined access');
+		cb.close();		
+		return;
+	}
+
+	// Same as above, but user went to app's homepage instead
+	// of back to app. Don't close the browser in this case.
+	if (loc.url === (callbackUrl+"/")) {
+		alert('User declined access');
+		cb.close();
+		return;
+	}
+	else{// Correcto
+
+		//alert('Usuario OK');
+		var token ='';
+		var qvars_tmp = loc.url.split('?');
+		for (var i = 0; i < qvars_tmp.length; i++) {
+			var y = qvars_tmp[i].split('=');
+			//alert(decodeURIComponent(y[0]));
+			token = decodeURIComponent(y[1]);
+		}
+
+		// Obtner data del usuario
+		$.ajax({
+	     type: "GET",
+	     url: "https://api.instagram.com/v1/users/self/?access_token=" + token,
+	     cache: false,                                                                                            //**** Para traer el email hace falta la aprobacion de facebook
+	     contentType: "application/json; charset=utf-8",
+	     dataType: "json",
+	     data: "",
+	     success : function(data) {
+
+		     	/*alert(data.data.id);
+		     	alert(data.data.username);
+		     	alert(data.data.full_name);
+		     	alert(data.data.profile_picture);*/
+
+		     	// APi de angel para reg.
+			   var info3 = { "name" : "", "lastName"  : "", "email" : "", "id" : "","username" : "", "method":"", "image":"" };
+				
+			   info3.email = data.data.username + "@instagram.com";
+			   alert(info3.email);
+
+			   localStorage.setItem('entry.name', data.data.username);
+
+			   localStorage.setItem('entry.screen_name', data.data.full_name);
+			   
+			   document.getElementById("userName").innerHTML = data.data.full_name;
+
+			   document.getElementById("userPic").src=data.data.profile_picture;
+			   
+			   var username = data.data.full_name;
+			   var strName = username.split(' ');
+	           var name = '';
+	           var lstName = '';
+	           switch (strName.length)
+	           {
+	               case 1:
+	                   name = strName[0];
+	                   break;
+	               case 2:
+	                   name = strName[0];
+	                   lstName = strName[1];
+	                   break;
+	               case 3:
+	                   name = strName[0] + " " + strName[1];
+	                   lstName = strName[2];
+	                   break;
+	               default:
+	                   name = strName[0] + " " + strName[1];
+	                   lstName = strName[2] + " " + strName[3];
+	                   break;
+	           }
+
+		   	info3.lastName = lstName;
+		 	info3.name = name;
+		 	info3.username = data.data.username;		  
+		  	info3.id = data.data.id;
+		  	info3.method=3;
+		  	info3.image=data.data.profile_picture;
+		  	var uid = Register(info3);
+		  	//alert(uid);
+		  	cb.close();
+		     },
+
+		     error : function(xhr, status) {
+		        alert('Error getting data form instagram');
+		        cb.close();
+	    }
+	 
+	  });
+	}
+}
+// Fin instagram

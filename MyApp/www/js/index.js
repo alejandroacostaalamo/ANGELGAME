@@ -34,6 +34,9 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        alert('si');
+        window.open = cordova.InAppBrowser.open;
+        alert('yres');
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
