@@ -25,9 +25,9 @@ function Register(info3){
 	// register($name = null, $lastname = null, $token = null, $email = null, $username = null, $image = null, $methodId = null
      url: configuracion()+"/register.json",
      cache: false,                                                                                            //**** Para traer el email hace falta la aprobacion de facebook
-     contentType: "application/json; charset=utf-8",
-     dataType: "json",
-     data: {name : info3.name, lastName:info3.lastName, id:info3.id, email:info3.email, username:info3.username, image:info3.image, method:info3.method},
+     //contentType: "application/json; charset=utf-8",
+    // dataType: "json",
+     data: {name : info3.name, lastname:info3.lastName, token:info3.id, email:info3.email, username:info3.username, image:info3.image, method:info3.method},
      success : function(data) {
 
      	var registrado=data.user.Id;
@@ -223,8 +223,8 @@ function TwitterSuccess(loc){
 							   
 							   document.getElementById("userName").innerHTML = entry.name;
 
-							   document.getElementById("userPic").src='https://twitter.com/1.1/'+entry.screen_name+'/?size=normal';
-							   
+							   document.getElementById("userPic").src='https://twitter.com/'+entry.screen_name+'/profile_image?size=normal';
+
 							  //document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=normal';
 							  //alert(data.id);
 							  // Name and lastname
@@ -260,7 +260,8 @@ function TwitterSuccess(loc){
 								  	info3.email = entry.id_str+"@twitter.com";								  
 								  	info3.id = entry.id_str;
 								  	info3.method=2;
-								  	info3.image='https://twitter.com/1.1/'+entry.screen_name+'/?size=normal';
+								  	//info3.image='https://twitter.com/1.1/'+entry.screen_name+'/?size=normal';
+								  	info3.image='https://twitter.com/'+entry.screen_name+'/profile_image?size=normal';
 
 								  	var uid = Register(info3);
 
@@ -361,11 +362,12 @@ function InstagramSuccess(loc, cb){
 			   var info3 = { "name" : "", "lastName"  : "", "email" : "", "id" : "","username" : "", "method":"", "image":"" };
 				
 			   info3.email = data.data.username + "@instagram.com";
-			   alert(info3.email);
+			   //alert(info3.email);
 
 			   localStorage.setItem('entry.name', data.data.username);
 
 			   localStorage.setItem('entry.screen_name', data.data.full_name);
+			   localStorage.setItem('entry.profile_pic', data.data.profile_picture);
 			   
 			   document.getElementById("userName").innerHTML = data.data.full_name;
 

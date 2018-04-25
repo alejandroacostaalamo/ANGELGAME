@@ -227,7 +227,7 @@ function sesion(){
 		$('.Login').show();
 		$('.GetInfo, .Logout').hide();
 		$('#InfoModal').modal('show');
-	}
+	}	
 }
 
 $('#close').click(function(){
@@ -321,7 +321,7 @@ function Authentication(){
 
 		}else if(localStorage.getItem("language")==3){
 
-			opcion1.setAttribute("value","sair");
+			opcion1.setAttribute("value","Sair");
 		}
 
 		opcion1.setAttribute("onclick","logout()");

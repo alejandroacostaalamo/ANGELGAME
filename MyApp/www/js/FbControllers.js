@@ -107,7 +107,15 @@ function getInfo() {
 
     document.getElementById("userName").innerHTML = localStorage.getItem('entry.name');
 
-    document.getElementById("userPic").src='https://twitter.com/'+localStorage.getItem('entry.screen_name')+'/profile_image?size=normal';
+    //document.getElementById("userPic").src='https://twitter.com/'+localStorage.getItem('entry.screen_name')+'/profile_image?size=normal';
+    document.getElementById("userPic").src='https://avatars.io/twitter/' + localStorage.getItem('entry.screen_name');
+                 //alert(document.getElementById("userPic").src);
+ }
+ else if(localStorage.getItem("method")==3){
+
+    document.getElementById("userName").innerHTML = localStorage.getItem('entry.name');
+
+    document.getElementById("userPic").src=localStorage.getItem('entry.profile_pic');
                  
  }
 

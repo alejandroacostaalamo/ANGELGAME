@@ -284,8 +284,12 @@ function correcta(m){
 	puntaje+=5;
 
 	$( "#puntos" ).text(puntaje);
-
+	var html = $("#respuesta"+m).html();
+	$("#respuesta"+m).html(html);
+	//alert($("#respuesta"+m).html());
 	$("#respuesta"+m).css({"animation-name": "correcta", "animation-duration": "1s"});
+	$("#imag_respuesta"+m).style.display='inline';
+
 
 	var Active= window.localStorage.getItem('#sound-acert');
 	if (Active=="1") {
@@ -464,7 +468,11 @@ function Question1(){
 				respuesta.setAttribute("id","respuesta"+i);
 
 				if(i==1){
-
+					var co = document.createElement("img");
+					co.setAttribute("src","img/logo");
+					co.setAttribute("id","imag_respuesta"+i);
+					co.setAttribute("style","display:none");
+					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(1);correcta("+i+");");
 
 				}else{
@@ -478,7 +486,7 @@ function Question1(){
 
 		  for(var j=1; j < question1.length; j++) {
 
-				document.getElementById("respuesta"+j).innerHTML =question1[j];
+				document.getElementById("respuesta"+j).innerHTML +=question1[j];
 
 		  }
 
@@ -487,7 +495,6 @@ function Question1(){
 	    case 2:
 
 	    	$( "#titleQuestion" ).html(question2[0]);
-
 
 		    for (var i =1; i < question2.length; i++) {
 
@@ -501,10 +508,14 @@ function Question1(){
 				if(i==3){
 
 					respuesta.setAttribute("onclick","score(1);correcta("+i+");");
+					var co = document.createElement("img");
+					co.setAttribute("src","img/logo");
+					co.setAttribute("id","imag_respuesta"+i);
+					co.setAttribute("style","display:none");
+					respuesta.appendChild(co);	
 
 				}else{
-
-					respuesta.setAttribute("onclick","score(1);incorrecta("+i+");");
+					espuesta.setAttribute("onclick","score(1);incorrecta("+i+");");
 
 				}
 
@@ -513,7 +524,7 @@ function Question1(){
 
 			for(var j=1; j < question2.length; j++) {
 
-				document.getElementById("respuesta"+j).innerHTML =question2[j];
+				document.getElementById("respuesta"+j).innerHTML +=question2[j];
 
 			}
 
@@ -536,9 +547,14 @@ function Question1(){
 				if(i==1){
 
 					respuesta.setAttribute("onclick","score(1);correcta("+i+");");
-
+					var co = document.createElement("img");
+					co.setAttribute("src","img/logo");
+					co.setAttribute("id","imag_respuesta"+i);
+					co.setAttribute("style","display:none");
+					respuesta.appendChild(co);	
+					
 				}else{
-
+					
 					respuesta.setAttribute("onclick","score(1);incorrecta("+i+");");
 
 				}
@@ -548,7 +564,7 @@ function Question1(){
 
 			for(var j=1; j < question3.length; j++) {
 
-				document.getElementById("respuesta"+j).innerHTML =question3[j];
+				document.getElementById("respuesta"+j).innerHTML +=question3[j];
 
 			}
 	        
@@ -759,6 +775,11 @@ function Question2(){
 
 				if(i==3){
 
+					var co = document.createElement("img");
+					co.setAttribute("src","img/logo");
+					co.setAttribute("id","imag_respuesta"+i);
+					co.setAttribute("style","display:none");
+					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(2);correcta("+i+");");
 
 				}else{
@@ -772,7 +793,7 @@ function Question2(){
 
 			for(var j=1; j < question1.length; j++) {
 
-				document.getElementById("respuesta"+j).innerHTML =question1[j];
+				document.getElementById("respuesta"+j).innerHTML +=question1[j];
 
 			}
 
@@ -794,6 +815,11 @@ function Question2(){
 
 				if(i==4){
 
+					var co = document.createElement("img");
+					co.setAttribute("src","img/logo");
+					co.setAttribute("id","imag_respuesta"+i);
+					co.setAttribute("style","display:none");
+					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(2);correcta("+i+");");
 
 				}else{
@@ -807,7 +833,7 @@ function Question2(){
 
 			for(var j=1; j < question2.length; j++) {
 
-				document.getElementById("respuesta"+j).innerHTML =question2[j];
+				document.getElementById("respuesta"+j).innerHTML +=question2[j];
 
 			}
 
@@ -829,6 +855,11 @@ function Question2(){
 
 				if(i==1){
 
+					var co = document.createElement("img");
+					co.setAttribute("src","img/logo");
+					co.setAttribute("id","imag_respuesta"+i);
+					co.setAttribute("style","display:none");
+					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(2);correcta("+i+");");
 
 				}else{
@@ -842,7 +873,7 @@ function Question2(){
 
 			for(var j=1; j < question3.length; j++) {
 
-				document.getElementById("respuesta"+j).innerHTML =question3[j];
+				document.getElementById("respuesta"+j).innerHTML +=question3[j];
 
 			}
 
@@ -863,6 +894,11 @@ function Question2(){
 
 				if(i==2){
 
+					var co = document.createElement("img");
+					co.setAttribute("src","img/logo");
+					co.setAttribute("id","imag_respuesta"+i);
+					co.setAttribute("style","display:none");
+					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(2);correcta("+i+");");
 
 				}else{
@@ -876,7 +912,7 @@ function Question2(){
 
 			for(var j=1; j < question4.length; j++) {
 
-				document.getElementById("respuesta"+j).innerHTML =question4[j];
+				document.getElementById("respuesta"+j).innerHTML +=question4[j];
 
 			}
 	        
@@ -1042,6 +1078,11 @@ function Question3(){
 
 				if(i==3){
 
+					var co = document.createElement("img");
+					co.setAttribute("src","img/logo");
+					co.setAttribute("id","imag_respuesta"+i);
+					co.setAttribute("style","display:none");
+					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(3);correcta("+i+");");
 
 				}else{
@@ -1055,7 +1096,7 @@ function Question3(){
 
 			for(var j=1; j < question1.length; j++) {
 
-				document.getElementById("respuesta"+j).innerHTML =question1[j];
+				document.getElementById("respuesta"+j).innerHTML +=question1[j];
 
 			}
 
@@ -1076,6 +1117,11 @@ function Question3(){
 
 				if(i==3){
 
+					var co = document.createElement("img");
+					co.setAttribute("src","img/logo");
+					co.setAttribute("id","imag_respuesta"+i);
+					co.setAttribute("style","display:none");
+					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(3);correcta("+i+");");
 
 				}else{
@@ -1089,7 +1135,7 @@ function Question3(){
 
 			for(var j=1; j < question2.length; j++) {
 
-				document.getElementById("respuesta"+j).innerHTML =question2[j];
+				document.getElementById("respuesta"+j).innerHTML +=question2[j];
 
 			}
 
@@ -1110,6 +1156,11 @@ function Question3(){
 
 				if(i==2){
 
+					var co = document.createElement("img");
+					co.setAttribute("src","img/logo");
+					co.setAttribute("id","imag_respuesta"+i);
+					co.setAttribute("style","display:none");
+					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(3);correcta("+i+");");
 
 				}else{
@@ -1123,7 +1174,7 @@ function Question3(){
 
 			for(var j=1; j < question3.length; j++) {
 
-				document.getElementById("respuesta"+j).innerHTML =question3[j];
+				document.getElementById("respuesta"+j).innerHTML +=question3[j];
 
 			}
 
@@ -1189,6 +1240,11 @@ function Question4(){
 
 		if(i==4){
 
+			var co = document.createElement("img");
+			co.setAttribute("src","img/logo");
+			co.setAttribute("id","imag_respuesta"+i);
+			co.setAttribute("style","display:none");
+			respuesta.appendChild(co);	
 			respuesta.setAttribute("onclick","score(4);correcta("+i+");");
 
 		}else{
@@ -1202,7 +1258,7 @@ function Question4(){
 
 	for(var j=1; j < question1.length; j++) {
 
-		document.getElementById("respuesta"+j).innerHTML =question1[j];
+		document.getElementById("respuesta"+j).innerHTML +=question1[j];
 
 	}
 }
@@ -1260,6 +1316,11 @@ function Question5(){
 
 		if(i==1){
 
+			var co = document.createElement("img");
+			co.setAttribute("src","img/logo");
+			co.setAttribute("id","imag_respuesta"+i);
+			co.setAttribute("style","display:none");
+			respuesta.appendChild(co);	
 			respuesta.setAttribute("onclick","score(5);correcta("+i+");");
 
 		}else{
@@ -1273,7 +1334,7 @@ function Question5(){
 
 	for(var j=1; j < question1.length; j++) {
 
-		document.getElementById("respuesta"+j).innerHTML =question1[j];
+		document.getElementById("respuesta"+j).innerHTML +=question1[j];
 
 	}
 
@@ -1371,6 +1432,11 @@ function Question6(){
 
 				if(i==1){
 
+					var co = document.createElement("img");
+					co.setAttribute("src","img/logo");
+					co.setAttribute("id","imag_respuesta"+i);
+					co.setAttribute("style","display:none");
+					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(6);correcta("+i+");");
 
 				}else{
@@ -1384,7 +1450,7 @@ function Question6(){
 
 			for(var j=1; j < question1.length; j++) {
 
-				document.getElementById("respuesta"+j).innerHTML =question1[j];
+				document.getElementById("respuesta"+j).innerHTML +=question1[j];
 
 			}
 
@@ -1406,6 +1472,11 @@ function Question6(){
 
 				if(i==4){
 
+					var co = document.createElement("img");
+					co.setAttribute("src","img/logo");
+					co.setAttribute("id","imag_respuesta"+i);
+					co.setAttribute("style","display:none");
+					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(6);correcta("+i+");");
 
 				}else{
@@ -1419,7 +1490,7 @@ function Question6(){
 
 			for(var j=1; j < question2.length; j++) {
 
-				document.getElementById("respuesta"+j).innerHTML =question2[j];
+				document.getElementById("respuesta"+j).innerHTML +=question2[j];
 
 			}
 
@@ -1483,6 +1554,11 @@ function Question7(){
 
 		if(i==2){
 
+			var co = document.createElement("img");
+			co.setAttribute("src","img/logo");
+			co.setAttribute("id","imag_respuesta"+i);
+			co.setAttribute("style","display:none");
+			respuesta.appendChild(co);	
 			respuesta.setAttribute("onclick","score(7);correcta("+i+");");
 
 		}else{
@@ -1496,7 +1572,7 @@ function Question7(){
 
 	for(var j=1; j < question1.length; j++) {
 
-		document.getElementById("respuesta"+j).innerHTML =question1[j];
+		document.getElementById("respuesta"+j).innerHTML +=question1[j];
 
 	}
 }
@@ -1555,6 +1631,11 @@ function Question8(){
 
 		if(i==1){
 
+			var co = document.createElement("img");
+			co.setAttribute("src","img/logo");
+			co.setAttribute("id","imag_respuesta"+i);
+			co.setAttribute("style","display:none");
+			respuesta.appendChild(co);	
 			respuesta.setAttribute("onclick","score(8);correcta("+i+");");
 
 		}else{
@@ -1568,7 +1649,7 @@ function Question8(){
 
 	for(var j=1; j < question1.length; j++) {
 
-		document.getElementById("respuesta"+j).innerHTML =question1[j];
+		document.getElementById("respuesta"+j).innerHTML +=question1[j];
 
 	}
 }
@@ -1626,6 +1707,11 @@ function Question9(){
 
 		if(i==4){
 
+			var co = document.createElement("img");
+			co.setAttribute("src","img/logo");
+			co.setAttribute("id","imag_respuesta"+i);
+			co.setAttribute("style","display:none");
+			respuesta.appendChild(co);	
 			respuesta.setAttribute("onclick","score(9);correcta("+i+");");
 
 		}else{
@@ -1639,7 +1725,7 @@ function Question9(){
 
 	for(var j=1; j < question1.length; j++) {
 
-		document.getElementById("respuesta"+j).innerHTML =question1[j];
+		document.getElementById("respuesta"+j).innerHTML +=question1[j];
 
 	}
 }
@@ -1698,6 +1784,11 @@ function Question10(){
 
 		if(i==3){
 
+			var co = document.createElement("img");
+			co.setAttribute("src","img/logo");
+			co.setAttribute("id","imag_respuesta"+i);
+			co.setAttribute("style","display:none");
+			respuesta.appendChild(co);	
 			respuesta.setAttribute("onclick","score(10);correcta("+i+");");
 
 		}else{
@@ -1711,7 +1802,7 @@ function Question10(){
 
 	for(var j=1; j < question1.length; j++) {
 
-		document.getElementById("respuesta"+j).innerHTML =question1[j];
+		document.getElementById("respuesta"+j).innerHTML +=question1[j];
 
 	}
 }
