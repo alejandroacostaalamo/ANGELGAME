@@ -261,7 +261,7 @@ function Authentication(){
 	$(".authentication_face").remove();
 
 	$(".authentication_twitter").remove();
-
+	$(".authentication_inst").remove();
 	$(".authentication_logout").remove();
 
 
@@ -302,6 +302,8 @@ function Authentication(){
 
 		document.getElementById("setting Authentication").appendChild(opcion1);
 
+		
+
 	}
 	else if(localStorage.getItem("method")==2){
 
@@ -340,6 +342,43 @@ function Authentication(){
 
 		document.getElementById("setting Authentication").appendChild(opcion2);
 
+	}else if(localStorage.getItem("method")==3){
+
+		var opcion1=document.createElement("input");
+
+		opcion1.setAttribute("type","button");
+
+		opcion1.setAttribute("class","authentication_logout");
+
+		if(localStorage.getItem("language")==1){
+
+			opcion1.setAttribute("value","cerrar sesión");
+
+		}else if(localStorage.getItem("language")==2){
+
+			opcion1.setAttribute("value","Logout");
+
+		}else if(localStorage.getItem("language")==3){
+
+			opcion1.setAttribute("value","Sair");
+		}
+
+		opcion1.setAttribute("onclick","logout()");
+
+		document.getElementById("setting Authentication").appendChild(opcion1);
+
+		var opcion2=document.createElement("input");
+
+		opcion2.setAttribute("type","button");
+
+		opcion2.setAttribute("value",".");
+
+		opcion2.setAttribute("onclick","ginfo()");
+
+		opcion2.setAttribute("class","authentication_inst");
+
+		document.getElementById("setting Authentication").appendChild(opcion2);
+
 	}else{
 
 		var opcion1=document.createElement("input");
@@ -362,8 +401,18 @@ function Authentication(){
 
 		document.getElementById("setting Authentication").appendChild(opcion2);
 
-		$('.authentication_twitter').toggleClass("inactive");
+		var opcion3=document.createElement("input");
 
+		opcion3.setAttribute("type","button");
+
+		opcion3.setAttribute("class","authentication_inst");
+		
+		opcion3.setAttribute("onclick","loginInstagram()");
+
+		document.getElementById("setting Authentication").appendChild(opcion3);
+
+		$('.authentication_inst').toggleClass("inactive");
+		$('.authentication_twitter').toggleClass("inactive");
 		$('.authentication_face').toggleClass("inactive");
 	}
 }

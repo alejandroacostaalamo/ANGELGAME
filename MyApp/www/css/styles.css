@@ -126,6 +126,41 @@ body{
 
 }
 
+.authentication_inst{
+
+  position: relative;
+
+  margin-bottom: 3%;
+
+  width: 100px;
+
+  height: 40px;
+
+  margin-top: 10px;
+
+  margin-bottom: 10px;
+
+  margin-right: 8px;
+
+  cursor: pointer;
+
+  outline:none;
+
+  border: 1px solid white;
+
+  color:#FFEC2B;
+
+  background-image: url("../img/login_inst.jpg");
+
+  background-size: 100% 100%;
+
+  border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+
+
+}
+
 
 .authentication_face:hover{
 
@@ -137,12 +172,22 @@ body{
   opacity: 0.4;
 }
 
+.authentication_inst:hover{
+
+  opacity: 0.4;
+}
+
 .authentication_face:active { 
 
   opacity: 0.9;
 }
 
 .authentication_twitter:active{
+
+  opacity: 0.9;
+}
+
+.authentication_inst:active{
 
   opacity: 0.9;
 }

@@ -16,7 +16,7 @@ var accept ="Aceptar";
 var labelSelect="Cantidad de Preguntas";
 var selectTitle="Seleccione";
 var labelSelect2="Tiempo";
-var sel="<select id='cmbQuestions'><option value='5'>5</option><option selected value='7'>7</option><option value='9'>9</option><option value='10'>10</option></select>"
+var sel="<select id='cmbQuestions'><option value='5'>5</option><option selected value='7'>7</option><option value='9'>9</option><option value='12'>12</option></select>"
 var sel2=""
 
 if(localStorage.getItem("language")==2){
@@ -221,9 +221,19 @@ function selection(m){
 			Question9();
 
 		break;
-		default:
+		case 10:
 
 			Question10();
+
+		break;
+		case 11:
+
+			Question11();
+
+		break;		
+		default:
+
+			Question12();
 
 		break;
 	}
@@ -288,8 +298,8 @@ function correcta(m){
 	$("#respuesta"+m).html(html);
 	//alert($("#respuesta"+m).html());
 	$("#respuesta"+m).css({"animation-name": "correcta", "animation-duration": "1s"});
-	$("#imag_respuesta"+m).style.display='inline';
-
+	//alert($("#imag_respuesta"+m));
+	$("#imag_respuesta"+m).show();	
 
 	var Active= window.localStorage.getItem('#sound-acert');
 	if (Active=="1") {
@@ -469,9 +479,9 @@ function Question1(){
 
 				if(i==1){
 					var co = document.createElement("img");
-					co.setAttribute("src","img/logo");
+					co.setAttribute("src","../../img/Approve_icon.svg.png");
 					co.setAttribute("id","imag_respuesta"+i);
-					co.setAttribute("style","display:none");
+					co.setAttribute("style","display:none;width:20px;padding:2px;");
 					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(1);correcta("+i+");");
 
@@ -509,13 +519,13 @@ function Question1(){
 
 					respuesta.setAttribute("onclick","score(1);correcta("+i+");");
 					var co = document.createElement("img");
-					co.setAttribute("src","img/logo");
+					co.setAttribute("src","../../img/Approve_icon.svg.png");
 					co.setAttribute("id","imag_respuesta"+i);
-					co.setAttribute("style","display:none");
+					co.setAttribute("style","display:none;width:20px;padding:2px;");
 					respuesta.appendChild(co);	
 
 				}else{
-					espuesta.setAttribute("onclick","score(1);incorrecta("+i+");");
+					respuesta.setAttribute("onclick","score(1);incorrecta("+i+");");
 
 				}
 
@@ -548,9 +558,9 @@ function Question1(){
 
 					respuesta.setAttribute("onclick","score(1);correcta("+i+");");
 					var co = document.createElement("img");
-					co.setAttribute("src","img/logo");
+					co.setAttribute("src","../../img/Approve_icon.svg.png");
 					co.setAttribute("id","imag_respuesta"+i);
-					co.setAttribute("style","display:none");
+					co.setAttribute("style","display:none;width:20px;padding:2px;");
 					respuesta.appendChild(co);	
 					
 				}else{
@@ -776,9 +786,9 @@ function Question2(){
 				if(i==3){
 
 					var co = document.createElement("img");
-					co.setAttribute("src","img/logo");
+					co.setAttribute("src","../../img/Approve_icon.svg.png");
 					co.setAttribute("id","imag_respuesta"+i);
-					co.setAttribute("style","display:none");
+					co.setAttribute("style","display:none;width:20px;padding:2px;");
 					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(2);correcta("+i+");");
 
@@ -816,9 +826,9 @@ function Question2(){
 				if(i==4){
 
 					var co = document.createElement("img");
-					co.setAttribute("src","img/logo");
+					co.setAttribute("src","../../img/Approve_icon.svg.png");
 					co.setAttribute("id","imag_respuesta"+i);
-					co.setAttribute("style","display:none");
+					co.setAttribute("style","display:none;width:20px;padding:2px;");
 					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(2);correcta("+i+");");
 
@@ -856,9 +866,9 @@ function Question2(){
 				if(i==1){
 
 					var co = document.createElement("img");
-					co.setAttribute("src","img/logo");
+					co.setAttribute("src","../../img/Approve_icon.svg.png");
 					co.setAttribute("id","imag_respuesta"+i);
-					co.setAttribute("style","display:none");
+					co.setAttribute("style","display:none;width:20px;padding:2px;");
 					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(2);correcta("+i+");");
 
@@ -895,9 +905,9 @@ function Question2(){
 				if(i==2){
 
 					var co = document.createElement("img");
-					co.setAttribute("src","img/logo");
+					co.setAttribute("src","../../img/Approve_icon.svg.png");
 					co.setAttribute("id","imag_respuesta"+i);
-					co.setAttribute("style","display:none");
+					co.setAttribute("style","display:none;width:20px;padding:2px;");
 					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(2);correcta("+i+");");
 
@@ -1079,9 +1089,9 @@ function Question3(){
 				if(i==3){
 
 					var co = document.createElement("img");
-					co.setAttribute("src","img/logo");
+					co.setAttribute("src","../../img/Approve_icon.svg.png");
 					co.setAttribute("id","imag_respuesta"+i);
-					co.setAttribute("style","display:none");
+					co.setAttribute("style","display:none;width:20px;padding:2px;");
 					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(3);correcta("+i+");");
 
@@ -1118,9 +1128,9 @@ function Question3(){
 				if(i==3){
 
 					var co = document.createElement("img");
-					co.setAttribute("src","img/logo");
+					co.setAttribute("src","../../img/Approve_icon.svg.png");
 					co.setAttribute("id","imag_respuesta"+i);
-					co.setAttribute("style","display:none");
+					co.setAttribute("style","display:none;width:20px;padding:2px;");
 					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(3);correcta("+i+");");
 
@@ -1157,9 +1167,9 @@ function Question3(){
 				if(i==2){
 
 					var co = document.createElement("img");
-					co.setAttribute("src","img/logo");
+					co.setAttribute("src","../../img/Approve_icon.svg.png");
 					co.setAttribute("id","imag_respuesta"+i);
-					co.setAttribute("style","display:none");
+					co.setAttribute("style","display:none;width:20px;padding:2px;");
 					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(3);correcta("+i+");");
 
@@ -1241,9 +1251,9 @@ function Question4(){
 		if(i==4){
 
 			var co = document.createElement("img");
-			co.setAttribute("src","img/logo");
+			co.setAttribute("src","../../img/Approve_icon.svg.png");
 			co.setAttribute("id","imag_respuesta"+i);
-			co.setAttribute("style","display:none");
+			co.setAttribute("style","display:none;width:20px;padding:2px;");
 			respuesta.appendChild(co);	
 			respuesta.setAttribute("onclick","score(4);correcta("+i+");");
 
@@ -1317,9 +1327,9 @@ function Question5(){
 		if(i==1){
 
 			var co = document.createElement("img");
-			co.setAttribute("src","img/logo");
+			co.setAttribute("src","../../img/Approve_icon.svg.png");
 			co.setAttribute("id","imag_respuesta"+i);
-			co.setAttribute("style","display:none");
+			co.setAttribute("style","display:none;width:20px;padding:2px;");
 			respuesta.appendChild(co);	
 			respuesta.setAttribute("onclick","score(5);correcta("+i+");");
 
@@ -1433,9 +1443,9 @@ function Question6(){
 				if(i==1){
 
 					var co = document.createElement("img");
-					co.setAttribute("src","img/logo");
+					co.setAttribute("src","../../img/Approve_icon.svg.png");
 					co.setAttribute("id","imag_respuesta"+i);
-					co.setAttribute("style","display:none");
+					co.setAttribute("style","display:none;width:20px;padding:2px;");
 					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(6);correcta("+i+");");
 
@@ -1473,9 +1483,9 @@ function Question6(){
 				if(i==4){
 
 					var co = document.createElement("img");
-					co.setAttribute("src","img/logo");
+					co.setAttribute("src","../../img/Approve_icon.svg.png");
 					co.setAttribute("id","imag_respuesta"+i);
-					co.setAttribute("style","display:none");
+					co.setAttribute("style","display:none;width:20px;padding:2px;");
 					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(6);correcta("+i+");");
 
@@ -1555,9 +1565,9 @@ function Question7(){
 		if(i==2){
 
 			var co = document.createElement("img");
-			co.setAttribute("src","img/logo");
+			co.setAttribute("src","../../img/Approve_icon.svg.png");
 			co.setAttribute("id","imag_respuesta"+i);
-			co.setAttribute("style","display:none");
+			co.setAttribute("style","display:none;width:20px;padding:2px;");
 			respuesta.appendChild(co);	
 			respuesta.setAttribute("onclick","score(7);correcta("+i+");");
 
@@ -1632,9 +1642,9 @@ function Question8(){
 		if(i==1){
 
 			var co = document.createElement("img");
-			co.setAttribute("src","img/logo");
+			co.setAttribute("src","../../img/Approve_icon.svg.png");
 			co.setAttribute("id","imag_respuesta"+i);
-			co.setAttribute("style","display:none");
+			co.setAttribute("style","display:none;width:20px;padding:2px;");
 			respuesta.appendChild(co);	
 			respuesta.setAttribute("onclick","score(8);correcta("+i+");");
 
@@ -1708,9 +1718,9 @@ function Question9(){
 		if(i==4){
 
 			var co = document.createElement("img");
-			co.setAttribute("src","img/logo");
+			co.setAttribute("src","../../img/Approve_icon.svg.png");
 			co.setAttribute("id","imag_respuesta"+i);
-			co.setAttribute("style","display:none");
+			co.setAttribute("style","display:none;width:20px;padding:2px;");
 			respuesta.appendChild(co);	
 			respuesta.setAttribute("onclick","score(9);correcta("+i+");");
 
@@ -1785,9 +1795,9 @@ function Question10(){
 		if(i==3){
 
 			var co = document.createElement("img");
-			co.setAttribute("src","img/logo");
+			co.setAttribute("src","../../img/Approve_icon.svg.png");
 			co.setAttribute("id","imag_respuesta"+i);
-			co.setAttribute("style","display:none");
+			co.setAttribute("style","display:none;width:20px;padding:2px;");
 			respuesta.appendChild(co);	
 			respuesta.setAttribute("onclick","score(10);correcta("+i+");");
 
@@ -1807,6 +1817,233 @@ function Question10(){
 	}
 }
 
+function Question11(){
+
+	var command11="show ip bgp <br>2001:218:8000::/38                    2001:1338:ffff:ffff::3                                          0 20312 20080 6939 2914 i";
+
+	if(localStorage.getItem("language")==1){
+
+		question1=[
+   
+			'¿Cuál es el AS de Origen?',
+			'a)	1.0.128.0',
+			'b)	2914',//c
+			'c)	11562',
+			'd)	i'
+		];
+		var question2=[
+
+			'¿Cuál es el AS_PATH?',
+			'a. 1.0.128.0',
+			'b. 23969',
+			'c. 11562',
+			'd. 20312 20080 6939 2914 '// c
+		];
+
+	}if(localStorage.getItem("language")==2){
+
+		question1=[
+
+			'What is the AS of Origin?',
+			'a)	1.0.128.0',
+			'b)	2914',
+			'c)	11562',
+			'd)	i'
+		];
+		var question2=[
+
+			'What is the AS_PATH?',
+			'a. 1.0.128.0',
+			'b. 23969',
+			'c. 11562',
+			'd. 20312 20080 6939 2914 '// c
+		];
+
+	}else if(localStorage.getItem("language")==3){
+
+		question1=[
+
+			'Qual é o AS de origem?',
+			'a)	1.0.128.0',
+			'b)	2914',
+			'c)	11562',
+			'd)	i'
+		];
+		var question2=[
+
+			'O que é o AS_PATH?',
+			'a. 1.0.128.0',
+			'b. 23969',
+			'c. 11562',
+			'd. 20312 20080 6939 2914 '// c
+		];
+
+	}
+
+	var options=Math.floor((Math.random() * 2) + 1);
+
+	$( "#commandQuestion" ).html(command11);
+
+	switch(options) {
+
+	    case 1:
+
+	    	$( "#titleQuestion" ).html(question1[0]);
+	        
+
+	        for (var i =1; i < question1.length; i++) {
+
+			    var respuesta=document.createElement("div");
+
+				respuesta.setAttribute("class","respuesta");
+
+				respuesta.setAttribute("id","respuesta"+i);
+
+
+				if(i==2){
+
+					var co = document.createElement("img");
+					co.setAttribute("src","../../img/Approve_icon.svg.png");
+					co.setAttribute("id","imag_respuesta"+i);
+					co.setAttribute("style","display:none;width:20px;padding:2px;");
+					respuesta.appendChild(co);	
+					respuesta.setAttribute("onclick","score(6);correcta("+i+");");
+
+				}else{
+
+					respuesta.setAttribute("onclick","score(6);incorrecta("+i+");");
+
+				}
+
+				document.getElementById("Questions").appendChild(respuesta);
+			}
+
+			for(var j=1; j < question1.length; j++) {
+
+				document.getElementById("respuesta"+j).innerHTML +=question1[j];
+
+			}
+
+	        break;
+
+	    case 2:
+
+	    	$( "#titleQuestion" ).html(question2[0]);
+
+
+	    	for (var i =1; i < question2.length; i++) {
+
+			    var respuesta=document.createElement("div");
+
+				respuesta.setAttribute("class","respuesta");
+
+				respuesta.setAttribute("id","respuesta"+i);
+
+
+				if(i==4){
+
+					var co = document.createElement("img");
+					co.setAttribute("src","../../img/Approve_icon.svg.png");
+					co.setAttribute("id","imag_respuesta"+i);
+					co.setAttribute("style","display:none;width:20px;padding:2px;");
+					respuesta.appendChild(co);	
+					respuesta.setAttribute("onclick","score(11);correcta("+i+");");
+
+				}else{
+
+					respuesta.setAttribute("onclick","score(11);incorrecta("+i+");");
+
+				}
+
+				document.getElementById("Questions").appendChild(respuesta);
+			}
+
+			for(var j=1; j < question2.length; j++) {
+
+				document.getElementById("respuesta"+j).innerHTML +=question2[j];
+
+			}
+
+	        
+	     	break;
+
+	     }
+}
+
+function Question12(){
+
+	var command12="show ip bgp <br>1.0.128.0/24     200.75.130.253                         0 11562 52320 4651 9737 23969 i";
+
+	if(localStorage.getItem("language")==1){
+
+		question1=[
+   
+			'¿Cuál es el Next Hop?',
+			'a. 1.0.128.0',
+			'b. 23969',
+			'c. 200.75.130.253',//c
+			'd. 20312 20080 6939 2914'
+		];
+
+	}if(localStorage.getItem("language")==2){
+
+		question1=[
+			'What is the Next Hop?',
+		'a. 1.0.128.0',
+			'b. 23969',
+			'c. 200.75.130.253',//c
+			'd. 20312 20080 6939 2914'
+		];
+
+	}else if(localStorage.getItem("language")==3){
+
+		question1=[
+			'Qual é o Next Hop?',
+			'a. 1.0.128.0',
+			'b. 23969',
+			'c. 200.75.130.253',//c
+			'd. 20312 20080 6939 2914'
+		];
+
+	}
+
+	$( "#commandQuestion" ).html(command12);
+
+	$( "#titleQuestion" ).html(question1[0]);
+
+	for (var i =1; i < question1.length; i++) {
+
+	    var respuesta=document.createElement("div");
+
+		respuesta.setAttribute("class","respuesta");
+
+		respuesta.setAttribute("id","respuesta"+i);
+
+
+		if(i==3){
+
+			var co = document.createElement("img");
+			co.setAttribute("src","../../img/Approve_icon.svg.png");
+			co.setAttribute("id","imag_respuesta"+i);
+			co.setAttribute("style","display:none;width:20px;padding:2px;");
+			respuesta.appendChild(co);	
+			respuesta.setAttribute("onclick","score(12);correcta("+i+");");
+
+		}else{
+
+			respuesta.setAttribute("onclick","score(12);incorrecta("+i+");");
+
+		}
+
+		document.getElementById("Questions").appendChild(respuesta);
+	}
+
+	for(var j=1; j < question1.length; j++) {
+
+		document.getElementById("respuesta"+j).innerHTML +=question1[j];
+
+	}
+}
 
 function ShareScore(){
 

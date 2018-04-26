@@ -113,7 +113,7 @@ function getInfo() {
  }
  else if(localStorage.getItem("method")==3){
 
-    document.getElementById("userName").innerHTML = localStorage.getItem('entry.name');
+    document.getElementById("userName").innerHTML = localStorage.getItem('entry.screen_name');
 
     document.getElementById("userPic").src=localStorage.getItem('entry.profile_pic');
                  
