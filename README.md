@@ -13,12 +13,13 @@ You can learn:
 - IPv6
 - DNS
 - Ethernet
-- Internet Governance (ongoing phase)
+- Internet Governance
 
 
 You will learn doing:
 - Crosswords
 - Drag & Drop
+- Output Interpreter
 - Playing memory
 - Balloons / Flying Discs
 
