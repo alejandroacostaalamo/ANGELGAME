@@ -50,17 +50,18 @@ var questions = [{
 var DiscoSpeed=0;
 var PreguntaSpeed=0;
 var nivel=0;
+var timeLevel=0;
 
 function Level(){
   $('#level1').click(function(){
     DiscoSpeed= 10000;
     PreguntaSpeed= 9000;
     if ($('#cmbTime').val()==''){
-		seconds_left = 60;
+      timeLevel = 60;
 		$('#cmbTime').val(timeLevel);
 	}
 	else
-		seconds_left = parseInt($('#cmbTime').val());
+  timeLevel = parseInt($('#cmbTime').val());
     nivel=1;
     Timer();
     Questions();
@@ -70,11 +71,11 @@ function Level(){
     PreguntaSpeed= 5000;
     nivel=3;
 	if ($('#cmbTime').val()==''){
-		seconds_left = 60;
+		timeLevel = 60;
 		$('#cmbTime').val(timeLevel);
 	}
 	else
-		seconds_left = parseInt($('#cmbTime').val());
+		timeLevel = parseInt($('#cmbTime').val());
     Timer();
     Questions();
   })
@@ -693,12 +694,13 @@ $(document).ready(function(){
 
 
 function ShareScore(){
+  if (localStorage.getItem("UserId")!=null){
+    var infogame = { "UserId":localStorage.getItem("UserId"), "GameId":2, "TopicId" :2, "levelId" :nivel,"Score":contador};
 
-  var infogame = { "UserId":localStorage.getItem("UserId"), "GameId":2, "TopicId" :2, "levelId" :nivel,"Score":contador};
+    var uid = RegisterGame(infogame);
 
-  var uid = RegisterGame(infogame);
-
-  public_FB();
+    public_FB();
+  }
 }
 
 function public_TW(){

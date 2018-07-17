@@ -310,7 +310,7 @@ function LevelHard(){
               $('.punto').text(punto);
               $('#' + ui['draggable'][0].id).remove();
               cont= cont + 1;
-              if(cont==5){
+              if(cont==10){
                 $('#WinModal').modal('show');
                 EndGame();// llamado a la funcion del puntaje
                 fin=true;
@@ -422,14 +422,14 @@ function PlayGame(){
 
 
 function ShareScore(){
-
+  if (localStorage.getItem("UserId")!=null){
   var infogame = { "UserId":localStorage.getItem("UserId"), "GameId":3, "TopicId" :6, "levelId" :nivel,"Score":punto};
 
   var uid = RegisterGame(infogame);
 
   public_FB();
 }
-
+}
 
 function public_TW(){
 

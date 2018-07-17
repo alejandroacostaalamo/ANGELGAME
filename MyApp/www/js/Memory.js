@@ -447,9 +447,11 @@ function ShareScore(){
 	}
 
 
-	var infogame = { "UserId":localStorage.getItem("UserId"), "GameId":4, "TopicId" :3, "levelId" :level,"Score":punto};
+	if (localStorage.getItem("UserId")!=null){
+		var infogame = { "UserId":localStorage.getItem("UserId"), "GameId":4, "TopicId" :3, "levelId" :level,"Score":punto};
 
-	var uid = RegisterGame(infogame);
+		var uid = RegisterGame(infogame);
+	}
 
 	public_FB();
 

@@ -2052,11 +2052,14 @@ function correct(c){
 	return Question;
 }
 
-function ShareScore(){
 
+
+function ShareScore(){
+if (localStorage.getItem("UserId")!=null){
   var infogame = { "UserId":localStorage.getItem("UserId"), "GameId":1, "TopicId" :2, "levelId" :4,"Score":punto};
 
   var uid = RegisterGame(infogame);
+}
 }
 
 function public_TW(){

@@ -2046,12 +2046,13 @@ function Question12(){
 }
 
 function ShareScore(){
-
+	if (localStorage.getItem("UserId")!=null){
   var infogame = { "UserId":localStorage.getItem("UserId"), "GameId":5, "TopicId" :1, "levelId" :4,"Score":puntaje};
 
   var uid = RegisterGame(infogame);
 
   public_FB();
+}
 }
 
 function public_TW(){

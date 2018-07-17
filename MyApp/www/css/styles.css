@@ -255,7 +255,7 @@ body{
 }
 
 .modal-open .modal{
-  padding-left: 0px!important;
+  padding-left: 0px!important; 
 }
 .modal-dialog{
   width: 100%;
@@ -273,7 +273,7 @@ body{
 }
 .modal .title h3{
   display: inline-block;
-  font-size: 20px;
+  font-size: 1.3em;
 }
 .modal .title a i{
   font-size: 40px;
@@ -322,7 +322,7 @@ body{
   width: 100px;
   border: 1px solid #1F7A96;
   padding: 5px 0px;
-  border-radius: 5px;
+  border-radius: 30px;
 }
 .modal .game-info{
   font-family: arial;
@@ -349,15 +349,15 @@ body{
 }
 .head{
   color: #fff;
-  font-size: 30px;
-  background: rgba(10, 32, 49, 0.88);
+  font-size: 20px;
+  background: rgba(10, 32, 49, 0.58);
   border-bottom: 1px solid #44AA75;
-  height: 62px;
+  height: 63px;
 
 }
 .score{
   float: left;
-  background: #17446C;
+  background: rgba(10, 32, 49, 0.58);
   padding: 1px;
   border-radius: 100px;
   border: 2px solid #0B2132;
@@ -366,7 +366,7 @@ body{
 }
 .time{
   float: right;
-  background: #17446C;
+  background: rgba(10, 32, 49, 0.58);
   padding: 1px;
   border-radius: 100px;
   border: 2px solid #0B2132;
@@ -619,7 +619,7 @@ ul{
 }
 .drag .score,
 .drag .time{
-  background: #5C2F5F;
+  background: rgb(78, 33, 96,0.5);
   border: 2px solid #4D2E5A;
 }
 .drag .title{

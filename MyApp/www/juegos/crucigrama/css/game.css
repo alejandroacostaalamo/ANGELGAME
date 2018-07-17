@@ -7,6 +7,7 @@ body{
 	font-family: 'Metriqs';
 	background-image:url(../../../img/bg-crucigrama.png);
 	background-size: auto 100%;
+	background-attachment: fixed;
 	background-position:center;
 	background-repeat:no-repeat;
 	background-size: cover;
@@ -47,9 +48,9 @@ body{
 	padding-top:80px;
 }
 #questions1117{
-    position: fixed;
+    position: absolute;
     bottom: 0;
     width: 100%;
-	top:85px;
+	top:61px;
 	 z-index: -12;
 }

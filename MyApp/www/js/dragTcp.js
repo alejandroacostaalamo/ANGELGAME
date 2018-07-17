@@ -419,12 +419,13 @@ function PlayGame(){
 
 
 function ShareScore(){
-
+  if (localStorage.getItem("UserId")!=null){
   var infogame = { "UserId":localStorage.getItem("UserId"), "GameId":3, "TopicId" :3, "levelId" :nivel,"Score":punto};
 
   var uid = RegisterGame(infogame);
 
   public_FB();
+}
 }
 
 function public_TW(){

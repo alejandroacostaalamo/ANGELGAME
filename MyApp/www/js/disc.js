@@ -613,14 +613,14 @@ $(document).ready(function(){
 });
 
 function ShareScore(){
-
+  if (localStorage.getItem("UserId")!=null){
   var infogame = { "UserId":localStorage.getItem("UserId"), "GameId":2, "TopicId" :1, "levelId" :nivel,"Score":contador};
 
   var uid = RegisterGame(infogame);
 
   public_FB();
 }
-
+}
 
 function public_TW(){
 
