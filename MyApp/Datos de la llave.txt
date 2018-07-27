@@ -16,7 +16,7 @@ Para generar llave:
 keytool -genkey -v -keystore angel.keystore -alias angel01 -keyalg RSA -keysize 2048 -validity 14600
 
 Para asignar la llave 
-jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore appkey.keystore C:\Users\Medianet1\Documents\Proyectos\A.N.G.E.L\ANGELGAME\MyApp\platforms\android\app\build\outputs\apk\release\app-release-unsigned.apk ANGEL
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore appkey.keystore C:\Users\Medianet\Documents\Proyectos\A.N.G.E.L\ANGELGAME\MyApp\platforms\android\app\build\outputs\apk\release\app-release-unsigned.apk ANGEL
 
 para alinear la app con certificado:
-zipalign -v 4 C:\Users\Medianet1\Documents\Proyectos\A.N.G.E.L\ANGELGAME\MyApp\platforms\android\app\build\outputs\apk\release\app-release-unsigned.apk angelGame.apk
+zipalign -v 4 C:\Users\Medianet\Documents\Proyectos\A.N.G.E.L\ANGELGAME\MyApp\platforms\android\app\build\outputs\apk\release\app-release-unsigned.apk angelGame.apk
