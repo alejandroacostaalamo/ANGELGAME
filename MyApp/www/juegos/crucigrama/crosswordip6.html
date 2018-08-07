@@ -23,7 +23,13 @@
 </head>
 
 <body>
-
+	<script>(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.7";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
 <div id="wrapper" class="crucigrama">
 	<div id="content">
 	<div class="modal fade" id="WinModal" tabindex="-1" role="dialog" aria-labelledby="WinModalLabel">
@@ -40,8 +46,8 @@
                           <div class="score">
                               Score: <div class="punto"> 0</div>
                           </div>
-                          <a class="fb-xfbml-parse-ignore" target="_blank"><button class="FB"></button></a>
-						  <button class="TW" onclick="public_TW()"></button>
+                          <a class="fb-xfbml-parse-ignore" target="_blank"><button class="FB" onclick="public_FB()"></button></a>
+						  <button class="TW" onclick="public_TW()"></button> 
                       </div>
                   </div>
                   <div class="modal-footer">
@@ -66,8 +72,8 @@
                             <div class="score">
                               Score: <div class="punto"> 0</div>
                           	</div>
-                          	<a class="fb-xfbml-parse-ignore" target="_blank"><button class="FB"></button></a>
-							<button class="TW" onclick="public_TW()"></button>
+                          	<a class="fb-xfbml-parse-ignore" target="_blank"><button class="FB" onclick="public_FB()"></button></a>
+							  <button class="TW" onclick="public_TW()"></button> 
                         </div>
                     </div>
                     <div class="modal-footer">

@@ -21,7 +21,13 @@
 </head>
 
 <body>
-
+	<script>(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.7";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
 
 <div id="wrapper" class="crucigrama">
 	<div class="head">
@@ -35,55 +41,72 @@
 	    </div>
 	</div>
 	<div id="content">
-	<div class="modal fade" id="WinModal" tabindex="-1" role="dialog" aria-labelledby="WinModalLabel">
-          <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                  <div class="modal-header">
-                  </div>
-                  <div class="modal-body text-center">
-                      <div class="box">
-                          <img src="../../img/congratulations.png" alt="" class="img-responsive">
-                          <h2>Parabéns</h2>
-                          <h4>Nivel Máximo</h4>
-                          <div class="score">
-                              Ponto: <div class="punto"> 0</div>
+			<div class="modal fade" id="WinModal" tabindex="-1" role="dialog" aria-labelledby="WinModalLabel">
+					<div class="modal-dialog" role="document">
+							<div class="modal-content">
+									<div class="modal-header">
+									</div>
+									<div class="modal-body text-center">
+
+											<div class="box">
+
+													<img src="../../img/congratulations.png" alt="" class="img-responsive">
+
+													<h2>Parabéns</h2>
+
+													<h4>Nivel Máximo</h4>
+
+													<p class="post">Postar sua pontos nas redes sociais</p>
+
+													<div class="score">
+															Ponto: <div class="punto"> 0</div>
 													</div>
-													<a class="fb-xfbml-parse-ignore" target="_blank"><button class="FB"></button></a>
-                          <button class="TW" onclick="public_TW()"></button> 
-                      </div>
-                  </div>
-                  <div class="modal-footer">
-                      <a href="" onclick="location.reload()">
-                          <button>Atrás</button>
-                      </a>
-                  </div>
-              </div>
-          </div>
-        </div>
-        <div class="modal fade" id="LooseModal" tabindex="-1" role="dialog" aria-labelledby="LooseModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    </div>
-                    <div class="modal-body text-center">
-                        <div class="box">
-                            <img src="../../img/game_over.png" alt="" class="img-responsive">
-                            <h2>Fim de Jogo</h2>
-                            <h4>Tenta Novo</h4>
-                            <div class="score">
-                              Ponto: <div class="punto"> 0</div>
+
+													<a class="fb-xfbml-parse-ignore" target="_blank"><button class="FB"  onclick="public_FB()"></button></a>
+													<button class="TW" onclick="public_TW()"></button> 
+
+											</div>
+
+									</div>
+									<div class="modal-footer">
+											<a href="" onclick="location.reload()">
+													<button>Atrás</button>
+											</a>
+									</div>
+							</div>
+					</div>
+			</div>
+			<div class="modal fade" id="LooseModal" tabindex="-1" role="dialog" aria-labelledby="LooseModalLabel">
+					<div class="modal-dialog" role="document">
+							<div class="modal-content">
+									<div class="modal-header">
+									</div>
+									<div class="modal-body text-center">
+											<div class="box">
+
+													<img src="../../img/game_over.png" alt="" class="img-responsive">
+													<h2>Fim de Jogo</h2>
+													<a href="javascript:reload();"><h4>Tenta Novo</h4></a>
+
+													<p class="post">Postar sua pontos nas redes sociais</p>
+
+													<div class="score">
+															Ponto: <div class="punto"> 0</div>
 													</div>
-													<a class="fb-xfbml-parse-ignore" target="_blank"><button class="FB"></button></a>
-                          <button class="TW" onclick="public_TW()"></button> 
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="" onclick="location.reload()">
-                            <button>Atrás</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
+
+													<a class="fb-xfbml-parse-ignore" target="_blank"><button class="FB"  onclick="public_FB()"></button></a>
+													<button class="TW" onclick="public_TW()"></button> 
+
+											</div>
+									</div>
+									<div class="modal-footer">
+											<a href="" onclick="location.reload()">
+													<button>Atrás</button>
+											</a>
+									</div>
+							</div>
+					</div>
+			</div>
         </div>
 		<div id="crossword">
 			

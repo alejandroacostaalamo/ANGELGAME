@@ -14,6 +14,13 @@ $(document).ready(function(){
     	// 	new kendo.mobile.Application($(document.body), { statusBarStyle: "hidden" });
     	// }
 })
+function public_FB(){
+
+
+	var msj="GAME: CROSSWORD  TOPIC:governance  POINTS: "+punto;
+
+	$(".fb-xfbml-parse-ignore").attr("href","https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fangelgame.acostasite.com%2FGame%2FPublic.php?description="+msj+"&method=1&amp;src=sdkpreparse");
+}
 
 var word1v = 'rfc';
 
@@ -1670,3 +1677,14 @@ function ShowQuestion(id){
 		//$("#q17").hide(500);
 	}
 }
+
+function public_TW(){
+
+
+	var msj="GAME: CROSSWORD  TOPIC:governance  POINTS: "+punto;
+	loginGame(msj);
+  }
+  function reload(){
+
+	location.reload();
+  }

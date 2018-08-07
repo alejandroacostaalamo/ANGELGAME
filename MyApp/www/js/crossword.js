@@ -2061,16 +2061,15 @@ if (localStorage.getItem("UserId")!=null){
   var uid = RegisterGame(infogame);
 }
 }
+function public_FB(){
 
-function public_TW(){
 
+	var msj="GAME: CROSSWORD  TOPIC:IPv6   POINTS: "+punto;
 
-  var msj="GAME: CROSSWORD  TOPIC:IPv6  POINTS: "+punto;
-
-  var src='http://angelgame.acostasite.com/Game/img/crucigrama_img.PNG';
-
-  loginGame(msj,src);
+	$(".fb-xfbml-parse-ignore").attr("href","https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fangelgame.acostasite.com%2FGame%2FPublic.php?description="+msj+"&method=1&amp;src=sdkpreparse");
 }
+
+
 
 
 function validar(){
@@ -3529,7 +3528,13 @@ function ShowQuestion(id){
 		$("#q1").hide(500);
 	}
 }
+function public_TW(){
 
+
+	var msj="GAME: CROSSWORD  TOPIC:IPv6  POINTS: "+punto;
+  
+	loginGame(msj);
+  }
 function reload(){
 
   location.reload();
