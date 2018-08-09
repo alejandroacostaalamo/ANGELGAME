@@ -102,6 +102,7 @@ var callbackUrl= 'http://angelgame.acostasite.com/ApiAngel/Api';
 
 $('.LoginTwitter').click(function(){
   loginTwitter();
+  //alert('Si puso el click en tw');
 });
 
 
@@ -110,20 +111,22 @@ $('.LoginTwitter').click(function(){
 var cb;
 var requestParams;
 
-
+window.open = cordova.InAppBrowser.open;
 
 function loginTwitter() {
-	
+	//alert('entro login tw');
 	var oauth = OAuth(options);
 	
 	oauth.get('https://api.twitter.com/oauth/request_token',
 	
         function(data) {
+			console.log(data);  
             requestParams = data.text;
-     
-            cb=window.open('https://api.twitter.com/oauth/authorize?'+data.text, 
-                    { showLocationBar : false });   
+     //alert(data.text);
+            cb=cordova.InAppBrowser.open('https://api.twitter.com/oauth/authorize?'+data.text, 
+                  '_blank',  { showLocationBar : false });   
 			cb.addEventListener('loadstop', function(loc){
+				console.log('En tw loc' + loc);  
                                               TwitterSuccess(loc);
 
                                               });					
@@ -132,11 +135,14 @@ function loginTwitter() {
             alert('Error : No Authorization');          
         }
 	);
+	//alert('salio de login tw');
 }
 
 
 
 function TwitterSuccess(loc){
+	console.log(loc);
+	//alert("tw succes");
 	// If not in call back
 	if (!(loc.url.indexOf(callbackUrl) >-1)){
 		return;
@@ -291,10 +297,14 @@ function TwitterSuccess(loc){
 
 $('.LoginInstagram').click(function(){
   loginInstagram();
+  //alert('Si puso el click en instagam');
 });
 
 
-
+function lgIns(){
+	loginInstagram();
+	//alert('Si pel click en instagam');
+  };
 
 var cb2;
 var requestParams;
@@ -302,13 +312,17 @@ var requestParams;
 
 
 function loginInstagram() {
-	
+	//alert('entro login inst');
 	cb=window.open('https://api.instagram.com/oauth/authorize/?client_id=4ac68463df9b4dd8b3177c047f570cf9&redirect_uri='+callbackUrl+'&response_type=token', 
-                    { showLocationBar : false });   
+	'_blank', { showLocationBar : false }); 
+
+					console.log(cb);  
 	cb.addEventListener('loadstop', function(loc){
+		console.log('En instagram loc' + loc);  
            InstagramSuccess(loc, cb);
            
-		});					
+		});			
+		//alert('luego de addEventListener ins');		
 }
 
 function InstagramSuccess(loc, cb){
