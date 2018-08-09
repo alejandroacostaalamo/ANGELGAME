@@ -86,7 +86,7 @@ function timer(i){
 
 			$('#message').attr('class', 'message');
 
-			$('#content').html('<div id="failet"><center><img class="logo" src="../../img/game_over.png" ><h2>'+failh2+'</h2><a href="javascript:location.reload();"><h4>'+failh4+'</h4></a><p class="post">'+p+'</p></center><center><div class="ppt"><a class="fb-xfbml-parse-ignore" target="_blank"><button class="FB"></button></a><button class="TW" onclick="public_TW()"></button></div></center></div>');
+			$('#content').html('<div id="failet"><center><img class="logo" src="../../img/game_over.png" ><h2>'+failh2+'</h2><a href="javascript:location.reload();"><h4>'+failh4+'</h4></a><p class="post">'+p+'</p></center><center><div class="ppt"><a class="fb-xfbml-parse-ignore" target="_blank"><button class="FB" onclick="public_FB()"></button></a><button class="TW" onclick="public_TW()"></button></div></center></div>');
 			$('#Question').html('');
 			$('#command').html('');
 			ShareScore();
@@ -101,7 +101,7 @@ function timer(i){
 
 			$('#message').attr('class', 'message');
 
-			$('#content').html('<div id="correct"><center><img class="logo" src="../../img/congratulations.png" ><h2>'+correcth2+'</h2><h4>'+correcth4+'</h4><p class="post">'+p+'</p></center><center><div class="ppt"><a class="fb-xfbml-parse-ignore" target="_blank"><button class="FB"></button></a><button class="TW" onclick="public_TW()"></button></div></center></div>');
+			$('#content').html('<div id="correct"><center><img class="logo" src="../../img/congratulations.png" ><h2>'+correcth2+'</h2><h4>'+correcth4+'</h4><p class="post">'+p+'</p></center><center><div class="ppt"><a class="fb-xfbml-parse-ignore" target="_blank"><button class="FB" onclick="public_FB()"></button></a><button class="TW" onclick="public_TW()"></button></div></center></div>');
 			$('#Question').html('');
 			$('#command').html('');
 			
