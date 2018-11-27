@@ -1,4 +1,5 @@
 // Vars
+var correct3=0;
 var puntaje=0;
 var time=200;
 var Questions=0;
@@ -16,8 +17,11 @@ var accept ="Aceptar";
 var labelSelect="Cantidad de Preguntas";
 var selectTitle="Seleccione";
 var labelSelect2="Tiempo";
-var sel="<select id='cmbQuestions'><option value='5'>5</option><option selected value='7'>7</option><option value='9'>9</option><option value='12'>12</option></select>"
-var sel2=""
+var sel="<select id='cmbQuestions'><option value='5'>5</option><option selected value='7'>7</option><option value='9'>9</option><option value='15'>15</option></select>"
+var sel2="";
+var resultado="Resultados";
+var correcto="Correctas";
+var incorrecto="Incorrectas";
 
 if(localStorage.getItem("language")==2){
 	texto="Question";
@@ -30,6 +34,9 @@ if(localStorage.getItem("language")==2){
 	labelSelect="Questions quantity";
     selectTitle="Select";
 	labelSelect2="Time";
+	resultado="Results";
+	correcto="Correct";
+	incorrecto="Incorrect";
 }else if(localStorage.getItem("language")==3){
 	texto="Pergunta";
 	failh2="Fim de Jogo";
@@ -41,6 +48,9 @@ if(localStorage.getItem("language")==2){
 	labelSelect="Questions quantity";
     selectTitle="Selecionar";
 	labelSelect2="Tempo";
+	resultado="Resultados";
+	correcto="Correto";
+	incorrecto="Incorreto";
 }
 
 $(document).ready(function(){
@@ -54,7 +64,7 @@ $(document).ready(function(){
 	// Ciclo
 	timer();	
 	Questions+=1;
-	selection(posicion[0]);
+	
 });
 
 function BuildTimeCmb(){
@@ -86,7 +96,7 @@ function timer(i){
 
 			$('#message').attr('class', 'message');
 
-			$('#content').html('<div id="failet"><center><img class="logo" src="../../img/game_over.png" ><h2>'+failh2+'</h2><a href="javascript:location.reload();"><h4>'+failh4+'</h4></a><p class="post">'+p+'</p></center><center><div class="ppt"><a class="fb-xfbml-parse-ignore" target="_blank"><button class="FB" onclick="public_FB()"></button></a><button class="TW" onclick="public_TW()"></button></div></center></div>');
+			$('#content').html('<div id="failet"><center><img class="logo" src="../../img/game_over.png" ><h2>'+failh2+'</h2><a href="javascript:location.reload();"><h4>'+failh4+'</h4></a><div class="ptos">'+resultado+':</div><div class="co">'+correcto+': '+correct3+'</div><div class="in">'+incorrecto+': '+incorrect+'</div><p class="post">'+p+'</p></center><center><div class="ppt"><a class="fb-xfbml-parse-ignore" target="_blank"><button class="FB" onclick="public_FB()"></button></a><button class="TW" onclick="public_TW()"></button><button class="IG" onclick="public_IG()"></button></div></center></div>');
 			$('#Question').html('');
 			$('#command').html('');
 			ShareScore();
@@ -101,7 +111,7 @@ function timer(i){
 
 			$('#message').attr('class', 'message');
 
-			$('#content').html('<div id="correct"><center><img class="logo" src="../../img/congratulations.png" ><h2>'+correcth2+'</h2><h4>'+correcth4+'</h4><p class="post">'+p+'</p></center><center><div class="ppt"><a class="fb-xfbml-parse-ignore" target="_blank"><button class="FB" onclick="public_FB()"></button></a><button class="TW" onclick="public_TW()"></button></div></center></div>');
+			$('#content').html('<div id="correct"><center><img class="logo" src="../../img/congratulations.png" ><h2>'+correcth2+'</h2><h4>'+correcth4+'</h4><div class="ptos">'+resultado+':</div><div class="co">'+correcto+': '+correct3+'</div><div class="in">'+incorrecto+': '+incorrect+'</div><p class="post">'+p+'</p></center><center><div class="ppt"><a class="fb-xfbml-parse-ignore" target="_blank"><button class="FB" onclick="public_FB()"></button></a><button class="TW" onclick="public_TW()"></button><button class="IG" onclick="public_IG()"></button></div></center></div>');
 			$('#Question').html('');
 			$('#command').html('');
 			
@@ -120,10 +130,11 @@ function SetQuantity(){
 	$('#content').html('');
 	$('#message').removeAttr('class');
 	ramdom();
+	selection(posicion[0]);
 }
 
 function ramdom(){
-
+console.log('Entro a random' + totalQuestions);
 	var con=0;
 
 	var salir=0;
@@ -168,9 +179,10 @@ function selection(m){
 	/*console.log('selecionQuestions' + Questions);
 	if(totalQuestions>0 && Questions>totalQuestions);
 		return;	*/
+		console.log("Sepamos" + m);
 	switch(m) {
 
-		case 1:
+		default:
 
 			Question1();
 
@@ -230,10 +242,27 @@ function selection(m){
 
 			Question11();
 
-		break;		
-		default:
+		break;			
+		case 12:
 
 			Question12();
+
+		break;
+
+		case 13:
+
+			Question13();
+
+		break;
+		case 14:
+		
+
+			Question14();
+
+		break;
+		case 15:		
+
+			Question15();
 
 		break;
 	}
@@ -290,8 +319,8 @@ function score(m){
 
 
 function correcta(m){
-
 	puntaje+=5;
+	correct3++;
 
 	$( "#puntos" ).text(puntaje);
 	var html = $("#respuesta"+m).html();
@@ -317,6 +346,8 @@ function incorrecta(m){
 
 	$("#respuesta"+m).css({"animation-name": "incorrecta", "animation-duration": "1s"});
 
+	$("#imag_respuesta"+m).show();	
+	
 	var Active= window.localStorage.getItem('#sound-acert');
 
 	if (Active=="1") {
@@ -486,7 +517,11 @@ function Question1(){
 					respuesta.setAttribute("onclick","score(1);correcta("+i+");");
 
 				}else{
-
+					var co = document.createElement("img");
+					co.setAttribute("src","../../img/x.png");
+					co.setAttribute("id","imag_respuesta"+i);
+					co.setAttribute("style","display:none;width:20px;padding:2px;");
+					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(1);incorrecta("+i+");");
 
 				}
@@ -793,7 +828,11 @@ function Question2(){
 					respuesta.setAttribute("onclick","score(2);correcta("+i+");");
 
 				}else{
-
+					var co = document.createElement("img");
+					co.setAttribute("src","../../img/x.png");
+					co.setAttribute("id","imag_respuesta"+i);
+					co.setAttribute("style","display:none;width:20px;padding:2px;");
+					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(2);incorrecta("+i+");");
 
 				}
@@ -833,7 +872,11 @@ function Question2(){
 					respuesta.setAttribute("onclick","score(2);correcta("+i+");");
 
 				}else{
-
+					var co = document.createElement("img");
+					co.setAttribute("src","../../img/x.png");
+					co.setAttribute("id","imag_respuesta"+i);
+					co.setAttribute("style","display:none;width:20px;padding:2px;");
+					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(2);incorrecta("+i+");");
 
 				}
@@ -873,7 +916,11 @@ function Question2(){
 					respuesta.setAttribute("onclick","score(2);correcta("+i+");");
 
 				}else{
-
+					var co = document.createElement("img");
+					co.setAttribute("src","../../img/x.png");
+					co.setAttribute("id","imag_respuesta"+i);
+					co.setAttribute("style","display:none;width:20px;padding:2px;");
+					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(2);incorrecta("+i+");");
 
 				}
@@ -912,7 +959,11 @@ function Question2(){
 					respuesta.setAttribute("onclick","score(2);correcta("+i+");");
 
 				}else{
-
+					var co = document.createElement("img");
+					co.setAttribute("src","../../img/x.png");
+					co.setAttribute("id","imag_respuesta"+i);
+					co.setAttribute("style","display:none;width:20px;padding:2px;");
+					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(2);incorrecta("+i+");");
 
 				}
@@ -1096,7 +1147,11 @@ function Question3(){
 					respuesta.setAttribute("onclick","score(3);correcta("+i+");");
 
 				}else{
-
+					var co = document.createElement("img");
+					co.setAttribute("src","../../img/x.png");
+					co.setAttribute("id","imag_respuesta"+i);
+					co.setAttribute("style","display:none;width:20px;padding:2px;");
+					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(3);incorrecta("+i+");");
 
 				}
@@ -1135,7 +1190,11 @@ function Question3(){
 					respuesta.setAttribute("onclick","score(3);correcta("+i+");");
 
 				}else{
-
+					var co = document.createElement("img");
+					co.setAttribute("src","../../img/x.png");
+					co.setAttribute("id","imag_respuesta"+i);
+					co.setAttribute("style","display:none;width:20px;padding:2px;");
+					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(3);incorrecta("+i+");");
 
 				}
@@ -1174,7 +1233,11 @@ function Question3(){
 					respuesta.setAttribute("onclick","score(3);correcta("+i+");");
 
 				}else{
-
+					var co = document.createElement("img");
+					co.setAttribute("src","../../img/x.png");
+					co.setAttribute("id","imag_respuesta"+i);
+					co.setAttribute("style","display:none;width:20px;padding:2px;");
+					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(3);incorrecta("+i+");");
 
 				}
@@ -1258,7 +1321,11 @@ function Question4(){
 			respuesta.setAttribute("onclick","score(4);correcta("+i+");");
 
 		}else{
-
+			var co = document.createElement("img");
+			co.setAttribute("src","../../img/x.png");
+			co.setAttribute("id","imag_respuesta"+i);
+			co.setAttribute("style","display:none;width:20px;padding:2px;");
+			respuesta.appendChild(co);	
 			respuesta.setAttribute("onclick","score(4);incorrecta("+i+");");
 
 		}
@@ -1334,7 +1401,11 @@ function Question5(){
 			respuesta.setAttribute("onclick","score(5);correcta("+i+");");
 
 		}else{
-
+			var co = document.createElement("img");
+			co.setAttribute("src","../../img/x.png");
+			co.setAttribute("id","imag_respuesta"+i);
+			co.setAttribute("style","display:none;width:20px;padding:2px;");
+			respuesta.appendChild(co);	
 			respuesta.setAttribute("onclick","score(5);incorrecta("+i+");");
 
 		}
@@ -1450,7 +1521,11 @@ function Question6(){
 					respuesta.setAttribute("onclick","score(6);correcta("+i+");");
 
 				}else{
-
+					var co = document.createElement("img");
+					co.setAttribute("src","../../img/x.png");
+					co.setAttribute("id","imag_respuesta"+i);
+					co.setAttribute("style","display:none;width:20px;padding:2px;");
+					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(6);incorrecta("+i+");");
 
 				}
@@ -1490,7 +1565,11 @@ function Question6(){
 					respuesta.setAttribute("onclick","score(6);correcta("+i+");");
 
 				}else{
-
+					var co = document.createElement("img");
+					co.setAttribute("src","../../img/x.png");
+					co.setAttribute("id","imag_respuesta"+i);
+					co.setAttribute("style","display:none;width:20px;padding:2px;");
+					respuesta.appendChild(co);	
 					respuesta.setAttribute("onclick","score(6);incorrecta("+i+");");
 
 				}
@@ -1572,7 +1651,11 @@ function Question7(){
 			respuesta.setAttribute("onclick","score(7);correcta("+i+");");
 
 		}else{
-
+			var co = document.createElement("img");
+			co.setAttribute("src","../../img/x.png");
+			co.setAttribute("id","imag_respuesta"+i);
+			co.setAttribute("style","display:none;width:20px;padding:2px;");
+			respuesta.appendChild(co);	
 			respuesta.setAttribute("onclick","score(7);incorrecta("+i+");");
 
 		}
@@ -1589,7 +1672,7 @@ function Question7(){
 
 function Question8(){
 
-	var command8="<img style='width:100%' src='img/pregunta-8.png'>";
+	var command8="<img style='width:100%' onclick='Zoom(\"img/pregunta-8.png\", \"Pregunta 8\")' src='img/pregunta-8.png'>";
 
 	if(localStorage.getItem("language")==1){
 
@@ -1649,7 +1732,11 @@ function Question8(){
 			respuesta.setAttribute("onclick","score(8);correcta("+i+");");
 
 		}else{
-
+			var co = document.createElement("img");
+			co.setAttribute("src","../../img/x.png");
+			co.setAttribute("id","imag_respuesta"+i);
+			co.setAttribute("style","display:none;width:20px;padding:2px;");
+			respuesta.appendChild(co);	
 			respuesta.setAttribute("onclick","score(8);incorrecta("+i+");");
 
 		}
@@ -1666,7 +1753,7 @@ function Question8(){
 
 function Question9(){
 
-	var command9="<img style='width:100%' src='img/pregunta-9.png'>";
+	var command9="<img style='width:100%' onclick='Zoom(\"img/pregunta-9.png\", \"Pregunta 9\")' src='img/pregunta-9.png'>";
 
 	if(localStorage.getItem("language")==1){
 
@@ -1725,7 +1812,11 @@ function Question9(){
 			respuesta.setAttribute("onclick","score(9);correcta("+i+");");
 
 		}else{
-
+			var co = document.createElement("img");
+			co.setAttribute("src","../../img/x.png");
+			co.setAttribute("id","imag_respuesta"+i);
+			co.setAttribute("style","display:none;width:20px;padding:2px;");
+			respuesta.appendChild(co);	
 			respuesta.setAttribute("onclick","score(9);incorrecta("+i+");");
 
 		}
@@ -1802,7 +1893,11 @@ function Question10(){
 			respuesta.setAttribute("onclick","score(10);correcta("+i+");");
 
 		}else{
-
+			var co = document.createElement("img");
+			co.setAttribute("src","../../img/x.png");
+			co.setAttribute("id","imag_respuesta"+i);
+			co.setAttribute("style","display:none;width:20px;padding:2px;");
+			respuesta.appendChild(co);	
 			respuesta.setAttribute("onclick","score(10);incorrecta("+i+");");
 
 		}
@@ -1907,11 +2002,15 @@ function Question11(){
 					co.setAttribute("id","imag_respuesta"+i);
 					co.setAttribute("style","display:none;width:20px;padding:2px;");
 					respuesta.appendChild(co);	
-					respuesta.setAttribute("onclick","score(6);correcta("+i+");");
+					respuesta.setAttribute("onclick","score(11);correcta("+i+");");
 
 				}else{
-
-					respuesta.setAttribute("onclick","score(6);incorrecta("+i+");");
+					var co = document.createElement("img");
+					co.setAttribute("src","../../img/x.png");
+					co.setAttribute("id","imag_respuesta"+i);
+					co.setAttribute("style","display:none;width:20px;padding:2px;");
+					respuesta.appendChild(co);	
+					respuesta.setAttribute("onclick","score(11);incorrecta("+i+");");
 
 				}
 
@@ -2044,6 +2143,254 @@ function Question12(){
 
 	}
 }
+function Question13(){
+
+	var command13="<img style='width:100%' onclick='Zoom(\"img/pregunta-13.png\", \"Pregunta 13\")' src='img/pregunta-13.png'>";
+
+	if(localStorage.getItem("language")==1){
+
+		question1=[
+   
+			'De la salida del TCPDUMP que comando fue capturado: ',
+			'a. traceroute',
+			'b. ping',//c
+			'c. snmp',
+			'd. http get'
+		];
+
+	}if(localStorage.getItem("language")==2){
+
+		question1=[
+			'From the following output of the TCPDUMP which command was captured:',
+			'a. traceroute',
+			'b. ping',//c
+			'c. snmp',
+			'd. http get'
+		];
+
+	}else if(localStorage.getItem("language")==3){
+
+		question1=[
+			'Da saída do TCPDUMP que o comando foi capturado:',
+			'a. traceroute',
+			'b. ping',//c
+			'c. snmp',
+			'd. http get'
+		];
+
+	}
+
+	$( "#commandQuestion" ).html(command13);
+
+	$( "#titleQuestion" ).html(question1[0]);
+
+	for (var i =1; i < question1.length; i++) {
+
+	    var respuesta=document.createElement("div");
+
+		respuesta.setAttribute("class","respuesta");
+
+		respuesta.setAttribute("id","respuesta"+i);
+
+
+		if(i==2){
+
+			var co = document.createElement("img");
+			co.setAttribute("src","../../img/Approve_icon.svg.png");
+			co.setAttribute("id","imag_respuesta"+i);
+			co.setAttribute("style","display:none;width:20px;padding:2px;");
+			respuesta.appendChild(co);	
+			respuesta.setAttribute("onclick","score(13);correcta("+i+");");
+
+		}else{
+			var co = document.createElement("img");
+			co.setAttribute("src","../../img/x.png");
+			co.setAttribute("id","imag_respuesta"+i);
+			co.setAttribute("style","display:none;width:20px;padding:2px;");
+			respuesta.appendChild(co);
+			respuesta.setAttribute("onclick","score(13);incorrecta("+i+");");
+
+		}
+
+		document.getElementById("Questions").appendChild(respuesta);
+	}
+
+	for(var j=1; j < question1.length; j++) {
+
+		document.getElementById("respuesta"+j).innerHTML +=question1[j];
+
+	}
+}
+function Question14(){
+
+	var command14="<img style='width:100%' onclick='Zoom(\"img/pregunta-14.png\", \"Pregunta 14\")' src='img/pregunta-14.png'>";
+
+	if(localStorage.getItem("language")==1){
+
+		question1=[
+   
+			'Esta salida wireshark a que protocolo corresponde:',
+			'a. DNS',//c
+			'b. NTP',
+			'c. FTP',
+			'd. Telnet'
+		];
+
+	}if(localStorage.getItem("language")==2){
+
+		question1=[
+			'This output wireshark to which protocol corresponds:',
+			'a. DNS',//c
+			'b. NTP',
+			'c. FTP',
+			'd. Telnet'
+		];
+
+	}else if(localStorage.getItem("language")==3){
+
+		question1=[
+			'Esta solução foi usada em um protocolo correspondente:',
+			'a. DNS',//c
+			'b. NTP',
+			'c. FTP',
+			'd. Telnet'
+		];
+
+	}
+
+	$( "#commandQuestion" ).html(command14);
+
+	$( "#titleQuestion" ).html(question1[0]);
+
+	for (var i =1; i < question1.length; i++) {
+
+	    var respuesta=document.createElement("div");
+
+		respuesta.setAttribute("class","respuesta");
+
+		respuesta.setAttribute("id","respuesta"+i);
+
+
+		if(i==1){
+
+			var co = document.createElement("img");
+			co.setAttribute("src","../../img/Approve_icon.svg.png");
+			co.setAttribute("id","imag_respuesta"+i);
+			co.setAttribute("style","display:none;width:20px;padding:2px;");
+			respuesta.appendChild(co);	
+			respuesta.setAttribute("onclick","score(14);correcta("+i+");");
+
+		}else{
+			var co = document.createElement("img");
+			co.setAttribute("src","../../img/x.png");
+			co.setAttribute("id","imag_respuesta"+i);
+			co.setAttribute("style","display:none;width:20px;padding:2px;");
+			respuesta.appendChild(co);
+			respuesta.setAttribute("onclick","score(14);incorrecta("+i+");");
+
+		}
+
+		document.getElementById("Questions").appendChild(respuesta);
+	}
+
+	for(var j=1; j < question1.length; j++) {
+
+		document.getElementById("respuesta"+j).innerHTML +=question1[j];
+
+	}
+}
+function Question15(){
+
+	var command15="<img style='width:100%' onclick='Zoom(\"img/pregunta-15.png\", \"Pregunta 15\")' src='img/pregunta-15.png'>";
+
+	if(localStorage.getItem("language")==1){
+
+		question1=[
+   
+			'De esta salida de tcpdump que se hizo en la red:',
+			'a. Un ping',
+			'b. Abrir una página Web',
+			'c. Una consulta DNS ',//c
+			'd. No se puede saber'
+		];
+
+	}if(localStorage.getItem("language")==2){
+
+		question1=[
+			'From this tcpdump output that was made on the network:',
+			'a. A ping',
+			'b. Open a Web page',
+			'c. A DNS query',//c
+			'd. Can not know'
+		];
+
+	}else if(localStorage.getItem("language")==3){
+
+		question1=[
+			'Desta saída do tcpdump que foi feita na rede:',
+			'a. Um ping',
+			'b. Abra uma página da Web',
+			'c. Uma consulta de DNS',//c
+			'd. Você não pode saber'
+		];
+
+	}
+
+	$( "#commandQuestion" ).html(command15);
+
+	$( "#titleQuestion" ).html(question1[0]);
+
+	for (var i =1; i < question1.length; i++) {
+
+	    var respuesta=document.createElement("div");
+
+		respuesta.setAttribute("class","respuesta");
+
+		respuesta.setAttribute("id","respuesta"+i);
+
+
+		if(i==1){
+
+			var co = document.createElement("img");
+			co.setAttribute("src","../../img/Approve_icon.svg.png");
+			co.setAttribute("id","imag_respuesta"+i);
+			co.setAttribute("style","display:none;width:20px;padding:2px;");
+			respuesta.appendChild(co);	
+			respuesta.setAttribute("onclick","score(15);correcta("+i+");");
+
+		}else{
+			var co = document.createElement("img");
+			co.setAttribute("src","../../img/x.png");
+			co.setAttribute("id","imag_respuesta"+i);
+			co.setAttribute("style","display:none;width:20px;padding:2px;");
+			respuesta.appendChild(co);
+			respuesta.setAttribute("onclick","score(15);incorrecta("+i+");");
+
+		}
+
+		document.getElementById("Questions").appendChild(respuesta);
+	}
+
+	for(var j=1; j < question1.length; j++) {
+
+		document.getElementById("respuesta"+j).innerHTML +=question1[j];
+
+	}
+}
+
+
+function Zoom(src, tt){
+	console.log(tt);
+	console.log(src);
+	PhotoViewer.show(src,tt);
+}
+Instagram.isInstalled(function (err, installed) {
+    if (installed) {
+        console.log("Instagram is", installed); // installed app version on Android
+    } else {
+        console.log("Instagram is not installed");
+    }
+});
 
 function ShareScore(){
 	if (localStorage.getItem("UserId")!=null){
@@ -2062,6 +2409,25 @@ function public_TW(){
 
   loginGame(msj);
 }
+function public_IG(){
+
+
+	var msj="GAME: OUTPUT INTERPRETER TOPIC:IPv4  POINTS: "+puntaje;
+	window.plugins.socialsharing.shareViaInstagram(
+		'Message via Instagram', 
+		'http://angelgame.acostasite.com/images/icon/icon.png','http://angelgame.acostasite.com'
+	  );	
+/*	module.controller('ThisCtrl', function($scope, $cordovaInstagram) {
+		// Get image from camera, base64 is good. See the
+		// $cordovaCamera docs for more info
+	  
+		$cordovaInstagram.share($scope.image.data, $scope.image.caption).then(function() {
+		  // Worked
+		}, function(err) {
+		  // Didn't work
+		});
+	  })*/
+  }
 
 function public_FB(){
 

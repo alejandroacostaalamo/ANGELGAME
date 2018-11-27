@@ -1,1 +1,0 @@
-cordova build android --release -- --keystore="C:\Users\Usuario\Desktop\ANGEL\MyApp\appkey.keystore" --storePassword=4NG3L_2016 --alias=angelgame.aspk
