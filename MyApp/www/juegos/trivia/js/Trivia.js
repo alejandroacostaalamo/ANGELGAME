@@ -1672,7 +1672,7 @@ function Question7(){
 
 function Question8(){
 
-	var command8="<img style='width:100%' onclick='Zoom(\"img/pregunta-8.png\", \"Pregunta 8\")' src='img/pregunta-8.png'>";
+	var command8="<img style='width:100%' onclick='Zoom(\"http://angelgame.acostasite.com/Game/juegos/trivia/img/pregunta-8.png\", \"Angel Game\")' src='img/pregunta-8.png'>";
 
 	if(localStorage.getItem("language")==1){
 
@@ -1753,7 +1753,7 @@ function Question8(){
 
 function Question9(){
 
-	var command9="<img style='width:100%' onclick='Zoom(\"img/pregunta-9.png\", \"Pregunta 9\")' src='img/pregunta-9.png'>";
+	var command9="<img style='width:100%' onclick='Zoom(\"http://angelgame.acostasite.com/Game/juegos/trivia/img/pregunta-9.png\", \"Angel Game\")' src='img/pregunta-9.png'>";
 
 	if(localStorage.getItem("language")==1){
 
@@ -2145,7 +2145,7 @@ function Question12(){
 }
 function Question13(){
 
-	var command13="<img style='width:100%' onclick='Zoom(\"img/pregunta-13.png\", \"Pregunta 13\")' src='img/pregunta-13.png'>";
+	var command13="<img style='width:100%' onclick='Zoom(\"http://angelgame.acostasite.com/Game/juegos/trivia/img/pregunta-13.png\", \"Angel Game \")' src='img/pregunta-13.png'>";
 
 	if(localStorage.getItem("language")==1){
 
@@ -2223,7 +2223,7 @@ function Question13(){
 }
 function Question14(){
 
-	var command14="<img style='width:100%' onclick='Zoom(\"img/pregunta-14.png\", \"Pregunta 14\")' src='img/pregunta-14.png'>";
+	var command14="<img style='width:100%' onclick='Zoom(\"http://angelgame.acostasite.com/Game/juegos/trivia/img/pregunta-14.png\", \"Angel Game \")' src='img/pregunta-14.png'>";
 
 	if(localStorage.getItem("language")==1){
 
@@ -2301,8 +2301,8 @@ function Question14(){
 }
 function Question15(){
 
-	var command15="<img style='width:100%' onclick='Zoom(\"img/pregunta-15.png\", \"Pregunta 15\")' src='img/pregunta-15.png'>";
-
+	var command15="<img style='width:100%' onclick='Zoom(\"http://angelgame.acostasite.com/Game/juegos/trivia/img/pregunta-15.png\", \"Angel Game\")' src='img/pregunta-15.png'>";
+	console.log(command15);
 	if(localStorage.getItem("language")==1){
 
 		question1=[
@@ -2382,15 +2382,14 @@ function Question15(){
 function Zoom(src, tt){
 	console.log(tt);
 	console.log(src);
-	PhotoViewer.show(src,tt);
+	var options = {
+		share: true, // default is false
+		closeButton: true, // iOS only: default is true
+		copyToReference: true // iOS only: default is false
+	  };
+	PhotoViewer.show(src,tt,options);
 }
-Instagram.isInstalled(function (err, installed) {
-    if (installed) {
-        console.log("Instagram is", installed); // installed app version on Android
-    } else {
-        console.log("Instagram is not installed");
-    }
-});
+
 
 function ShareScore(){
 	if (localStorage.getItem("UserId")!=null){
@@ -2409,14 +2408,45 @@ function public_TW(){
 
   loginGame(msj);
 }
+
+var dataInstag;
 function public_IG(){
 
 
 	var msj="GAME: OUTPUT INTERPRETER TOPIC:IPv4  POINTS: "+puntaje;
-	window.plugins.socialsharing.shareViaInstagram(
+	/*window.plugins.socialsharing.shareViaInstagram(
 		'Message via Instagram', 
 		'http://angelgame.acostasite.com/images/icon/icon.png','http://angelgame.acostasite.com'
-	  );	
+	  );	*/
+	 // var assetLocalIdentifier = "../../img/congratulations.png";
+	 Instagram.isInstalled(function (err, installed) {
+		if (installed) {
+			console.log("Instagram is"+ installed); // installed app version on Android
+			navigator.screenshot.save(function(error,response){
+				if(error){
+					console.error(error);
+					return;
+				}
+				
+				// Something like: /storage/emulated/0/Pictures/screenshot_1477924039236.jpg
+				console.log(response.filePath);
+		
+				/*Instagram.shareAsset(function(result) {
+					alert('Instagram.shareAsset success: ' + result);
+				}, function(e) {
+					alert('Instagram.shareAsset error: ' + e);
+				}, response.filePath);*/
+				getBase64FromImageUrl(response.filePath, msj);
+				
+			});
+		} else {
+			alert("Instagram no esta instalado");
+		}
+	});
+
+	
+	 
+
 /*	module.controller('ThisCtrl', function($scope, $cordovaInstagram) {
 		// Get image from camera, base64 is good. See the
 		// $cordovaCamera docs for more info
@@ -2428,6 +2458,34 @@ function public_IG(){
 		});
 	  })*/
   }
+
+  function getBase64FromImageUrl(url, msj) {
+	var img = new Image();
+
+	img.setAttribute('crossOrigin', 'anonymous');
+
+	img.onload = function () {
+		var canvas = document.createElement("canvas");
+		canvas.width =this.width;
+		canvas.height =this.height;
+
+		var ctx = canvas.getContext("2d");
+		ctx.drawImage(this, 0, 0);
+
+		var dataURL = canvas.toDataURL("image/png");
+		dataInstag = dataURL/*.replace(/^data:image\/(png|jpg);base64,/, "")*/;
+		
+		Instagram.share(dataInstag, msj, function (err) {
+			if (err) {
+				console.log("Not shared");
+			} else {
+				console.log("shared");
+			}
+		});
+	};
+
+	img.src = url;
+}
 
 function public_FB(){
 

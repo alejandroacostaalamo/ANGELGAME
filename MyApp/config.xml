@@ -51,6 +51,9 @@
         </feature>
         <variable name="ANDROID_SUPPORT_V4_VERSION" value="24.1.1+" />
     </plugin>
+    <plugin name="com-sarriaroman-photoviewer" spec="^1.1.18" />
+    <plugin name="com.darktalker.cordova.screenshot" spec="https://github.com/gitawego/cordova-screenshot.git" />
+    <plugin name="es.keensoft.fullscreenimage" spec="^0.2.10" />
     <engine name="android" spec="^7.1.4" />
     <engine name="browser" spec="^5.0.3" />
 </widget>

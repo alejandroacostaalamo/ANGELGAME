@@ -490,3 +490,80 @@ function reload(){
 
   location.reload();
 }
+var dataInstag;
+function public_IG(){
+
+
+	var msj="GAME: DRAG  TOPIC:IPv6  NEVEL: "+level+" POINTS: "+punto;
+	/*window.plugins.socialsharing.shareViaInstagram(
+		'Message via Instagram', 
+		'http://angelgame.acostasite.com/images/icon/icon.png','http://angelgame.acostasite.com'
+	  );	*/
+	 // var assetLocalIdentifier = "../../img/congratulations.png";
+	 Instagram.isInstalled(function (err, installed) {
+		if (installed) {
+			console.log("Instagram is"+ installed); // installed app version on Android
+			navigator.screenshot.save(function(error,response){
+				if(error){
+					console.error(error);
+					return;
+				}
+				
+				// Something like: /storage/emulated/0/Pictures/screenshot_1477924039236.jpg
+				console.log(response.filePath);
+		
+				/*Instagram.shareAsset(function(result) {
+					alert('Instagram.shareAsset success: ' + result);
+				}, function(e) {
+					alert('Instagram.shareAsset error: ' + e);
+				}, response.filePath);*/
+				getBase64FromImageUrl(response.filePath, msj);
+				
+			});
+		} else {
+			alert("Instagram no esta instalado");
+		}
+	});
+
+	
+	 
+
+/*	module.controller('ThisCtrl', function($scope, $cordovaInstagram) {
+		// Get image from camera, base64 is good. See the
+		// $cordovaCamera docs for more info
+	  
+		$cordovaInstagram.share($scope.image.data, $scope.image.caption).then(function() {
+		  // Worked
+		}, function(err) {
+		  // Didn't work
+		});
+	  })*/
+  }
+
+  function getBase64FromImageUrl(url, msj) {
+	var img = new Image();
+
+	img.setAttribute('crossOrigin', 'anonymous');
+
+	img.onload = function () {
+		var canvas = document.createElement("canvas");
+		canvas.width =this.width;
+		canvas.height =this.height;
+
+		var ctx = canvas.getContext("2d");
+		ctx.drawImage(this, 0, 0);
+
+		var dataURL = canvas.toDataURL("image/png");
+		dataInstag = dataURL/*.replace(/^data:image\/(png|jpg);base64,/, "")*/;
+		
+		Instagram.share(dataInstag, msj, function (err) {
+			if (err) {
+				console.log("Not shared");
+			} else {
+				console.log("shared");
+			}
+		});
+	};
+
+	img.src = url;
+}
