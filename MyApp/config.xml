@@ -43,7 +43,6 @@
     <preference name="Orientation" value="portrait" />
     <preference name="Fullscreen" value="false" />
     <preference name="statusbaroverlayswebview" value="true" />
-    <plugin name="cordova-plugin-inappbrowser" spec="^3.0.0" />
     <plugin name="cordova-instagram-plugin" spec="^0.5.7" />
     <plugin name="cordova-plugin-x-socialsharing" spec="^5.4.3">
         <feature name="SocialSharing">
@@ -54,6 +53,7 @@
     <plugin name="com-sarriaroman-photoviewer" spec="^1.1.18" />
     <plugin name="com.darktalker.cordova.screenshot" spec="https://github.com/gitawego/cordova-screenshot.git" />
     <plugin name="es.keensoft.fullscreenimage" spec="^0.2.10" />
+    <plugin name="cordova-plugin-inappbrowser" spec="^3.0.0" />
     <engine name="android" spec="^7.1.4" />
     <engine name="browser" spec="^5.0.3" />
 </widget>

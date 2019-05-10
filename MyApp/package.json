@@ -8,7 +8,6 @@
       "browser"
     ],
     "plugins": {
-      "cordova-plugin-inappbrowser": {},
       "cordova-plugin-whitelist": {},
       "cordova-instagram-plugin": {},
       "cordova-plugin-x-socialsharing": {
@@ -16,7 +15,8 @@
       },
       "com-sarriaroman-photoviewer": {},
       "com.darktalker.cordova.screenshot": {},
-      "es.keensoft.fullscreenimage": {}
+      "es.keensoft.fullscreenimage": {},
+      "cordova-plugin-inappbrowser": {}
     }
   },
   "dependencies": {

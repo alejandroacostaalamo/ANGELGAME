@@ -37,15 +37,15 @@ $(document).ready(function(){
 	}
 	$('.menu .circulo').fadeIn(2000);
 
-	// $('.menu .circulo img').css({
-	// 	'transform':'rotateZ(0deg)'
-	// });
+	//  $('.menu .circulo img').css({
+	//  	'transform':'rotateZ(0deg)'
+	//  });
 
 	setTimeout(function(){
 		$('.menu .opciones > div').animate({
 			opacity : 1
-		},700)
-	},2000)
+		},0)
+	},0)
 
 	$("#accordion > li > div h3").click(function(){
 

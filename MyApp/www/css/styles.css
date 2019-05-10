@@ -608,7 +608,7 @@ ul{
   border-bottom: 1px solid #11718E;
 }
 .index .setting{
-  float: right;
+  text-align: right;
   padding: 18px 0px;
 }
 .index .setting span{

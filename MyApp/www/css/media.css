@@ -69,7 +69,7 @@
 }
 @media screen and (max-width: 350px){
 	.menu .opciones > div h2{
-		font-size: 48px;
+		font-size: 40px;
 	}
 	.por .menu .opciones > div #settings {
 	    right: 2px;

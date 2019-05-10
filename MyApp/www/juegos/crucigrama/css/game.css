@@ -47,10 +47,10 @@ body{
 #crgame{
 	padding-top:80px;
 }
-#questions1117{
-    position: absolute;
+#questions1117 {
     bottom: 0;
     width: 100%;
-	top:61px;
-	 z-index: -12;
+    height: 45px;
+    top: 61px;
+    position: fixed;
 }

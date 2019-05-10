@@ -110,8 +110,15 @@ $('.LoginTwitter').click(function(){
 
 var cb;
 var requestParams;
+/*
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+	console.log('device is ready');
+  window.open = cordova.InAppBrowser.open;
+}
+*/
 
-window.open = cordova.InAppBrowser.open;
+//window.open = cordova.InAppBrowser.open;
 
 function loginTwitter() {
 	//alert('entro login tw');
@@ -293,18 +300,18 @@ function TwitterSuccess(loc){
 
 // Fin twitter
 
-// Instagram
+// Instagram -----------------------------------------cambie cb por cb2
 
 $('.LoginInstagram').click(function(){
   loginInstagram();
-  //alert('Si puso el click en instagam');
+ alert('Si puso el click en instagam');
 });
 
 
-function lgIns(){
+/*function lgIns(){
 	loginInstagram();
 	//alert('Si pel click en instagam');
-  };
+  };*/
 
 var cb2;
 var requestParams;
@@ -313,19 +320,19 @@ var requestParams;
 
 function loginInstagram() {
 	//alert('entro login inst');
-	cb=window.open('https://api.instagram.com/oauth/authorize/?client_id=4ac68463df9b4dd8b3177c047f570cf9&redirect_uri='+callbackUrl+'&response_type=token', 
-	'_blank', { showLocationBar : false }); 
+	cb2=window.open('https://api.instagram.com/oauth/authorize/?client_id=4ac68463df9b4dd8b3177c047f570cf9&redirect_uri='+callbackUrl+'&response_type=token', 
+	'_blank', { showLocationBar : true }); 
 
-					console.log(cb);  
-	cb.addEventListener('loadstop', function(loc){
+					console.log(cb2);  
+	cb2.addEventListener('loadstop', function(loc){
 		console.log('En instagram loc' + loc);  
-           InstagramSuccess(loc, cb);
+           InstagramSuccess(loc, cb2);
            
 		});			
 		//alert('luego de addEventListener ins');		
 }
 
-function InstagramSuccess(loc, cb){
+function InstagramSuccess(loc, cb2){
 	//alert(loc.url);
 	// If not in call back
 	if (!(loc.url.indexOf(callbackUrl) >-1)){
@@ -335,7 +342,7 @@ function InstagramSuccess(loc, cb){
 	// If user hit "No, thanks" when asked to authorize access
 	if (loc.url.indexOf(callbackUrl+"/?denied") >= 0) {
 		alert('User declined access');
-		cb.close();		
+		cb2.close();		
 		return;
 	}
 
@@ -343,7 +350,7 @@ function InstagramSuccess(loc, cb){
 	// of back to app. Don't close the browser in this case.
 	if (loc.url === (callbackUrl+"/")) {
 		alert('User declined access');
-		cb.close();
+		cb2.close();
 		return;
 	}
 	else{// Correcto
@@ -418,15 +425,15 @@ function InstagramSuccess(loc, cb){
 		  	info3.image=data.data.profile_picture;
 		  	var uid = Register(info3);
 		  	//alert(uid);
-		  	cb.close();
+		  	cb2.close();
 		     },
 
 		     error : function(xhr, status) {
 		        alert('Error getting data form instagram');
-		        cb.close();
+		        cb2.close();
 	    }
 	 
 	  });
 	}
 }
-// Fin instagram
+// Fin instagram -----------------------------------------cambie cb por cb2

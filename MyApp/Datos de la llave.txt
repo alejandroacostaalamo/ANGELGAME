@@ -33,4 +33,4 @@ jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore appkey.keystore
 
 para alinear la app con certificado:
 
-zipalign -v 4 "C:\Users\medianet\Documents\ANGELGAME\MyApp\platforms\android\app\build\outputs\apk\release\app-release-unsigned.apk" angelGame.apk
+zipalign -v 4 "C:\Users\medianet\Documents\VCORREA\angel\APP-angel\MyApp\platforms\android\app\build\outputs\apk\release\app-release-unsigned.apk" angelGame.apk
