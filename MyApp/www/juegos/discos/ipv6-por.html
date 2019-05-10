@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<link rel="icon" href="favicon.ico" type="../../img/fv-icon.png"/> 
+<link rel="icon" href="../../favicon.png" type="icon">
 <link rel="stylesheet" href="../../css/bootstrap.min.css">
 <link rel="stylesheet" href="../../css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="../../css/font-awesome.min.css"> 
@@ -112,9 +112,13 @@
                       </div>
                   </div>
                   <div class="modal-footer">
-                      <a href="" onclick="location.reload()">
-                          <button>Atrás</button>
-                      </a>
+                        <a href="" onclick="location.reload()">
+                                <button id="volver">Jogar novamente</button>
+                            </a>
+                            <a href="#" onclick="history.back()">
+                                <button>Saída</button>
+                            </a>
+
                   </div>
               </div>
           </div>
@@ -139,9 +143,13 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a href="" onclick="location.reload()">
-                            <button>Atrás</button>
-                        </a>
+                            <a href="" onclick="location.reload()">
+                                    <button id="volver">Jogar novamente</button>
+                                </a>
+                                <a href="#" onclick="history.back()">
+                                    <button>Saída</button>
+                                </a>
+    
                     </div>
                 </div>
             </div>

@@ -212,12 +212,9 @@
               <h4 class="modal-title" id="settingModalLabel">Configuración</h4>
             </div>
             <div class="modal-body">
-                <div class="row">
-                  <div class="col-md-6">
-                    <h3>Música</h3>
-                  </div>
-                  
-                  <div class="col-md-6 setting music">
+                <div>
+                  <h3>Música</h3>
+                  <div class="setting music">
                     <span class="play" onclick="PlayMusic(1)">Encendido </span>  <span class="stop" onclick="PlayMusic(0)"> Apagado</span>
                   </div>
                 </div>
@@ -228,6 +225,13 @@
                     <span class="on " onclick="EffectMusic(1)">Encendido </span>  <span class="off " onclick="EffectMusic(0)"> Apagado</span>
                   </div>
                 </div>
+
+                <div>
+                    <h3>Animación</h3>
+                    <div class="setting animacion">
+                      <span id="onAni" class="onAni" onclick="Animacion(1)">Encendido </span>  <span id="offAni" class="offAni " onclick="Animacion(0)"> Apagado</span>
+                    </div>
+                  </div>
 
                <div>
                   <h3>Idioma</h3>
@@ -240,13 +244,11 @@
 
                <div>
                   <h3>Autenticación</h3>
-               
-              </div>
-
+ 
               <div class="caja">
                   <div id="setting Authentication"></div>
               </div>
-
+              </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Atrás</button>

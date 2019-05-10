@@ -4,7 +4,7 @@
 	<title>A.N.G.E.L</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<link rel="stylesheet" type="shortcut icon" href="../../img/fv-icon.png" type="image/x-icon">
+	<link rel="icon" href="../../favicon.png" type="icon">
 	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">    
 	<link rel="stylesheet" type="text/css" href="../../css/styles.css">
@@ -94,7 +94,16 @@
 
 		</div>
 
-	<a href="#" onclick="history.back()"><div id="exit">Back</div></a>
-	
+	<a href="#" onclick="Salir()"><div id="exit">Back</div></a>
+	<a href="#" onclick="Volver()" ><div id="volver" style="visibility:hidden">Play again</div></a>
+
+<script type="text/javascript">
+function Volver(){
+	window.location="/juegos/trivia/index.html";
+}
+function Salir(){
+	window.location="/index.html";
+}
+</script>	
 </body>
 </html>

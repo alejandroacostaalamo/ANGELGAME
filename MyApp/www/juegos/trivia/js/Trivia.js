@@ -93,6 +93,8 @@ function timer(i){
 			$('#bloquear').attr('class', 'bloquear');
 
 			$('#message').removeAttr( "style" );
+			
+			$('#volver').removeAttr( "style" );
 
 			$('#message').attr('class', 'message');
 
@@ -109,6 +111,7 @@ function timer(i){
 
 			$('#message').removeAttr( "style" );
 
+			$('#volver').removeAttr( "style" );
 			$('#message').attr('class', 'message');
 
 			$('#content').html('<div id="correct"><center><img class="logo" src="../../img/congratulations.png" ><h2>'+correcth2+'</h2><h4>'+correcth4+'</h4><div class="ptos">'+resultado+':</div><div class="co">'+correcto+': '+correct3+'</div><div class="in">'+incorrecto+': '+incorrect+'</div><p class="post">'+p+'</p></center><center><div class="ppt"><a class="fb-xfbml-parse-ignore" target="_blank"><button class="FB" onclick="public_FB()"></button></a><button class="TW" onclick="public_TW()"></button><button class="IG" onclick="public_IG()"></button></div></center></div>');
@@ -128,7 +131,7 @@ function SetQuantity(){
 	time = parseInt($("#cmbTime").val());	
 	$('#bloquear').removeAttr('class');
 	$('#content').html('');
-	$('#message').removeAttr('class');
+	$('#message').removeAttr('class');	
 	ramdom();
 	selection(posicion[0]);
 }
@@ -1023,7 +1026,7 @@ function Question3(){
 
 			'a)	Los servidores DNS',
 
-			'b)	El registro IPv6 ',
+			'b)	El IPv6 RR ',
 
 			'c)	Cualquier registro DNS',
 
@@ -1065,7 +1068,7 @@ function Question3(){
 
 			'a) DNS servers',
 
-			'b) The register IPv6',
+			'b) The IPv6 RR',
 
 			'c)	Any DNS record',
 
@@ -1107,7 +1110,7 @@ function Question3(){
 
 			'a) os servidores DNS',
 
-			'b) IPv6 Registro ',
+			'b) IPv6 RR ',
 
 			'c) Qualquer DNS registro',
 
@@ -1850,7 +1853,7 @@ function Question10(){
 
 		question1=[
 
-			'In the IPV6 addresses in this interface, Which one will have preference on an Internet connection?',
+			'In the IPv6 addresses in this interface, Which one will have preference on an Internet connection?',
 			'a)	fe80::aebc:32ff:fe96:822b%en0',
 			'b)	2001:470:5:516:aebc:32ff:fe96:822b',
 			'c)	2001:470:5:516:1588:89ea:8369:1181',
@@ -2151,7 +2154,7 @@ function Question13(){
 
 		question1=[
    
-			'De la salida del TCPDUMP que comando fue capturado: ',
+			'De la salida anterior (salida de tcpdump regular), qué comando se puede inferir se ejecutó en otro host en la red:',
 			'a. traceroute',
 			'b. ping',//c
 			'c. snmp',
@@ -2161,7 +2164,7 @@ function Question13(){
 	}if(localStorage.getItem("language")==2){
 
 		question1=[
-			'From the following output of the TCPDUMP which command was captured:',
+			'From the previous output (regular tcpdump output) which command can be deduced was executed in another host in the network:',
 			'a. traceroute',
 			'b. ping',//c
 			'c. snmp',
@@ -2171,7 +2174,7 @@ function Question13(){
 	}else if(localStorage.getItem("language")==3){
 
 		question1=[
-			'Da saída do TCPDUMP que o comando foi capturado:',
+			'A partir da saída anterior (saída tcpdump regular) qual comando pode ser deduzido foi executado em outro host na rede:',
 			'a. traceroute',
 			'b. ping',//c
 			'c. snmp',
@@ -2239,7 +2242,7 @@ function Question14(){
 	}if(localStorage.getItem("language")==2){
 
 		question1=[
-			'This output wireshark to which protocol corresponds:',
+			'This wireshark output to which protocol corresponds:',
 			'a. DNS',//c
 			'b. NTP',
 			'c. FTP',
@@ -2307,7 +2310,7 @@ function Question15(){
 
 		question1=[
    
-			'De esta salida de tcpdump que se hizo en la red:',
+			'Desde la salida de tcpdump en la imagen, ese comando se ejecutó en otro host en la red:',
 			'a. Un ping',
 			'b. Abrir una página Web',
 			'c. Una consulta DNS ',//c
@@ -2317,7 +2320,7 @@ function Question15(){
 	}if(localStorage.getItem("language")==2){
 
 		question1=[
-			'From this tcpdump output that was made on the network:',
+			'From the tcpdump output in teh image, that command was executed in another host in the network:',
 			'a. A ping',
 			'b. Open a Web page',
 			'c. A DNS query',//c
@@ -2327,7 +2330,7 @@ function Question15(){
 	}else if(localStorage.getItem("language")==3){
 
 		question1=[
-			'Desta saída do tcpdump que foi feita na rede:',
+			'Da saída do tcpdump na imagem, esse comando foi executado em outro host na rede:',
 			'a. Um ping',
 			'b. Abra uma página da Web',
 			'c. Uma consulta de DNS',//c

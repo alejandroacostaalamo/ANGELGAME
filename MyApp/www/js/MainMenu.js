@@ -44,8 +44,8 @@ $(document).ready(function(){
 	setTimeout(function(){
 		$('.menu .opciones > div').animate({
 			opacity : 1
-		},0)
-	},0)
+		},700)
+	},2000)
 
 	$("#accordion > li > div h3").click(function(){
 

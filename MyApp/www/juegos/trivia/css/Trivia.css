@@ -29,7 +29,9 @@ a{
 
 
 }
+.volver{
 
+}
 
 .ptos{
 	color: rgba(32, 109, 124, 1);;
@@ -240,6 +242,48 @@ a{
 	border-bottom-right-radius:28px;
 }
 
+#volver{
+
+	position:fixed; 
+
+	bottom:0; 
+
+	z-index: 100;
+
+	background-color: rgba(9, 40, 52, 1);
+
+	border: 2px solid rgba(50, 176, 255, 1);
+
+	font-size: Arial;
+
+	font-weight: 700;
+
+	text-align: center;
+
+	padding: 5px 10px;
+
+	color:white;
+
+	outline: none;
+
+	-moz-border-radius-topleft: 0px;
+	-moz-border-radius-topright:25px;
+	-moz-border-radius-bottomleft:1px;
+	-moz-border-radius-bottomright:0px;
+	-webkit-border-top-left-radius:0px;
+	-webkit-border-top-right-radius:25px;
+	-webkit-border-bottom-left-radius:1px;
+	-webkit-border-bottom-right-radius:0px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 1px;
+    border-bottom-right-radius: 0px;
+
+	
+}
+#volver:active{
+	border: 3px solid rgba(175, 119, 62, 1);
+}
 
 #exit{
 

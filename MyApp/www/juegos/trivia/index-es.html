@@ -7,7 +7,7 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<link rel="stylesheet" type="shortcut icon" href="" type="image/x-icon">
+	<link rel="icon" href="../../favicon.png" type="icon">  
 	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
     
@@ -94,7 +94,16 @@
 
 	</div>
 
-	<a href="#" onclick="history.back()"><div id="exit">Salir</div></a>
-	
+	<a href="#" onclick="Salir()"><div id="exit">Salir</div></a>
+	<a href="#" onclick="Volver()" ><div id="volver" style="visibility:hidden">Volver a jugar</div></a>
+
+<script type="text/javascript">
+function Volver(){
+	window.location="/juegos/trivia/index-es.html";
+}
+function Salir(){
+	window.location="/index-es.html";
+}
+</script>
 </body>
 </html>
