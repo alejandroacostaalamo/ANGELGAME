@@ -1,0 +1,15 @@
+cordova platform add browser
+cordova run browser
+cordova build android --release 
+
+adb devices
+cordova run android --device --debug
+cordova run android --debug
+	
+git add -A
+git commit -m"cambio xx"
+git push (subir)
+git pull (bajar)
+git fetch
+
+git clone git://github.com/alejandroacostaalamo/ANGELGAME.git

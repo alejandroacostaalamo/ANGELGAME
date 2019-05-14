@@ -28,24 +28,40 @@ $(document).ready(function(){
 		})
 	}
 
+	var Active= window.localStorage.getItem('animacion');
+	if (Active=="1" || Active==null) {
+		$('.onAni').toggleClass("active");
+		if(WindowW > 480){
+			$('.logo').show({ effect: "explode", duration: 2000, pieces:90 });
+		}
+		else{
+			$('.logo').show(2000);
+		}
+		$('.menu .circulo').fadeIn(2000);
 
-	if(WindowW > 480){
-		$('.logo').show({ effect: "explode", duration: 2000, pieces:90 });
+		//  $('.menu .circulo img').css({
+		//  	'transform':'rotateZ(0deg)'
+		//  });
+		window.localStorage.setItem('animacion', '1');
+		setTimeout(function(){
+			$('.menu .opciones > div').animate({
+				opacity : 1
+			},700)
+		},2000)
+	} else{
+		$('.offAni').toggleClass("active");
+		window.localStorage.setItem('animacion', '0');
+
+		$('.logo').css({"display" : "block"	});
+
+		$('.menu .circulo').css({"display" : "block"	});
+
+		//  $('.menu .circulo img').css({
+		//  	'transform':'rotateZ(0deg)'
+		//  });
+		window.localStorage.setItem('animacion', '1');
+		setTimeout(function(){$('.menu .opciones > div').css({"opacity" : "1"	})})
 	}
-	else{
-		$('.logo').show(2000);
-	}
-	$('.menu .circulo').fadeIn(2000);
-
-	//  $('.menu .circulo img').css({
-	//  	'transform':'rotateZ(0deg)'
-	//  });
-
-	setTimeout(function(){
-		$('.menu .opciones > div').animate({
-			opacity : 1
-		},700)
-	},2000)
 
 	$("#accordion > li > div h3").click(function(){
 
@@ -66,6 +82,14 @@ $(document).ready(function(){
 	$('.music span').click(function(){
 		if($('.music span').hasClass('active')){
 			$('.music span').removeClass('active')
+		}
+		$(this).addClass('active');
+
+	})
+
+	$('.animacion span').click(function(){
+		if($('.animacion span').hasClass('active')){
+			$('.animacion span').removeClass('active')
 		}
 		$(this).addClass('active');
 
@@ -113,7 +137,21 @@ $(window).resize(function(){
 	}
 })
 
+function Animacion(active){
+	var Active= window.localStorage.getItem('animacion');
+	if (active=="1") {
+		$('.onAni').toggleClass("active");
+		// active="1"
+		// console.log(active +" on");
+	}
+	else{
+		$('.offAni').toggleClass("active");
+		// console.log(active +" off");
+	}
 
+	window.localStorage.setItem('animacion', active);
+
+}
 
 //Sonido del juego
 function PlayMusic(active){

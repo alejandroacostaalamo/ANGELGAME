@@ -1,18 +1,14 @@
 
-  var boxPositioneth = [0,1,2,3,4,5,6,7,8];
+  var boxPositioneth = [0,1,2,3,4];
   var arregloFinal = [];
   var cont= 0;
   fin= false;
   var answersudp = [
-    "32 bits",
-    "8",
-    "8",
-    "8",
-    "8",
 	"Type",
 	"Code",
-	"Checksum",
-	"Variables Fields, depending on ICMPv6 Type"
+  "Checksum",
+  "Reserved",
+	"Options"
   ];
 
   var newArreglo = [];
@@ -309,7 +305,7 @@ function LevelHard(){
               $('.punto').text(punto);
               $('#' + ui['draggable'][0].id).remove();
               cont= cont + 1;
-              if(cont==9){
+              if(cont==5){
                 $('#WinModal').modal('show');
                 EndGame();// llamado a la funcion del puntaje
                 fin=true;
@@ -331,7 +327,7 @@ function PlayGame(){
 	var xt = nivel == 1?6:4;//Math.ceil(answersudp.length / nivel)
 	
   for(var i=0; i<xt; i++){
-    var value = Math.round(Math.random()* 9);
+    var value = Math.round(Math.random()* 5);
 	newArreglo[value]= value;
     $('#ICMPv6-' + value).attr( "placeholder", answersudp[value]);
     $('#ICMPv6-' + value).attr( "title", answersudp[value]);

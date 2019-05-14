@@ -4,17 +4,17 @@
   var cont=0;
   fin= false;
   var answers = [
-    "Source Port",
-    "Destination Port",
-    "Secuence Number",
-    "Acknowledgement Num",
-    "Offset",
-    "Reserved",
-    "TCP Flags",
-    "Window",
-    "Checksum",
-    "Urgent Pointer",
-    "TCP Options",
+    "Source Port Number 2 bytes",
+    "Destination Port Number 2 bytes",
+    "Secuence Number 4 bytes",
+    "Acknowledgement Number 4 bytes",
+    "Data Offset 4 bytes",
+    "Reserved 3 bytes",
+    "Control Flags 9 bytes",
+    "Window size 2 bytes",
+    "Checksum 2 bytes",
+    "Urgent Pointer 2 bytes",
+    "Optional Data 0-40 bytes",
     ];
 
   var newArreglo = [];
