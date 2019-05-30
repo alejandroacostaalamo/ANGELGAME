@@ -339,7 +339,7 @@ body{
   background: #073848;
   text-align: center;
   color: #FFEC2B;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 .modal-body{
   box-shadow: inset 0px 36px 52px -17px #033342;
