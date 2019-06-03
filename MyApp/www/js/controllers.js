@@ -128,13 +128,12 @@ function loginTwitter() {
 	
         function(data) {
 			console.log(data);  
-            requestParams = data.text;
-     //alert(data.text);
-            cb=cordova.InAppBrowser.open('https://api.twitter.com/oauth/authorize?'+data.text, 
-                  '_blank',  { showLocationBar : false });   
+			requestParams = data.text;
+			 //alert(data.text);
+            cb=window.open('https://api.twitter.com/oauth/authorize?'+data.text,  { showLocationBar : false });   
 			cb.addEventListener('loadstop', function(loc){
-				console.log('En tw loc' + loc);  
-                                              TwitterSuccess(loc);
+				//alert('En tw loc' + loc);  
+            TwitterSuccess(loc);
 
                                               });					
         },
@@ -157,7 +156,7 @@ function TwitterSuccess(loc){
 
 	// If user hit "No, thanks" when asked to authorize access
 	if (loc.url.indexOf(callbackUrl+"/?denied") >= 0) {
-		alert('User declined access');
+		console.log('User declined access');
 		cb.close();		
 		return;
 	}
@@ -304,7 +303,7 @@ function TwitterSuccess(loc){
 
 $('.LoginInstagram').click(function(){
   loginInstagram();
- alert('Si puso el click en instagam');
+// alert('Si puso el click en instagam');
 });
 
 
@@ -320,12 +319,11 @@ var requestParams;
 
 function loginInstagram() {
 	//alert('entro login inst');
-	cb2=window.open('https://api.instagram.com/oauth/authorize/?client_id=4ac68463df9b4dd8b3177c047f570cf9&redirect_uri='+callbackUrl+'&response_type=token', 
-	'_blank', { showLocationBar : true }); 
+	cb2=window.open('https://api.instagram.com/oauth/authorize/?client_id=4ac68463df9b4dd8b3177c047f570cf9&redirect_uri='+callbackUrl+'&response_type=token', { showLocationBar : true }); 
 
 					console.log(cb2);  
 	cb2.addEventListener('loadstop', function(loc){
-		console.log('En instagram loc' + loc);  
+		//alert('En instagram loc' + loc);  
            InstagramSuccess(loc, cb2);
            
 		});			
