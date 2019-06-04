@@ -16,7 +16,8 @@
       "com-sarriaroman-photoviewer": {},
       "com.darktalker.cordova.screenshot": {},
       "es.keensoft.fullscreenimage": {},
-      "cordova-plugin-inappbrowser": {}
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-progress": {}
     }
   },
   "dependencies": {
@@ -27,6 +28,7 @@
     "cordova-instagram-plugin": "^0.5.7",
     "cordova-plugin-inappbrowser": "^3.0.0",
     "cordova-plugin-photo-viewer": "^1.1.5",
+    "cordova-plugin-progress": "^0.3.0",
     "cordova-plugin-whitelist": "^1.3.3",
     "cordova-plugin-x-socialsharing": "^5.4.3",
     "cordova-universal-clipboard": "git+https://github.com/Visigo/CordovaClipboard.git",

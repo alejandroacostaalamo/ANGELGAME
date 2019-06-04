@@ -489,7 +489,25 @@ function reload(){
 }
 var dataInstag;
 function public_IG(){
+	console.log("entro en instagram");
+	var level='';
+	switch(nivel) {
+	case 6:
 
+		level='EASY';
+		break;
+	case 8:
+
+		level='MEDIUM';
+
+		break;
+
+	case 12:
+				
+		level='HARD';
+
+		break;
+}
 
 	var msj="GAME: DRAG  TOPIC:UDP  NEVEL: "+level+" POINTS: "+punto;
 	/*window.plugins.socialsharing.shareViaInstagram(

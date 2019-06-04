@@ -3532,8 +3532,8 @@ function public_TW(){
 
 
 	var msj="GAME: CROSSWORD  TOPIC:IPv6  POINTS: "+punto;
-  
-	loginGame(msj);
+	var src='http://angelgame.acostasite.com/images/background/crucigramas.jpg';
+	loginGame(msj,src);
   }
 function reload(){
 
@@ -3543,6 +3543,7 @@ var dataInstag;
 function public_IG(){
 
 
+	console.log("entro en instagram");
 	var msj="GAME: CROSSWORD  TOPIC:IPv6  POINTS: "+punto;
 	/*window.plugins.socialsharing.shareViaInstagram(
 		'Message via Instagram', 

@@ -2408,13 +2408,14 @@ function public_TW(){
 
 
   var msj="GAME: OUTPUT INTERPRETER TOPIC:IPv4  POINTS: "+puntaje;
-
-  loginGame(msj);
+  var src='http://angelgame.acostasite.com/images/background/trivia.jpg';
+  loginGame(msj,src);
 }
 
 var dataInstag;
 function public_IG(){
 
+	console.log("entro en instagram");
 
 	var msj="GAME: OUTPUT INTERPRETER TOPIC:IPv4  POINTS: "+puntaje;
 	/*window.plugins.socialsharing.shareViaInstagram(

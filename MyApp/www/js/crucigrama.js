@@ -90,6 +90,7 @@ var dataInstag;
 function public_IG(){
 
 
+	console.log("entro en instagram");
 	var msj="GAME: OUTPUT INTERPRETER TOPIC:IPv4  POINTS: ";
 	/*window.plugins.socialsharing.shareViaInstagram(
 		'Message via Instagram', 

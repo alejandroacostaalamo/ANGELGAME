@@ -45,7 +45,7 @@ var link='';
 var dir='https://angelgame.acostasite.com/Game/';
   
 function loginGame(msj,src){
-
+ // alert("entro login game");
   mensaje=msj;
 
   link=src;
@@ -56,9 +56,8 @@ function loginGame(msj,src){
   
         function(data) {
             requestParams = data.text;
-     
-            cb=window.open('https://api.twitter.com/oauth/authorize?'+data.text, '_blank',
-                    { showLocationBar : false });   
+            //alert(data.text);
+            cb=window.open('https://api.twitter.com/oauth/authorize?'+data.text,{ showLocationBar : false });   
       cb.addEventListener('loadstop', function(loc){
                                               TwitterGame(loc);
                                               });         
@@ -127,7 +126,7 @@ function TwitterGame(loc){
             oauth.post('https://api.twitter.com/1.1/statuses/update.json?status='+mensaje+' '+dir,
             function(data) { 
 
-              alert(data);
+              //alert(data);
             });
             cb.close();
 
